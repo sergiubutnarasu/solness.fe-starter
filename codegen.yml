@@ -1,0 +1,12 @@
+schema: http://localhost:5000/graphql
+config:
+  skipTypename: true,
+generates:
+  ./graphql-generated/types.d.ts:
+    documents: "modules/**/*.gql.ts"
+    plugins:
+      - typescript
+      - typescript-operations
+hooks:
+  afterOneFileWrite:
+    - prettier --write

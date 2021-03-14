@@ -1,0 +1,32 @@
+import localForage from "localforage";
+import { useCallback } from "react";
+
+const useStorage = (key: string) => {
+  const get = useCallback(async <T>(): Promise<T> => {
+    const item = await localForage.getItem<string>(key);
+
+    if (!item) {
+      return undefined;
+    }
+
+    return JSON.parse(item) as T;
+  }, [key]);
+
+  const set = useCallback(
+    async <T>(value: T) =>
+      await localForage.setItem(key, JSON.stringify(value)),
+    [key]
+  );
+
+  const remove = useCallback(async () => await localForage.removeItem(key), [
+    key,
+  ]);
+
+  return {
+    get,
+    set,
+    remove,
+  };
+};
+
+export default useStorage;
