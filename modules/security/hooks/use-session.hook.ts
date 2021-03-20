@@ -4,7 +4,7 @@ import { ACCESS_STORAGE_KEY } from "../config";
 import { SessionType } from "../types";
 
 const useSession = () => {
-  const { get, set, remove } = useStorage(ACCESS_STORAGE_KEY);
+  const { get, set, clear } = useStorage(ACCESS_STORAGE_KEY);
 
   const getSession = useCallback(async () => {
     const token = await get<SessionType>();
@@ -21,7 +21,7 @@ const useSession = () => {
     [set]
   );
 
-  const removeSession = useCallback(async () => await remove(), [remove]);
+  const removeSession = useCallback(async () => await clear(), [clear]);
 
   const isSessionExpired = useCallback(async () => {
     const session = await get<SessionType>();

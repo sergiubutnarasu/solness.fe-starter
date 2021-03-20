@@ -1,6 +1,6 @@
 import React from "react";
 import { LoginPage } from "~/hub/auth";
 
-const Login = () => <LoginPage />;
+const Page = () => <LoginPage />;
 
-export default Login;
+export default Page;

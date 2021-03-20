@@ -26,3 +26,7 @@ a {
   padding: 0;
   box-sizing: border-box;
 }
+
+button + button {
+  margin-left: 0.5rem;
+}

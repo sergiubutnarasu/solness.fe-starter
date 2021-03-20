@@ -7,13 +7,12 @@ export interface Props {
   target?: string;
   size?: SizeType;
   weight?: WeightType;
+  activeClass?: string;
 }
 
-const Link: FunctionComponent<Props> = ({ size, weight, href, target }) => (
+const Link: FunctionComponent<Props> = ({ children, size, weight, href }) => (
   <Typography as="span" color="indigo" size={size} weight={weight}>
-    <NextLink href={href}>
-      <a target={target}>Create your account!</a>
-    </NextLink>
+    <NextLink href={href}>{children}</NextLink>
   </Typography>
 );
 

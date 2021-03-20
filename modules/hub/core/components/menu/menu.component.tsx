@@ -5,21 +5,32 @@ import {
   MenuItem,
   NotificationButton,
 } from "@solness/ui";
-import React from "react";
+import { useRouter } from "next/router";
+import React, { FunctionComponent, useCallback } from "react";
 import { useSecurityContext } from "~/modules/security";
+import { ROUTES } from "../../routes";
+import Link from "../link";
 
-const Menu = () => {
-  const { logout, refreshToken } = useSecurityContext();
+const Menu: FunctionComponent = () => {
+  const { logout } = useSecurityContext();
+  const { asPath } = useRouter();
 
-  const handleLogout = async () => await logout();
+  const isActive = useCallback(
+    (path: string) => {
+      if (path === "/") {
+        return path === asPath;
+      }
 
-  const handleRefresh = async () => await refreshToken();
+      return asPath.includes(path);
+    },
+    [asPath]
+  );
 
   return (
     <SolnessMenu>
       <div className="flex items-center justify-between mb-8">
         <Logo />
-        <NotificationButton enabled onClick={handleRefresh} />
+        <NotificationButton enabled />
       </div>
 
       <div className="flex justify-center mb-8 ">
@@ -29,28 +40,19 @@ const Menu = () => {
           description="Software Developer"
           size="extra"
           url="https://en.gravatar.com/userimage/128015720/b81c215fc33e0db0461f4974d2d2cabf.jpg?size=200"
-          onOptionClick={handleLogout}
+          onOptionClick={logout}
         />
       </div>
 
-      <MenuItem active icon="home" iconColor="blue">
-        Dashboard
-      </MenuItem>
-      <MenuItem icon="office" iconColor="orange">
-        Offices
-      </MenuItem>
-      <MenuItem icon="users" iconColor="purple">
-        Users
-      </MenuItem>
-      <MenuItem icon="documents" iconColor="teal">
-        Documents
-      </MenuItem>
-      <MenuItem icon="briefcase" iconColor="red">
-        Inventory
-      </MenuItem>
-      <MenuItem icon="calendar" iconColor="indigo">
-        Calendar
-      </MenuItem>
+      {ROUTES.map(({ description, path, icon, iconColor }, index) => (
+        <Link key={index} href={path}>
+          <span>
+            <MenuItem active={isActive(path)} icon={icon} iconColor={iconColor}>
+              {description}
+            </MenuItem>
+          </span>
+        </Link>
+      ))}
     </SolnessMenu>
   );
 };

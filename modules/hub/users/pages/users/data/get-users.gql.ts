@@ -4,9 +4,15 @@ import { GetUsersQuery } from "~/graphql-generated/types";
 const GET_USERS = gql`
   query GetUsers {
     allUser {
-      id
-      email
+      ...User
     }
+  }
+
+  fragment User on User {
+    id
+    firstName
+    lastName
+    email
   }
 `;
 

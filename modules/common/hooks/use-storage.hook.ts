@@ -22,10 +22,15 @@ const useStorage = (key: string) => {
     key,
   ]);
 
+  const clear = useCallback(async () => {
+    await localForage.clear();
+  }, []);
+
   return {
     get,
     set,
     remove,
+    clear,
   };
 };
 

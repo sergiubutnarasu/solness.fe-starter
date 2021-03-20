@@ -1,19 +1,12 @@
 import React, { FunctionComponent } from "react";
-import { PageLayout } from "~/hub/core";
-import { useGetUsers } from "../../data";
+import { Documents, Summaries, WelcomeBox } from "../components";
 
-const HomePage: FunctionComponent = () => {
-  const { users } = useGetUsers();
-
-  return (
-    <PageLayout>
-      <div>test</div>
-
-      {users?.map(({ id, email }) => (
-        <div key={id}>{email}</div>
-      ))}
-    </PageLayout>
-  );
-};
+const HomePage: FunctionComponent = () => (
+  <>
+    <WelcomeBox />
+    <Summaries />
+    <Documents />
+  </>
+);
 
 export default HomePage;

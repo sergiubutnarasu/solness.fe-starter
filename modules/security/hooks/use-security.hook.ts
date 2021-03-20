@@ -53,7 +53,7 @@ const useSecurity = ({
 
       await removeSession();
 
-      window.location.reload();
+      window.location.href = "/login";
     }
   }, [logoutPath, post, getSession, removeSession]);
 

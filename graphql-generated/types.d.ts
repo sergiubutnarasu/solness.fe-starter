@@ -72,6 +72,9 @@ export type UserInput = {
 
 export type GetUsersQueryVariables = Exact<{ [key: string]: never }>;
 
-export type GetUsersQuery = {
-  allUser?: Maybe<Array<Pick<User, "id" | "email">>>;
-};
+export type GetUsersQuery = { allUser?: Maybe<Array<UserFragment>> };
+
+export type UserFragment = Pick<
+  User,
+  "id" | "firstName" | "lastName" | "email"
+>;
