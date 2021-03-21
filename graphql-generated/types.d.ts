@@ -76,5 +76,5 @@ export type GetUsersQuery = { allUser?: Maybe<Array<UserFragment>> };
 
 export type UserFragment = Pick<
   User,
-  "id" | "firstName" | "lastName" | "email"
+  "id" | "enabled" | "firstName" | "lastName" | "email" | "role"
 >;

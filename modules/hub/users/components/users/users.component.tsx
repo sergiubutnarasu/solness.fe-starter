@@ -9,7 +9,7 @@ export interface Props {
 
 const Users: FunctionComponent<Props> = ({ users = [] }) => (
   <>
-    {users.map(({ id, email, firstName, lastName }, index) => (
+    {users.map(({ id, email, firstName, lastName, role }, index) => (
       <ListItem key={id} index={index}>
         <div className="flex items-center">
           <div className="w-3/12">
@@ -17,12 +17,17 @@ const Users: FunctionComponent<Props> = ({ users = [] }) => (
               {firstName} {lastName}
             </Typography>
           </div>
+          <div className="w-2/12">
+            <Typography size="small" color="gray">
+              {role}
+            </Typography>
+          </div>
           <div className="w-3/12">
             <Typography size="small" color="gray">
               {email}
             </Typography>
           </div>
-          <div className="w-6/12 flex items-center justify-end">
+          <div className="w-4/12 flex items-center justify-end">
             <Icon icon="dots" size="small" color="gray" />
           </div>
         </div>

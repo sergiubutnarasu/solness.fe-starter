@@ -1,6 +1,6 @@
 import React from "react";
 import { UsersPage } from "~/hub/users";
 
-const Users = () => <UsersPage />;
+const Page = () => <UsersPage />;
 
-export default Users;
+export default Page;

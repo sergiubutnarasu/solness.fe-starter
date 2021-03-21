@@ -1040,10 +1040,10 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
   integrity sha512-9NET910DNaIPngYnLLPeg+Ogzqsi9uM4mSboU5y6p8S5DzMTVEsJZrawi+BoDNUVBa2DhJqQYUFvMDfgU062LQ==
 
-"@solness/ui@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@solness/ui/-/ui-0.2.3.tgz#9ed50d07f27e42555e87540e1449a4159ad0bc28"
-  integrity sha512-wF0rT9r97MlXhByKG//Ld75sQbzP1nc3Yj0LROwaJeYFiMMppUbVpo2ZnUtPODHOPzY9cW+RDB1KwMEsWzXYFg==
+"@solness/ui@^0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@solness/ui/-/ui-0.2.4.tgz#e4b5471825332d6f096febd63e799706b3748112"
+  integrity sha512-eAqfws76IlO/kEjlKIfpQBhprFAGhPc6rfLK6eYuBi1H+Nwt7VPC1e1o43b5qVRRFEK5I30cOHviGhwljJa5Fw==
   dependencies:
     moment "^2.29.1"
     react "^17.0.1"

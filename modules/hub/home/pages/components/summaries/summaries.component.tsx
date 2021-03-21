@@ -19,20 +19,13 @@ const Summaries: FunctionComponent = () => (
       </div>
     </Panel>
 
-    <Panel title="Team">
-      <Typography size="large" weight="bold" color="indigo">
-        Core Squad
+    <Panel title="Documents">
+      <Typography size="large" weight="bold">
+        16 documents
       </Typography>
-      <div className="flex justify-between">
-        <Typography size="small" color="gray">
-          Software Developer
-        </Typography>
-        <div className="ml-2">
-          <Typography size="small" color="gray">
-            5 member
-          </Typography>
-        </div>
-      </div>
+      <Typography size="small" color="gray">
+        Confidential
+      </Typography>
     </Panel>
 
     <Panel title="Inventory">
