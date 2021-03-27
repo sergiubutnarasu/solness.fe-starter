@@ -1,6 +1,4 @@
-import { onError as ApolloLinkError } from "@apollo/link-error";
-
-const UNAUTHORIZED_ERROR = "Unauthorized";
+import { onError as ApolloLinkError } from "@apollo/client/link/error";
 
 export const createGraphQLErrorLink = (onError: (messages: string[]) => void) =>
   ApolloLinkError(({ graphQLErrors }) => {

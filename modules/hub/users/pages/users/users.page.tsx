@@ -2,11 +2,8 @@ import { Button, Panel } from "@solness/ui";
 import React, { FunctionComponent } from "react";
 import { Link } from "~/hub/core";
 import { Users } from "../../components";
-import { useGetUsers } from "./data";
 
 const UsersPage: FunctionComponent = () => {
-  const { users } = useGetUsers();
-
   return (
     <Panel
       title="Users"
@@ -16,7 +13,7 @@ const UsersPage: FunctionComponent = () => {
         </Link>
       }
     >
-      <Users users={users} />
+      <Users />
     </Panel>
   );
 };

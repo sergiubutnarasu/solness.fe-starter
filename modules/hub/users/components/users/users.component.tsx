@@ -1,39 +1,74 @@
-import { Icon, Typography } from "@solness/ui";
+import { Dropdown, Icon, MenuItem, Typography } from "@solness/ui";
 import React, { FunctionComponent } from "react";
-import { UserFragment } from "~/graphql-generated/types";
-import { ListItem } from "~/hub/core";
+import { Link, ListColumn, ListItem } from "~/hub/core";
+import { useDeleteUser, useGetUsers } from "./data";
 
-export interface Props {
-  users: UserFragment[];
-}
+export interface Props {}
 
-const Users: FunctionComponent<Props> = ({ users = [] }) => (
-  <>
-    {users.map(({ id, email, firstName, lastName, role }, index) => (
-      <ListItem key={id} index={index}>
-        <div className="flex items-center">
-          <div className="w-3/12">
-            <Typography size="small">
-              {firstName} {lastName}
-            </Typography>
-          </div>
-          <div className="w-2/12">
-            <Typography size="small" color="gray">
-              {role}
-            </Typography>
-          </div>
-          <div className="w-3/12">
-            <Typography size="small" color="gray">
-              {email}
-            </Typography>
-          </div>
-          <div className="w-4/12 flex items-center justify-end">
-            <Icon icon="dots" size="small" color="gray" />
-          </div>
-        </div>
-      </ListItem>
-    ))}
-  </>
-);
+const Users: FunctionComponent<Props> = () => {
+  const { users } = useGetUsers();
+  const { deleteUser } = useDeleteUser();
+
+  const handleDeleteUser = async (userId: number) => deleteUser(userId);
+
+  return (
+    <>
+      {users?.map(({ id, email, firstName, lastName, role }, index) => {
+        const userProfilePath = `users/edit/${id}`;
+
+        return (
+          <ListItem key={id} index={index} columns={4}>
+            <ListColumn>
+              <Typography size="small">
+                {firstName} {lastName}
+              </Typography>
+            </ListColumn>
+            <ListColumn>
+              <Typography size="small" color="gray">
+                {role}
+              </Typography>
+            </ListColumn>
+            <ListColumn>
+              <Typography size="small" color="gray">
+                {email}
+              </Typography>
+            </ListColumn>
+            <ListColumn>
+              <div className="flex items-center justify-end">
+                <div className="cursor-pointer mr-2">
+                  <Link href={userProfilePath}>
+                    <Icon icon="cog" size="small" color="blue" />
+                  </Link>
+                </div>
+                <Dropdown
+                  menu={
+                    <div>
+                      <Link href={userProfilePath}>
+                        <span>
+                          <MenuItem size="small">View profile</MenuItem>
+                        </span>
+                      </Link>
+
+                      <MenuItem
+                        size="small"
+                        onClick={() => handleDeleteUser(id)}
+                      >
+                        Delete user
+                      </MenuItem>
+                    </div>
+                  }
+                >
+                  <div className="cursor-pointer">
+                    <Icon icon="dots" size="small" color="gray" />
+                  </div>
+                </Dropdown>
+              </div>
+            </ListColumn>
+          </ListItem>
+        );
+      })}
+    </>
+  );
+};
 
 export default Users;

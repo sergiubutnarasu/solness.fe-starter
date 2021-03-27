@@ -70,6 +70,24 @@ export type UserInput = {
   role: Scalars["String"];
 };
 
+export type GetUserQueryVariables = Exact<{
+  userId: Scalars["Float"];
+}>;
+
+export type GetUserQuery = { getUser?: Maybe<UserFragment> };
+
+export type SaveUserMutationVariables = Exact<{
+  model: UserInput;
+}>;
+
+export type SaveUserMutation = { saveUser: Pick<User, "id"> };
+
+export type DeleteUserMutationVariables = Exact<{
+  userId: Scalars["Float"];
+}>;
+
+export type DeleteUserMutation = { deleteUser: Pick<User, "id"> };
+
 export type GetUsersQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetUsersQuery = { allUser?: Maybe<Array<UserFragment>> };

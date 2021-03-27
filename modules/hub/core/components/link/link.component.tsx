@@ -14,14 +14,16 @@ export interface Props {
 const Link: FunctionComponent<Props> = ({
   as = "link",
   children,
-  size,
+  size = "small",
   weight,
   href,
 }) => {
   if (as === "link")
     return (
       <Typography as="span" color="indigo" size={size} weight={weight}>
-        <NextLink href={href}>{children}</NextLink>
+        <NextLink href={href}>
+          <div>{children}</div>
+        </NextLink>
       </Typography>
     );
 

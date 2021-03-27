@@ -3,6 +3,7 @@ import React, { FunctionComponent, useEffect, useMemo, useState } from "react";
 import { useSecurityContext } from "~/modules/security";
 import {
   createGraphQLAuthLink,
+  createGraphQLCache,
   createGraphQLErrorLink,
   createGraphQLHttpLink,
 } from "../helpers";
@@ -22,12 +23,13 @@ const GraphQLProvider: FunctionComponent<Props> = ({
   const authLink = createGraphQLAuthLink({ getSession, checkToken });
   const httpLink = createGraphQLHttpLink(schemaPath);
   const errorLink = createGraphQLErrorLink(handleErrors);
+  const cache = createGraphQLCache();
 
   const client = useMemo(
     () =>
       new ApolloClient({
+        cache,
         link: errorLink.concat(authLink.concat(httpLink)),
-        cache: new InMemoryCache(),
       }),
     [authLink, httpLink]
   );
