@@ -1032,14 +1032,15 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
   integrity sha512-9NET910DNaIPngYnLLPeg+Ogzqsi9uM4mSboU5y6p8S5DzMTVEsJZrawi+BoDNUVBa2DhJqQYUFvMDfgU062LQ==
 
-"@solness/ui@^0.2.5":
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/@solness/ui/-/ui-0.2.5.tgz#175ffdb081b0888cfbb287153105ef40f5a5e636"
-  integrity sha512-IKUC5qxMLqWJ+ChodsrWBVYFfT3jGOokdDuvujqiKNl839ESje+GtsRf5ZGjw7OPOrh19ysRxCZou1DU9MqHVQ==
+"@solness/ui@^0.2.7":
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/@solness/ui/-/ui-0.2.7.tgz#352a357a3c25f52347fa15f122944bcc65f5f26d"
+  integrity sha512-MYOpjAbgMJiyZqJ0gyg0eha4sd6Q67LyIbBl8JNSQJzdq3hWgrU8fsMvZfTtFz6hpCgYLOWrx8JTmnDG4Syx3A==
   dependencies:
     moment "^2.29.1"
     react "^17.0.1"
     react-dom "^17.0.1"
+    react-hook-form "^6.15.5"
     react-icons "^3.11.0"
 
 "@szmarczak/http-timer@^1.1.2":
@@ -4236,6 +4237,11 @@ react-hook-form@^6.15.4:
   version "6.15.4"
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.15.4.tgz#328003e1ccc096cd158899ffe7e3b33735a9b024"
   integrity sha512-K+Sw33DtTMengs8OdqFJI3glzNl1wBzSefD/ksQw/hJf9CnOHQAU6qy82eOrh0IRNt2G53sjr7qnnw1JDjvx1w==
+
+react-hook-form@^6.15.5:
+  version "6.15.5"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.15.5.tgz#c2578f9ce6a6df7b33015587d40cd880dc13e2db"
+  integrity sha512-so2jEPYKdVk1olMo+HQ9D9n1hVzaPPFO4wsjgSeZ964R7q7CHsYRbVF0PGBi83FcycA5482WHflasdwLIUVENg==
 
 react-icons@^3.11.0:
   version "3.11.0"

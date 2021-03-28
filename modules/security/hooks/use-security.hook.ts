@@ -79,6 +79,7 @@ const useSecurity = ({
   }, [refreshTokenPath, post, getSession, setSession]);
 
   const checkToken = useCallback(async () => {
+    console.log("check refresh");
     if (await isSessionExpired()) {
       await refreshToken();
     }

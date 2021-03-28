@@ -13,14 +13,19 @@ const SAVE_USER = gql`
   }
 `;
 
-export const useSaveUser = () => {
+export const useSaveUser = ({
+  onCompleted,
+  onError,
+}: {
+  onCompleted?: () => void;
+  onError?: (error: ApolloError) => void;
+} = {}) => {
   const [saveUser, options] = useMutation<
     SaveUserMutation,
     SaveUserMutationVariables
   >(SAVE_USER, {
-    onError: (error: ApolloError) => {
-      alert(error.message);
-    },
+    onCompleted,
+    onError,
   });
 
   const handleSaveUser = (model: UserInput) =>
