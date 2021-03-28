@@ -1,4 +1,11 @@
-import { EmailValidator, Form, Grid, Input } from "@solness/ui";
+import {
+  Button,
+  EmailValidator,
+  Form,
+  Grid,
+  Input,
+  Section,
+} from "@solness/ui";
 import { useRouter } from "next/router";
 import React, { FunctionComponent } from "react";
 import { User, UserInput } from "~/graphql-generated/types";
@@ -35,40 +42,53 @@ const UserForm: FunctionComponent<Props> = ({ user }) => {
 
   return (
     <Form defaultValues={user} onSubmit={handleSubmit}>
-      <Grid bottom={6}>
-        <Grid.Item>
-          <Input
-            required
-            name="firstName"
-            label="First name"
-            placeholder="First name"
-          />
-        </Grid.Item>
-
-        <Grid.Item>
-          <Input
-            required
-            name="lastName"
-            label="Last name"
-            placeholder="Last name"
-          />
-        </Grid.Item>
-
-        <Input
-          required
-          name="email"
-          label="Email address"
-          placeholder="Email address"
-          validators={EmailValidator}
-        />
-      </Grid>
-
-      <button
-        type="submit"
-        className="cursor-pointer rounded-full select-none outline-none focus:outline-none shadow-md bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-medium px-3 py-3 w-full mb-8"
+      <Section
+        title="User information"
+        description="Lorem ipsum dolor sit amet consectetur, adipisicing elit."
       >
-        Save user
-      </button>
+        <Grid columns={2} align="start">
+          <Grid.Item>
+            <Input
+              required
+              name="firstName"
+              label="First name"
+              placeholder="First name"
+            />
+          </Grid.Item>
+
+          <Grid.Item>
+            <Input
+              required
+              name="lastName"
+              label="Last name"
+              placeholder="Last name"
+            />
+          </Grid.Item>
+        </Grid>
+      </Section>
+
+      <Section
+        title="Contact details"
+        description="Lorem ipsum dolor sit amet consectetur, adipisicing elit."
+      >
+        <Grid columns={2} align="start">
+          <Grid.Item>
+            <Input
+              required
+              name="email"
+              label="Email address"
+              placeholder="Email address"
+              validators={EmailValidator}
+            />
+          </Grid.Item>
+
+          <Grid.Item></Grid.Item>
+        </Grid>
+      </Section>
+
+      <div className="flex justify-end">
+        <Button type="submit">Save user</Button>
+      </div>
     </Form>
   );
 };

@@ -45,31 +45,16 @@ const Users: FunctionComponent<Props> = () => {
                 <div className="flex items-center justify-end">
                   <div className="cursor-pointer mr-2">
                     <Link href={userProfilePath}>
-                      <Icon icon="cog" size="small" color="blue" />
+                      <Icon icon="edit" size="small" color="gray" />
                     </Link>
                   </div>
-                  <Dropdown
-                    menu={
-                      <div>
-                        <Link href={userProfilePath}>
-                          <span>
-                            <MenuItem size="small">View profile</MenuItem>
-                          </span>
-                        </Link>
 
-                        <MenuItem
-                          size="small"
-                          onClick={() => handleDeleteUser(id)}
-                        >
-                          Delete user
-                        </MenuItem>
-                      </div>
-                    }
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => handleDeleteUser(id)}
                   >
-                    <div className="cursor-pointer">
-                      <Icon icon="dots" size="small" color="gray" />
-                    </div>
-                  </Dropdown>
+                    <Icon icon="delete" size="small" color="gray" />
+                  </div>
                 </div>
               </Grid.Item>
             </Grid>

@@ -15,7 +15,15 @@ const UserPage: FunctionComponent<Props> = ({ userId }) => {
     return <UserForm />;
   }, [userId]);
 
-  return <Panel title="User">{content}</Panel>;
+  return (
+    <Panel
+      title="User details"
+      type="page"
+      description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, quasi?"
+    >
+      {content}
+    </Panel>
+  );
 };
 
 export default UserPage;
