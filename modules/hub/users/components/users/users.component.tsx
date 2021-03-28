@@ -1,22 +1,18 @@
-import {
-  Dropdown,
-  Grid,
-  Icon,
-  ListItem,
-  MenuItem,
-  Typography,
-} from "@solness/ui";
+import { Grid, Icon, ListItem, Typography } from "@solness/ui";
 import React, { FunctionComponent } from "react";
 import { Link } from "~/hub/core";
-import { useDeleteUser, useGetUsers } from "./data";
+import { useGetUsers } from "../../data";
+import { useDeleteUser } from "../delete-user-modal";
 
 export interface Props {}
 
 const Users: FunctionComponent<Props> = () => {
   const { users } = useGetUsers();
-  const { deleteUser } = useDeleteUser();
 
-  const handleDeleteUser = async (userId: number) => deleteUser(userId);
+  const {
+    showModal: showDeleteUserModal,
+    renderModal: renderDeleteUserModal,
+  } = useDeleteUser();
 
   return (
     <>
@@ -51,7 +47,7 @@ const Users: FunctionComponent<Props> = () => {
 
                   <div
                     className="cursor-pointer"
-                    onClick={() => handleDeleteUser(id)}
+                    onClick={() => showDeleteUserModal(id)}
                   >
                     <Icon icon="delete" size="small" color="gray" />
                   </div>
@@ -61,6 +57,8 @@ const Users: FunctionComponent<Props> = () => {
           </ListItem>
         );
       })}
+
+      {renderDeleteUserModal()}
     </>
   );
 };
