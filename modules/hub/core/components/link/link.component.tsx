@@ -22,7 +22,7 @@ const Link: FunctionComponent<Props> = ({
     return (
       <Typography as="span" color="indigo" size={size} weight={weight}>
         <NextLink href={href}>
-          <div>{children}</div>
+          <a>{children}</a>
         </NextLink>
       </Typography>
     );

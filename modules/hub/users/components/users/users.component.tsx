@@ -2,17 +2,11 @@ import { Grid, Icon, ListItem, Typography } from "@solness/ui";
 import React, { FunctionComponent } from "react";
 import { Link } from "~/hub/core";
 import { useGetUsers } from "../../data";
-import { useDeleteUser } from "../delete-user-modal";
 
 export interface Props {}
 
 const Users: FunctionComponent<Props> = () => {
   const { users } = useGetUsers();
-
-  const {
-    showModal: showDeleteUserModal,
-    renderModal: renderDeleteUserModal,
-  } = useDeleteUser();
 
   return (
     <>
@@ -39,17 +33,10 @@ const Users: FunctionComponent<Props> = () => {
               </Grid.Item>
               <Grid.Item>
                 <div className="flex items-center justify-end">
-                  <div className="cursor-pointer mr-2">
+                  <div className="cursor-pointer">
                     <Link href={userProfilePath}>
                       <Icon icon="edit" size="small" color="gray" />
                     </Link>
-                  </div>
-
-                  <div
-                    className="cursor-pointer"
-                    onClick={() => showDeleteUserModal(id)}
-                  >
-                    <Icon icon="delete" size="small" color="gray" />
                   </div>
                 </div>
               </Grid.Item>
@@ -57,8 +44,6 @@ const Users: FunctionComponent<Props> = () => {
           </ListItem>
         );
       })}
-
-      {renderDeleteUserModal()}
     </>
   );
 };

@@ -45,12 +45,10 @@ const Menu: FunctionComponent = () => {
       </div>
 
       {ROUTES.map(({ description, path, icon, iconColor }, index) => (
-        <Link key={index} href={path}>
-          <span>
-            <MenuItem active={isActive(path)} icon={icon} iconColor={iconColor}>
-              {description}
-            </MenuItem>
-          </span>
+        <Link as="button" key={index} href={path}>
+          <MenuItem active={isActive(path)} icon={icon} iconColor={iconColor}>
+            {description}
+          </MenuItem>
         </Link>
       ))}
     </SolnessMenu>

@@ -13,7 +13,11 @@ const UserDetails: FunctionComponent<Props> = ({ userId }) => {
     return null;
   }
 
-  return <UserForm user={user} />;
+  return (
+    <>
+      <UserForm user={user} />
+    </>
+  );
 };
 
 export default UserDetails;

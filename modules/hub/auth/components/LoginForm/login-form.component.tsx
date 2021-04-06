@@ -60,10 +60,10 @@ const LoginForm: FunctionComponent = () => {
           <hr className="mb-8" />
 
           <div className="text-center">
-            <Typography weight="light">
-              You don't have an account?{" "}
-              <Link href="/" weight="light">
-                Create your account!
+            <Typography as="div" weight="light">
+              Forgot your password?{" "}
+              <Link href="/users" weight="light" size='base'>
+                Recover your password!
               </Link>
             </Typography>
           </div>

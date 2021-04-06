@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React, { FunctionComponent, useMemo } from "react";
 import { GraphQLProvider } from "~/modules/network";
 import { SecurityProvider } from "~/modules/security";
@@ -12,15 +13,17 @@ const securityOptions = {
 };
 
 const AppLayout: FunctionComponent = ({ children }) => {
+  const { pathname } = useRouter();
+
   const content = useMemo(() => {
-    const isLoginPage = global.window && window.location.pathname === "/login";
+    const isLoginPage = pathname === "/login";
 
     if (isLoginPage) {
       return <>{children}</>;
     }
 
     return <HubLayout>{children}</HubLayout>;
-  }, [children]);
+  }, [children, pathname]);
 
   return (
     <ErrorBoundary>
