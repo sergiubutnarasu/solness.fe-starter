@@ -1,5 +1,5 @@
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
-import React, { FunctionComponent, useEffect, useMemo, useState } from "react";
+import { ApolloClient, ApolloProvider } from "@apollo/client";
+import React, { FunctionComponent, useMemo } from "react";
 import { useSecurityContext } from "~/modules/security";
 import {
   createGraphQLAuthLink,

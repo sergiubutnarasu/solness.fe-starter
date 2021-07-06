@@ -6,7 +6,11 @@ import { useGetUsers } from "../../data";
 export interface Props {}
 
 const Users: FunctionComponent<Props> = () => {
-  const { users } = useGetUsers();
+  const { users, loading } = useGetUsers();
+
+  if (loading) {
+    return <>Loading</>;
+  }
 
   return (
     <>

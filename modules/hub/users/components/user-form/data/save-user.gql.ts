@@ -8,7 +8,9 @@ import {
 const SAVE_USER = gql`
   mutation SaveUser($model: UserInput!) {
     saveUser(model: $model) {
-      id
+      data {
+        id
+      }
     }
   }
 `;

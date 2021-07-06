@@ -7,7 +7,11 @@ export interface Props {
 }
 
 const UserDetails: FunctionComponent<Props> = ({ userId }) => {
-  const { user } = useGetUser(userId);
+  const { user, loading } = useGetUser(userId);
+
+  if (loading) {
+    return <>Loading</>;
+  }
 
   if (!user) {
     return null;

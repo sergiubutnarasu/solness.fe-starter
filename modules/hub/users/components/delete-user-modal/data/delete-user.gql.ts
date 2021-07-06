@@ -8,7 +8,9 @@ import { GET_USERS } from "../../../data";
 const DELETE_USER = gql`
   mutation DeleteUser($userId: Float!) {
     deleteUser(id: $userId) {
-      id
+      data {
+        id
+      }
     }
   }
 `;

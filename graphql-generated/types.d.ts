@@ -25,14 +25,22 @@ export type User = {
 };
 
 export type PaginatedUserResponse = {
-  data: Array<User>;
+  data?: Maybe<Array<User>>;
   total: Scalars["Int"];
+  success: Scalars["Boolean"];
+  message?: Maybe<Scalars["String"]>;
+};
+
+export type UserResponse = {
+  data?: Maybe<User>;
+  success: Scalars["Boolean"];
+  message?: Maybe<Scalars["String"]>;
 };
 
 export type Query = {
-  allUser?: Maybe<Array<User>>;
+  allUser?: Maybe<PaginatedUserResponse>;
   findUser?: Maybe<PaginatedUserResponse>;
-  getUser?: Maybe<User>;
+  getUser?: Maybe<UserResponse>;
 };
 
 export type QueryFindUserArgs = {
@@ -49,16 +57,16 @@ export type PageListInput = {
 };
 
 export type Mutation = {
-  deleteUser: User;
-  saveUser: User;
-};
-
-export type MutationDeleteUserArgs = {
-  id: Scalars["Float"];
+  saveUser: UserResponse;
+  deleteUser: UserResponse;
 };
 
 export type MutationSaveUserArgs = {
   model: UserInput;
+};
+
+export type MutationDeleteUserArgs = {
+  id: Scalars["Float"];
 };
 
 export type UserInput = {
@@ -70,27 +78,31 @@ export type UserInput = {
   role: Scalars["String"];
 };
 
+export type DeleteUserMutationVariables = Exact<{
+  userId: Scalars["Float"];
+}>;
+
+export type DeleteUserMutation = {
+  deleteUser: { data?: Maybe<Pick<User, "id">> };
+};
+
 export type GetUserQueryVariables = Exact<{
   userId: Scalars["Float"];
 }>;
 
-export type GetUserQuery = { getUser?: Maybe<UserFragment> };
+export type GetUserQuery = { getUser?: Maybe<{ data?: Maybe<UserFragment> }> };
 
 export type SaveUserMutationVariables = Exact<{
   model: UserInput;
 }>;
 
-export type SaveUserMutation = { saveUser: Pick<User, "id"> };
-
-export type DeleteUserMutationVariables = Exact<{
-  userId: Scalars["Float"];
-}>;
-
-export type DeleteUserMutation = { deleteUser: Pick<User, "id"> };
+export type SaveUserMutation = { saveUser: { data?: Maybe<Pick<User, "id">> } };
 
 export type GetUsersQueryVariables = Exact<{ [key: string]: never }>;
 
-export type GetUsersQuery = { allUser?: Maybe<Array<UserFragment>> };
+export type GetUsersQuery = {
+  allUser?: Maybe<{ data?: Maybe<Array<UserFragment>> }>;
+};
 
 export type UserFragment = Pick<
   User,
