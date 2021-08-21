@@ -33,7 +33,7 @@ const LoginForm: FunctionComponent = () => {
               type="text"
               name="username"
               placeholder="Email address"
-              ref={register({ required: true })}
+              // ref={register({ required: true })}
             />
           </div>
 
@@ -46,7 +46,7 @@ const LoginForm: FunctionComponent = () => {
               type="password"
               name="password"
               placeholder="Password"
-              ref={register({ required: true })}
+              // ref={register({ required: true })}
             />
           </div>
 

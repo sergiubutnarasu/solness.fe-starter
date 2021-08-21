@@ -1,7 +1,7 @@
 import { MailOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/router';
 import React, { FunctionComponent } from 'react';
-import { Column, Form, Input, Row, Section, Stack } from '~/common/components';
+import { Form, Grid, Input, Section, Stack } from '~/common/components';
 import { useFormContext } from '~/common/providers';
 import { User, UserInput } from '~/graphql-generated/types';
 import { useSaveUser } from './data';
@@ -46,8 +46,8 @@ const UserForm: FunctionComponent<Props> = ({ user }) => {
         title="User information"
         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit."
       >
-        <Row gutter={32}>
-          <Column span={12}>
+        <Grid>
+          <Grid.Item colSpan={6}>
             <Form.Item
               name="firstName"
               label="First name"
@@ -57,9 +57,9 @@ const UserForm: FunctionComponent<Props> = ({ user }) => {
             >
               <Input />
             </Form.Item>
-          </Column>
+          </Grid.Item>
 
-          <Column span={12}>
+          <Grid.Item colSpan={6}>
             <Form.Item
               name="lastName"
               label="Last name"
@@ -69,16 +69,16 @@ const UserForm: FunctionComponent<Props> = ({ user }) => {
             >
               <Input />
             </Form.Item>
-          </Column>
-        </Row>
+          </Grid.Item>
+        </Grid>
       </Section>
 
       <Section
         title="Contact details"
         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit."
       >
-        <Row gutter={32}>
-          <Column span={12}>
+        <Grid>
+          <Grid.Item colSpan={6}>
             <Form.Item
               name="email"
               label="Email address"
@@ -92,8 +92,8 @@ const UserForm: FunctionComponent<Props> = ({ user }) => {
             >
               <Input prefix={<MailOutlined />} />
             </Form.Item>
-          </Column>
-        </Row>
+          </Grid.Item>
+        </Grid>
       </Section>
 
       <Stack direction="row" justifyContent="flex-end">

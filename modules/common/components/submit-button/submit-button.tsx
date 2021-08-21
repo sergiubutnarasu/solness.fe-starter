@@ -11,7 +11,7 @@ const SubmitButton: FunctionComponent<ButtonProps> = ({
   return (
     <Button
       isLoading={submitting}
-      colorScheme="messenger"
+      colorScheme="purple"
       type="submit"
       {...props}
     >
