@@ -15,6 +15,7 @@
     "jsx": "preserve",
     "baseUrl": "./",
     "paths": {
+      "~/common/*": ["modules/common/*"],
       "~/hub/*": ["modules/hub/*"],
       "~/modules/*": ["modules/*"],
       "~/graphql-generated/*": ["graphql-generated/*"]

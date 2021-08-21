@@ -1,6 +1,13 @@
-import React from "react";
-import { UserPage } from "~/hub/users/pages";
+import dynamic from 'next/dynamic';
+import React from 'react';
 
-const Page = () => <UserPage />;
+const DynamicPage = dynamic(
+  () => import('../../modules/hub/users/pages/user'),
+  {
+    loading: () => <p>loading tada</p>,
+  },
+);
+
+const Page = () => <DynamicPage />;
 
 export default Page;

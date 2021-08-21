@@ -1,7 +1,7 @@
-import { useCallback } from "react";
-import { useFetch } from "~/modules/common";
-import { SessionType } from "../types";
-import useSession from "./use-session.hook";
+import { useCallback } from 'react';
+import { useFetch } from '~/common/hooks';
+import { SessionType } from '../types';
+import useSession from './use-session.hook';
 
 const useSecurity = ({
   loginPath,
@@ -13,12 +13,8 @@ const useSecurity = ({
   refreshTokenPath: string;
 }) => {
   const { post } = useFetch();
-  const {
-    getSession,
-    setSession,
-    removeSession,
-    isSessionExpired,
-  } = useSession();
+  const { getSession, setSession, removeSession, isSessionExpired } =
+    useSession();
 
   const login = useCallback(
     async (username: string, password: string) => {
@@ -32,13 +28,13 @@ const useSecurity = ({
       if (result) {
         await setSession(result as SessionType);
 
-        window.location.href = "/";
+        window.location.href = '/';
       }
 
       return result as SessionType;
     },
 
-    [loginPath, post, setSession]
+    [loginPath, post, setSession],
   );
 
   const logout = useCallback(async () => {
@@ -53,7 +49,7 @@ const useSecurity = ({
 
       await removeSession();
 
-      window.location.href = "/login";
+      window.location.href = '/login';
     }
   }, [logoutPath, post, getSession, removeSession]);
 

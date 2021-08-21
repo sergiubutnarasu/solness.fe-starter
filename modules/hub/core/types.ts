@@ -1,4 +1,4 @@
-import { ColorType, IconType } from "@solness/ui";
+import { ColorType, IconType } from '~/common/types';
 
 export type MenuField = {
   description: string;

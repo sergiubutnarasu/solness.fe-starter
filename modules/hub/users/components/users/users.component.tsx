@@ -1,7 +1,7 @@
-import { Grid, Icon, ListItem, Typography } from "@solness/ui";
-import React, { FunctionComponent } from "react";
-import { Link } from "~/hub/core";
-import { useGetUsers } from "../../data";
+import React, { FunctionComponent } from 'react';
+import { Button, Grid, Typography } from '~/common/components';
+import { Link } from '~/hub/core';
+import { useGetUsers } from '../../data';
 
 export interface Props {}
 
@@ -18,34 +18,37 @@ const Users: FunctionComponent<Props> = () => {
         const userProfilePath = `users/edit/${id}`;
 
         return (
-          <ListItem key={id} index={index}>
-            <Grid columns={4}>
-              <Grid.Item>
-                <Typography size="small">
-                  {firstName} {lastName}
-                </Typography>
-              </Grid.Item>
-              <Grid.Item>
-                <Typography size="small" color="gray">
-                  {role}
-                </Typography>
-              </Grid.Item>
-              <Grid.Item>
-                <Typography size="small" color="gray">
-                  {email}
-                </Typography>
-              </Grid.Item>
-              <Grid.Item>
-                <div className="flex items-center justify-end">
-                  <div className="cursor-pointer">
-                    <Link href={userProfilePath}>
-                      <Icon icon="edit" size="small" color="gray" />
-                    </Link>
-                  </div>
-                </div>
-              </Grid.Item>
-            </Grid>
-          </ListItem>
+          <Grid
+            key={id}
+            px={4}
+            py={2}
+            bgColor={!(index % 2) && 'gray.50'}
+            alignItems="center"
+            borderRadius={8}
+          >
+            <Grid.Item colSpan={4}>
+              <Typography.Text>
+                {firstName} {lastName}
+              </Typography.Text>
+            </Grid.Item>
+            <Grid.Item colSpan={2}>
+              <Typography.Text color="gray.500">{role}</Typography.Text>
+            </Grid.Item>
+            <Grid.Item colSpan={4}>
+              <Typography.Text color="gray.500">{email}</Typography.Text>
+            </Grid.Item>
+            <Grid.Item colSpan={2} textAlign="right">
+              <Link href={userProfilePath}>
+                <Button.Icon
+                  variant="ghost"
+                  aria-label="View details"
+                  icon="dots"
+                  size="sm"
+                  color="gray"
+                />
+              </Link>
+            </Grid.Item>
+          </Grid>
         );
       })}
     </>

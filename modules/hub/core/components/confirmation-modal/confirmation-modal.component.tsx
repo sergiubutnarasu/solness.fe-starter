@@ -1,5 +1,5 @@
-import { Modal, Typography, Button } from "@solness/ui";
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent } from 'react';
+import { Box, Button, Modal, Typography } from '~/common/components';
 
 export interface Props {
   title: string;
@@ -17,23 +17,33 @@ const ConfirmationModal: FunctionComponent<Props> = ({
   onClose,
   onSubmit,
 }) => (
-  <Modal open title={title} size="medium" onClose={onClose}>
-    {description && (
-      <div className="mb-6">
-        <Typography size="small">{description}</Typography>
-      </div>
-    )}
+  <Modal isOpen onClose={onClose}>
+    <Modal.Content>
+      <Modal.Header>
+        <Typography.Text>{title}</Typography.Text>
+      </Modal.Header>
 
-    {children && <div className="mb-6">{children}</div>}
+      <Modal.Close size="sm" />
 
-    <div className="flex justify-end">
-      <Button transparent onClick={onClose}>
-        Cancel
-      </Button>
-      <Button loading={loading} onClick={onSubmit}>
-        Confirm
-      </Button>
-    </div>
+      <Modal.Body>
+        {description && (
+          <Box mb={2}>
+            <Typography.Text>{description}</Typography.Text>
+          </Box>
+        )}
+
+        {children && <Box mb={2}>{children}</Box>}
+      </Modal.Body>
+
+      <Modal.Footer>
+        <Button variant="ghost" onClick={onClose}>
+          Cancel
+        </Button>
+        <Button colorScheme="red" isLoading={loading} onClick={onSubmit}>
+          Confirm
+        </Button>
+      </Modal.Footer>
+    </Modal.Content>
   </Modal>
 );
 

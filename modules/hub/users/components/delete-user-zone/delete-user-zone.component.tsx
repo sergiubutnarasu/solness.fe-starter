@@ -1,16 +1,15 @@
-import { Button, Panel, Typography } from "@solness/ui";
-import React, { FunctionComponent } from "react";
-import { useDeleteUser } from "../delete-user-modal";
+import { Stack } from '@chakra-ui/react';
+import React, { FunctionComponent } from 'react';
+import { Button, Panel } from '~/common/components';
+import { useDeleteUser } from '../delete-user-modal';
 
 export interface Props {
   userId: number;
 }
 
 const DeleteUserZone: FunctionComponent<Props> = ({ userId }) => {
-  const {
-    showModal: showDeleteUserModal,
-    renderModal: renderDeleteUserModal,
-  } = useDeleteUser();
+  const { showModal: showDeleteUserModal, renderModal: renderDeleteUserModal } =
+    useDeleteUser();
 
   return (
     <Panel
@@ -20,14 +19,15 @@ const DeleteUserZone: FunctionComponent<Props> = ({ userId }) => {
     voluptate ea quasi et, quibusdam fugit veniam voluptatum maxime, id
     laudantium exercitationem!"
     >
-      <div className="flex justify-end">
-        <div></div>
-        <Button transparent onClick={() => showDeleteUserModal(userId)}>
-          <Typography size="small" color="red">
-            Delete user
-          </Typography>
+      <Stack direction="row" justifyContent="flex-end">
+        <Button
+          variant="ghost"
+          colorScheme="red"
+          onClick={() => showDeleteUserModal(userId)}
+        >
+          Delete user
         </Button>
-      </div>
+      </Stack>
 
       {renderDeleteUserModal()}
     </Panel>

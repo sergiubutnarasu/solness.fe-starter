@@ -1,22 +1,16 @@
-import { Typography } from "@solness/ui";
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent } from 'react';
+import { Box, Typography } from '~/common/components';
 
 const WelcomeBox: FunctionComponent = () => (
-  <div className="rounded-lg shadow-lg bg-indigo-500 p-8 mb-8">
-    <Typography size="large" color="white" weight="semibold">
+  <Box mb="8" p="8" borderRadius="md" boxShadow="sm" bg="purple.500">
+    <Typography.Text fontSize="lg" color="white" fontWeight="semibold">
       Welcome back, Sergiu Butnarasu!
-    </Typography>
-    <Typography as="span" size="small" color="white">
-      You have 6 unread{" "}
-      <Typography as="span" underline size="small" color="white">
-        notifications
-      </Typography>{" "}
-      and 3 new{" "}
-      <Typography as="span" underline size="small" color="white">
-        documents
-      </Typography>
-    </Typography>
-  </div>
+    </Typography.Text>
+    <Typography.Text fontSize="sm" color="white">
+      You have 6 unread <Typography.Text as="u">notifications</Typography.Text> and 3 new{' '}
+      <Typography.Text as="u">documents</Typography.Text>
+    </Typography.Text>
+  </Box>
 );
 
 export default WelcomeBox;

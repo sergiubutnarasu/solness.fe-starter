@@ -1,6 +1,6 @@
-import { Layout } from "@solness/ui";
-import React, { FunctionComponent } from "react";
-import { LoginForm } from "../../components";
+import React, { FunctionComponent } from 'react';
+import { Layout } from '~/common/components';
+import { LoginForm } from '../../components';
 
 const LoginPage: FunctionComponent = () => {
   return (

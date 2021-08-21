@@ -1,15 +1,10 @@
-import {
-  Button,
-  EmailValidator,
-  Form,
-  Grid,
-  Input,
-  Section,
-} from "@solness/ui";
-import { useRouter } from "next/router";
-import React, { FunctionComponent } from "react";
-import { User, UserInput } from "~/graphql-generated/types";
-import { useSaveUser } from "./data";
+import { MailOutlined } from '@ant-design/icons';
+import { useRouter } from 'next/router';
+import React, { FunctionComponent } from 'react';
+import { Column, Form, Input, Row, Section, Stack } from '~/common/components';
+import { useFormContext } from '~/common/providers';
+import { User, UserInput } from '~/graphql-generated/types';
+import { useSaveUser } from './data';
 
 export interface Props {
   user?: User;
@@ -17,10 +12,11 @@ export interface Props {
 
 const UserForm: FunctionComponent<Props> = ({ user }) => {
   const { push } = useRouter();
+  const { setSubmitting } = useFormContext();
 
   const { saveUser } = useSaveUser({
     onCompleted: () => {
-      push("/users");
+      push('/users');
     },
     onError: (error) => alert(error.message),
   });
@@ -36,59 +32,74 @@ const UserForm: FunctionComponent<Props> = ({ user }) => {
       lastName,
       email,
       enabled: true,
-      role: "Admin",
+      role: 'Admin',
     });
+
+    setSubmitting(false);
   };
 
+  const handleCancel = () => push('/users');
+
   return (
-    <Form defaultValues={user} onSubmit={handleSubmit}>
+    <Form initialValues={user} onFinish={handleSubmit}>
       <Section
         title="User information"
         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit."
       >
-        <Grid columns={2} align="start">
-          <Grid.Item>
-            <Input
-              required
+        <Row gutter={32}>
+          <Column span={12}>
+            <Form.Item
               name="firstName"
               label="First name"
-              placeholder="First name"
-            />
-          </Grid.Item>
+              rules={[
+                { required: true, message: 'Please input your first name!' },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+          </Column>
 
-          <Grid.Item>
-            <Input
-              required
+          <Column span={12}>
+            <Form.Item
               name="lastName"
               label="Last name"
-              placeholder="Last name"
-            />
-          </Grid.Item>
-        </Grid>
+              rules={[
+                { required: true, message: 'Please input your last name!' },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+          </Column>
+        </Row>
       </Section>
 
       <Section
         title="Contact details"
         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit."
       >
-        <Grid columns={2} align="start">
-          <Grid.Item>
-            <Input
-              required
+        <Row gutter={32}>
+          <Column span={12}>
+            <Form.Item
               name="email"
               label="Email address"
-              placeholder="Email address"
-              validators={EmailValidator}
-            />
-          </Grid.Item>
-
-          <Grid.Item></Grid.Item>
-        </Grid>
+              rules={[
+                { required: true, message: 'Please input your email address!' },
+                {
+                  type: 'email',
+                  message: 'Please enter a valid email address!',
+                },
+              ]}
+            >
+              <Input prefix={<MailOutlined />} />
+            </Form.Item>
+          </Column>
+        </Row>
       </Section>
 
-      <div className="flex justify-end">
-        <Button type="submit">Save user</Button>
-      </div>
+      <Stack direction="row" justifyContent="flex-end">
+        <Form.CancelButton onClick={handleCancel}>Cancel</Form.CancelButton>
+        <Form.SubmitButton>Save user</Form.SubmitButton>
+      </Stack>
     </Form>
   );
 };

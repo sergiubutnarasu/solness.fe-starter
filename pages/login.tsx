@@ -1,6 +1,10 @@
-import React from "react";
-import { LoginPage } from "~/hub/auth";
+import dynamic from 'next/dynamic';
+import React from 'react';
 
-const Page = () => <LoginPage />;
+const DynamicPage = dynamic(() => import('../modules/hub/auth/pages/login'), {
+  loading: () => <p>loading tada</p>,
+});
+
+const Page = () => <DynamicPage />;
 
 export default Page;

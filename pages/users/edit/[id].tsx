@@ -1,12 +1,19 @@
-import { GetServerSidePropsContext } from "next";
-import React, { FunctionComponent } from "react";
-import { UserPage } from "~/hub/users/pages";
+import { GetServerSidePropsContext } from 'next';
+import dynamic from 'next/dynamic';
+import React, { FunctionComponent } from 'react';
+
+const DynamicPage = dynamic(
+  () => import('../../../modules/hub/users/pages/user'),
+  {
+    loading: () => <p>loading tada</p>,
+  },
+);
 
 export interface Props {
   id: number;
 }
 
-const Page: FunctionComponent<Props> = ({ id }) => <UserPage userId={id} />;
+const Page: FunctionComponent<Props> = ({ id }) => <DynamicPage userId={id} />;
 
 export const getServerSideProps = ({ params }: GetServerSidePropsContext) => {
   const userId = params?.id as string;

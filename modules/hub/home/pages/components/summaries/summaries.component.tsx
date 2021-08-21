@@ -1,42 +1,47 @@
-import { Panel, Typography } from "@solness/ui";
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent } from 'react';
+import { Box, Grid, Panel, Typography } from '~/common/components';
 
 const Summaries: FunctionComponent = () => (
-  <div className="flex gap-8 items-start">
-    <Panel title="Team">
-      <Typography size="large" weight="bold" color="indigo">
-        Core Squad
-      </Typography>
-      <div className="flex justify-between">
-        <Typography size="small" color="gray">
-          Software Developer
-        </Typography>
-        <div className="ml-2">
-          <Typography size="small" color="gray">
-            5 member
-          </Typography>
-        </div>
-      </div>
-    </Panel>
+  <Grid columns={3} spacing={8} mb={8}>
+    <Grid.Item>
+      <Panel title="Team" mb={0}>
+        <Typography.Text fontSize="lg" fontWeight="semibold" color="purple.500">
+          Core Squad
+        </Typography.Text>
+        <Grid columns={2}>
+          <Grid.Item>
+            <Typography.Text color="gray">Software Developer</Typography.Text>
+          </Grid.Item>
 
-    <Panel title="Documents">
-      <Typography size="large" weight="bold">
-        16 documents
-      </Typography>
-      <Typography size="small" color="gray">
-        Confidential
-      </Typography>
-    </Panel>
+          <Grid.Item>
+            <Box ml={2} textAlign="right">
+              <Typography.Text fontSize="small" color="gray">
+                5 member
+              </Typography.Text>
+            </Box>
+          </Grid.Item>
+        </Grid>
+      </Panel>
+    </Grid.Item>
 
-    <Panel title="Inventory">
-      <Typography size="large" weight="bold">
-        9 items available
-      </Typography>
-      <Typography size="small" color="gray">
-        No item requested
-      </Typography>
-    </Panel>
-  </div>
+    <Grid.Item>
+      <Panel title="Documents" mb={0}>
+        <Typography.Text fontSize="large" fontWeight="semibold">
+          16 documents
+        </Typography.Text>
+        <Typography.Text color="gray">Confidential</Typography.Text>
+      </Panel>
+    </Grid.Item>
+
+    <Grid.Item>
+      <Panel title="Inventory" mb={0}>
+        <Typography.Text fontSize="lg" fontWeight="semibold">
+          9 items available
+        </Typography.Text>
+        <Typography.Text color="gray">No item requested</Typography.Text>
+      </Panel>
+    </Grid.Item>
+  </Grid>
 );
 
 export default Summaries;

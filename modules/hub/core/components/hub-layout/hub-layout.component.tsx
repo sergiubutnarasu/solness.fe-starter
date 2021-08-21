@@ -1,13 +1,13 @@
-import { Layout } from "@solness/ui";
 import React, {
   FunctionComponent,
   ReactNode,
   useEffect,
   useState,
-} from "react";
-import { useSecurityContext } from "~/modules/security";
-import Menu from "../menu";
-import Sidebar from "../sidebar";
+} from 'react';
+import { Layout } from '~/common/components';
+import { useSecurityContext } from '~/modules/security';
+import Menu from '../menu';
+import Sidebar from '../sidebar';
 
 export interface Props {
   children: ReactNode;
@@ -22,7 +22,7 @@ const HubLayout: FunctionComponent<Props> = ({ children }) => {
       const session = await getSession();
 
       if (!session) {
-        window.location.href = "/login";
+        window.location.href = '/login';
       } else {
         setIsLoading(false);
       }

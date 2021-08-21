@@ -1,10 +1,12 @@
-import { useRouter } from "next/router";
-import React, { FunctionComponent, useMemo } from "react";
-import { GraphQLProvider } from "~/modules/network";
-import { SecurityProvider } from "~/modules/security";
-import { ApiPath } from "../../configs";
-import ErrorBoundary from "../error-boundary";
-import HubLayout from "../hub-layout";
+import { ChakraProvider } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
+import React, { FunctionComponent, useMemo } from 'react';
+import { FormProvider } from '~/common/providers';
+import { GraphQLProvider } from '~/modules/network';
+import { SecurityProvider } from '~/modules/security';
+import { ApiPath } from '../../configs';
+import ErrorBoundary from '../error-boundary';
+import HubLayout from '../hub-layout';
 
 const securityOptions = {
   loginPath: ApiPath.loginPath,
@@ -16,7 +18,7 @@ const AppLayout: FunctionComponent = ({ children }) => {
   const { pathname } = useRouter();
 
   const content = useMemo(() => {
-    const isLoginPage = pathname === "/login";
+    const isLoginPage = pathname === '/login';
 
     if (isLoginPage) {
       return <>{children}</>;
@@ -29,7 +31,9 @@ const AppLayout: FunctionComponent = ({ children }) => {
     <ErrorBoundary>
       <SecurityProvider {...securityOptions}>
         <GraphQLProvider schemaPath={ApiPath.graphQLSchemaPath}>
-          {content}
+          <ChakraProvider>
+            <FormProvider>{content}</FormProvider>
+          </ChakraProvider>
         </GraphQLProvider>
       </SecurityProvider>
     </ErrorBoundary>

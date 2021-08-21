@@ -1,85 +1,63 @@
-import { Button, Panel, Typography } from "@solness/ui";
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent } from 'react';
+import { Button, Grid, Panel, Typography } from '~/common/components';
 
 const CalendarWidget: FunctionComponent = () => (
   <Panel
+    mb={8}
+    bgColor="blue.900"
     title="Next Event"
-    color="blue"
     titleColor="white"
-    actions={<Button transparent size="small" icon="plus" />}
+    actions={
+      <Button.Icon
+        aria-label="Add event"
+        variant="ghost"
+        color="white"
+        colorScheme="blackAlpha"
+        icon="plus"
+        size="sm"
+      />
+    }
   >
     <>
-      <div className="px-4 py-3 bg-white-opacity rounded-md mb-1">
-        <div className="flex items-start">
-          <div className="w-1/3">
-            <Typography size="small" color="white">
-              10:30 AM
-            </Typography>
-            <Typography size="xsmall" color="gray">
-              24 June
-            </Typography>
-          </div>
-          <div className="w-2/3">
-            <Typography size="small" color="white">
-              Morning daily scrum
-            </Typography>
-          </div>
-        </div>
-      </div>
+      <Grid px={4} py={2} bgColor="blue.800" borderRadius={4} mb={2}>
+        <Grid.Item colSpan={4}>
+          <Typography.Text color="white">10:00 AM</Typography.Text>
+          <Typography.Text fontSize="xs" color="gray.500">
+            24 June
+          </Typography.Text>
+        </Grid.Item>
+        <Grid.Item colSpan={8}>
+          <Typography.Text color="gray.300">
+            Morning daily scrum
+          </Typography.Text>
+        </Grid.Item>
+      </Grid>
 
-      <div className="px-4 py-3 bg-white-opacity rounded-md mb-1">
-        <div className="flex items-start">
-          <div className="w-1/3">
-            <Typography size="small" color="white">
-              11:30 AM
-            </Typography>
-            <Typography size="xsmall" color="gray">
-              24 June
-            </Typography>
-          </div>
-          <div className="w-2/3">
-            <Typography size="small" color="white">
-              Sprint retrospectives
-            </Typography>
-          </div>
-        </div>
-      </div>
+      <Grid px={4} py={2} bgColor="blue.800" borderRadius={4} mb={2}>
+        <Grid.Item colSpan={4}>
+          <Typography.Text color="white">11:30 AM</Typography.Text>
+          <Typography.Text fontSize="xs" color="gray.500">
+            26 June
+          </Typography.Text>
+        </Grid.Item>
+        <Grid.Item colSpan={8}>
+          <Typography.Text color="gray.300">
+            Sprint retrospectives
+          </Typography.Text>
+        </Grid.Item>
+      </Grid>
 
-      <div className="px-4 py-3 bg-white-opacity rounded-md mb-1">
-        <div className="flex items-start">
-          <div className="w-1/3">
-            <Typography size="small" color="white">
-              02:30 PM
-            </Typography>
-            <Typography size="xsmall" color="gray">
-              24 June
-            </Typography>
-          </div>
-          <div className="w-2/3">
-            <Typography size="small" color="white">
-              Sprint planning
-            </Typography>
-          </div>
-        </div>
-      </div>
-
-      <div className="px-4 py-3 bg-white-opacity rounded-md">
-        <div className="flex items-start">
-          <div className="w-1/3">
-            <Typography size="small" color="white">
-              03:30 PM
-            </Typography>
-            <Typography size="xsmall" color="gray">
-              24 June
-            </Typography>
-          </div>
-          <div className="w-2/3">
-            <Typography size="small" color="white">
-              Team synchronization
-            </Typography>
-          </div>
-        </div>
-      </div>
+      <Grid px={4} py={2} bgColor="blue.800" borderRadius={4} mb={2}>
+        <Grid.Item colSpan={4}>
+          <Typography.Text color="white">12:00 PM</Typography.Text>
+          <Typography.Text fontSize="xs" color="gray.500">
+            27 June
+          </Typography.Text>
+        </Grid.Item>
+        <Grid.Item colSpan={8}>
+          <Typography.Text color="gray.300">Sprint planning</Typography.Text>
+        </Grid.Item>
+      </Grid>
     </>
   </Panel>
 );

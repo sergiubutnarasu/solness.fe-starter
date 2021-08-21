@@ -1,15 +1,17 @@
+import { useRouter } from 'next/router';
+import React, { FunctionComponent, useCallback } from 'react';
 import {
   Avatar,
+  Box,
+  Button,
   Logo,
-  Menu as SolnessMenu,
-  MenuItem,
-  NotificationButton,
-} from "@solness/ui";
-import { useRouter } from "next/router";
-import React, { FunctionComponent, useCallback } from "react";
-import { useSecurityContext } from "~/modules/security";
-import { ROUTES } from "../../routes";
-import Link from "../link";
+  Menu as MainMenu,
+  Stack,
+  Typography,
+} from '~/common/components';
+import { useSecurityContext } from '~/modules/security';
+import { ROUTES } from '../../routes';
+import Link from '../link';
 
 const Menu: FunctionComponent = () => {
   const { logout } = useSecurityContext();
@@ -17,41 +19,67 @@ const Menu: FunctionComponent = () => {
 
   const isActive = useCallback(
     (path: string) => {
-      if (path === "/") {
+      if (path === '/') {
         return path === asPath;
       }
 
       return asPath.includes(path);
     },
-    [asPath]
+    [asPath],
   );
 
   return (
-    <SolnessMenu>
-      <div className="flex items-center justify-between mb-8">
+    <MainMenu>
+      <Stack mb="8" direction="row" justifyContent="space-between">
         <Logo />
-        <NotificationButton enabled />
-      </div>
+        <Button.Icon
+          aria-label="Notification"
+          icon="bell"
+          size="sm"
+          variant="link"
+          color="gray.500"
+          iconSize={20}
+        ></Button.Icon>
+      </Stack>
 
-      <div className="flex justify-center mb-8 ">
+      <Box mb="8" textAlign="center">
         <Avatar
-          showOptions
-          title="Sergiu Butnarasu"
-          description="Software Developer"
-          size="extra"
-          url="https://en.gravatar.com/userimage/128015720/b81c215fc33e0db0461f4974d2d2cabf.jpg?size=200"
-          onOptionClick={logout}
-        />
-      </div>
+          size="2xl"
+          src="https://en.gravatar.com/userimage/128015720/b81c215fc33e0db0461f4974d2d2cabf.jpg?size=200"
+          mb={2}
+        >
+          <Avatar.Badge right="14px" bottom="14px" boxSize="1.5rem" bg="white">
+            <Button.Icon
+              aria-label="Edit your profile"
+              icon="cog"
+              variant="link"
+              colorScheme="blackAlpha"
+              color="gray.500"
+              onClick={logout}
+            ></Button.Icon>
+          </Avatar.Badge>
+        </Avatar>
+
+        <Typography.Text fontSize="sm" fontWeight="semibold">
+          Sergiu Butnarasu
+        </Typography.Text>
+        <Typography.Text fontSize="xs" color="gray.500">
+          Web Developer
+        </Typography.Text>
+      </Box>
 
       {ROUTES.map(({ description, path, icon, iconColor }, index) => (
-        <Link as="button" key={index} href={path}>
-          <MenuItem active={isActive(path)} icon={icon} iconColor={iconColor}>
+        <Link key={index} href={path}>
+          <MainMenu.Item
+            isActive={isActive(path)}
+            icon={icon}
+            iconColor={iconColor}
+          >
             {description}
-          </MenuItem>
+          </MainMenu.Item>
         </Link>
       ))}
-    </SolnessMenu>
+    </MainMenu>
   );
 };
 

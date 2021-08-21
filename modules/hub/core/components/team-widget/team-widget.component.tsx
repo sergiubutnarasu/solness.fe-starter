@@ -1,108 +1,132 @@
-import { Avatar, Icon, Panel, Typography } from "@solness/ui";
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent } from 'react';
+import { Avatar, Button, Grid, Panel, Typography } from '~/common/components';
 
 const TeamWidget: FunctionComponent = () => (
-  <Panel title="Team Members">
+  <Panel title="Team Members" mb={0}>
     <>
-      <div className="flex items-center mb-4">
-        <div className="w-1/5 flex justify-start">
+      <Grid columns={12} mb={3} alignItems="center">
+        <Grid.Item colSpan={2}>
           <Avatar
-            size="base"
-            url="https://en.gravatar.com/userimage/128015720/b81c215fc33e0db0461f4974d2d2cabf.jpg?size=200"
+            size="sm"
+            src="https://en.gravatar.com/userimage/128015720/b81c215fc33e0db0461f4974d2d2cabf.jpg?size=200"
           />
-        </div>
-        <div className="w-4/5">
-          <Typography size="small" weight="semibold">
+        </Grid.Item>
+        <Grid.Item colSpan={8}>
+          <Typography.Text fontWeight="semibold">
             Sergiu Butnarasu
-          </Typography>
-          <Typography size="xsmall" color="gray">
+          </Typography.Text>
+          <Typography.Text fontSize="xs" color="gray">
             Software Developer
-          </Typography>
-        </div>
-        <div className="w-1/5 flex items-center justify-end">
-          <Icon icon="dots" size="small" color="gray" />
-        </div>
-      </div>
-
-      <div className="flex items-center mb-4">
-        <div className="w-1/5 flex justify-start">
-          <Avatar
-            size="base"
-            url="https://randomuser.me/api/portraits/women/44.jpg"
+          </Typography.Text>
+        </Grid.Item>
+        <Grid.Item colSpan={2} textAlign="right">
+          <Button.Icon
+            variant="ghost"
+            aria-label="View details"
+            icon="dots"
+            size="sm"
+            color="gray"
           />
-        </div>
-        <div className="w-4/5">
-          <Typography size="small" weight="semibold">
-            June Cha
-          </Typography>
-          <Typography size="xsmall" color="gray">
+        </Grid.Item>
+      </Grid>
+
+      <Grid columns={12} mb={3} alignItems="center">
+        <Grid.Item colSpan={2}>
+          <Avatar
+            size="sm"
+            src="https://randomuser.me/api/portraits/women/44.jpg"
+          />
+        </Grid.Item>
+        <Grid.Item colSpan={8}>
+          <Typography.Text fontWeight="semibold">June Cha</Typography.Text>
+          <Typography.Text fontSize="xs" color="gray">
             Graphic Designer
-          </Typography>
-        </div>
-        <div className="w-1/5 flex items-center justify-end">
-          <Icon icon="dots" size="small" color="gray" />
-        </div>
-      </div>
-
-      <div className="flex items-center mb-4">
-        <div className="w-1/5 flex justify-start">
-          <Avatar
-            size="base"
-            url="https://randomuser.me/api/portraits/women/95.jpg"
+          </Typography.Text>
+        </Grid.Item>
+        <Grid.Item colSpan={2} textAlign="right">
+          <Button.Icon
+            variant="ghost"
+            aria-label="View details"
+            icon="dots"
+            size="sm"
+            color="gray"
           />
-        </div>
-        <div className="w-4/5">
-          <Typography size="small" weight="semibold">
+        </Grid.Item>
+      </Grid>
+
+      <Grid columns={12} mb={3} alignItems="center">
+        <Grid.Item colSpan={2}>
+          <Avatar
+            size="sm"
+            src="https://randomuser.me/api/portraits/women/95.jpg"
+          />
+        </Grid.Item>
+        <Grid.Item colSpan={8}>
+          <Typography.Text fontWeight="semibold">
             Lucrecia Calder
-          </Typography>
-          <Typography size="xsmall" color="gray">
+          </Typography.Text>
+          <Typography.Text fontSize="xs" color="gray">
             Software Developer
-          </Typography>
-        </div>
-        <div className="w-1/5 flex items-center justify-end">
-          <Icon icon="dots" size="small" color="gray" />
-        </div>
-      </div>
-
-      <div className="flex items-center mb-4">
-        <div className="w-1/5 flex justify-start">
-          <Avatar
-            size="base"
-            url="https://randomuser.me/api/portraits/men/36.jpg"
+          </Typography.Text>
+        </Grid.Item>
+        <Grid.Item colSpan={2} textAlign="right">
+          <Button.Icon
+            variant="ghost"
+            aria-label="View details"
+            icon="dots"
+            size="sm"
+            color="gray"
           />
-        </div>
-        <div className="w-4/5">
-          <Typography size="small" weight="semibold">
-            Oscar Thomsen
-          </Typography>
-          <Typography size="xsmall" color="gray">
+        </Grid.Item>
+      </Grid>
+
+      <Grid columns={12} mb={3} alignItems="center">
+        <Grid.Item colSpan={2}>
+          <Avatar
+            size="sm"
+            src="https://randomuser.me/api/portraits/men/36.jpg"
+          />
+        </Grid.Item>
+        <Grid.Item colSpan={8}>
+          <Typography.Text fontWeight="semibold">Oscar Thomsen</Typography.Text>
+          <Typography.Text fontSize="xs" color="gray">
             Software Developer
-          </Typography>
-        </div>
-        <div className="w-1/5 flex items-center justify-end">
-          <Icon icon="dots" size="small" color="gray" />
-        </div>
-      </div>
-
-      <div className="flex items-center">
-        <div className="w-1/5 flex justify-start">
-          <Avatar
-            size="base"
-            url="https://randomuser.me/api/portraits/women/65.jpg"
+          </Typography.Text>
+        </Grid.Item>
+        <Grid.Item colSpan={2} textAlign="right">
+          <Button.Icon
+            variant="ghost"
+            aria-label="View details"
+            icon="dots"
+            size="sm"
+            color="gray"
           />
-        </div>
-        <div className="w-4/5">
-          <Typography size="small" weight="semibold">
-            Renee Sims
-          </Typography>
-          <Typography size="xsmall" color="gray">
+        </Grid.Item>
+      </Grid>
+
+      <Grid columns={12} alignItems="center">
+        <Grid.Item colSpan={2}>
+          <Avatar
+            size="sm"
+            src="https://randomuser.me/api/portraits/women/65.jpg"
+          />
+        </Grid.Item>
+        <Grid.Item colSpan={8}>
+          <Typography.Text fontWeight="semibold">Renee Sims</Typography.Text>
+          <Typography.Text fontSize="xs" color="gray">
             Web Designer
-          </Typography>
-        </div>
-        <div className="w-1/5 flex items-center justify-end">
-          <Icon icon="dots" size="small" color="gray" />
-        </div>
-      </div>
+          </Typography.Text>
+        </Grid.Item>
+        <Grid.Item colSpan={2} textAlign="right">
+          <Button.Icon
+            variant="ghost"
+            aria-label="View details"
+            icon="dots"
+            size="sm"
+            color="gray"
+          />
+        </Grid.Item>
+      </Grid>
     </>
   </Panel>
 );

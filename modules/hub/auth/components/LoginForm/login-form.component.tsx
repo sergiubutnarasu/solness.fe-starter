@@ -1,8 +1,8 @@
-import { Typography } from "@solness/ui";
-import React, { FunctionComponent } from "react";
-import { useForm } from "react-hook-form";
-import { Link } from "~/hub/core";
-import { useSecurityContext } from "~/modules/security";
+import React, { FunctionComponent } from 'react';
+import { useForm } from 'react-hook-form';
+import { Typography } from '~/common/components';
+import { Link } from '~/hub/core';
+import { useSecurityContext } from '~/modules/security';
 
 const LoginForm: FunctionComponent = () => {
   const { register, handleSubmit } = useForm();
@@ -60,12 +60,10 @@ const LoginForm: FunctionComponent = () => {
           <hr className="mb-8" />
 
           <div className="text-center">
-            <Typography as="div" weight="light">
-              Forgot your password?{" "}
-              <Link href="/users" weight="light" size='base'>
-                Recover your password!
-              </Link>
-            </Typography>
+            <Typography.Text>
+              Forgot your password?{' '}
+              <Link href="/users">Recover your password!</Link>
+            </Typography.Text>
           </div>
         </form>
       </div>

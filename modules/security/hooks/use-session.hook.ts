@@ -1,7 +1,8 @@
-import { useCallback } from "react";
-import { addSeconds, isAfter, useStorage } from "~/modules/common";
-import { ACCESS_STORAGE_KEY } from "../config";
-import { SessionType } from "../types";
+import { useCallback } from 'react';
+import { addSeconds, isAfter } from '~/common/helpers';
+import { useStorage } from '~/common/hooks';
+import { ACCESS_STORAGE_KEY } from '../config';
+import { SessionType } from '../types';
 
 const useSession = () => {
   const { get, set, clear } = useStorage(ACCESS_STORAGE_KEY);
@@ -18,7 +19,7 @@ const useSession = () => {
       session.expireDate = date;
       return await set(session);
     },
-    [set]
+    [set],
   );
 
   const removeSession = useCallback(async () => await clear(), [clear]);

@@ -1,6 +1,6 @@
-import { useFlag } from "@solness/ui";
-import { useState } from "react";
-import DeleteUserModal from "../delete-user-modal.component";
+import { useState } from 'react';
+import { useFlag } from '~/common/hooks';
+import DeleteUserModal from '../delete-user-modal.component';
 
 export const useDeleteUser = () => {
   const [userId, setUserId] = useState(0);
