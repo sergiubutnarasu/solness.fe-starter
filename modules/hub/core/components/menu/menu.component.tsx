@@ -69,7 +69,7 @@ const Menu: FunctionComponent = () => {
       </Box>
 
       {ROUTES.map(({ description, path, icon, iconColor }, index) => (
-        <Link key={index} href={path}>
+        <Link key={index} href={path} _hover={{ textDecoration: 'none' }}>
           <MainMenu.Item
             isActive={isActive(path)}
             icon={icon}

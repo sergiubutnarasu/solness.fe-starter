@@ -1,7 +1,6 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import React, { FunctionComponent, useMemo } from 'react';
-import { FormProvider } from '~/common/providers';
 import { GraphQLProvider } from '~/modules/network';
 import { SecurityProvider } from '~/modules/security';
 import { ApiPath } from '../../configs';
@@ -31,9 +30,7 @@ const AppLayout: FunctionComponent = ({ children }) => {
     <ErrorBoundary>
       <SecurityProvider {...securityOptions}>
         <GraphQLProvider schemaPath={ApiPath.graphQLSchemaPath}>
-          <ChakraProvider>
-            <FormProvider>{content}</FormProvider>
-          </ChakraProvider>
+          <ChakraProvider>{content}</ChakraProvider>
         </GraphQLProvider>
       </SecurityProvider>
     </ErrorBoundary>

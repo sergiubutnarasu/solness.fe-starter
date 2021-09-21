@@ -1,14 +1,10 @@
 import NextLink from 'next/link';
+import { Link as Component, LinkProps as Props } from '@chakra-ui/react';
 import React, { FunctionComponent } from 'react';
 
-export interface Props {
-  href: string;
-  target?: string;
-}
-
-const Link: FunctionComponent<Props> = ({ children, href }) => (
+const Link: FunctionComponent<Props> = ({ children, href, ...props }) => (
   <NextLink href={href}>
-    <a>{children}</a>
+    <Component {...props}>{children}</Component>
   </NextLink>
 );
 

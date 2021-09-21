@@ -1,11 +1,10 @@
 import React, { FunctionComponent } from 'react';
-import { useForm } from 'react-hook-form';
-import { Typography } from '~/common/components';
+import { Box, Form, Typography } from '~/common/components';
+import { EMAIL_VALIDATION_PATTERN } from '~/common/configs';
 import { Link } from '~/hub/core';
 import { useSecurityContext } from '~/modules/security';
 
 const LoginForm: FunctionComponent = () => {
-  const { register, handleSubmit } = useForm();
   const { login } = useSecurityContext();
 
   const onSubmit = async ({
@@ -17,57 +16,61 @@ const LoginForm: FunctionComponent = () => {
   }) => await login(username, password);
 
   return (
-    <div className="w-full h-full flex items-center justify-center">
-      <div className="w-1/4 bg-white px-10 py-16 rounded-lg shadow-sm">
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <h1 className="text-gray-700 text-2xl font-semibold text-center mb-10">
+    <Box
+      w="full"
+      h="full"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      background="transparent"
+    >
+      <Box w="md" px={10} py={16} rounded="lg" shadow="sm">
+        <Box textAlign="center" mb={8}>
+          <Typography.Title color="gray.600" fontSize="2xl">
             Access your account
-          </h1>
+          </Typography.Title>
+        </Box>
 
-          <div className="mb-6">
-            <label className="block text-gray-600 text-md font-light mb-2">
-              Email address
-            </label>
-            <input
-              className="px-3 py-4 w-full text-gray-700 text-sm leading-none appearance-none border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-100"
-              type="text"
-              name="username"
-              placeholder="Email address"
-              // ref={register({ required: true })}
-            />
-          </div>
+        <Form
+          defaultValues={{ username: '', password: '' }}
+          onSubmit={onSubmit}
+        >
+          <Form.Input
+            mb={4}
+            isRequired
+            name="username"
+            label="Email address"
+            validators={{
+              pattern: {
+                value: EMAIL_VALIDATION_PATTERN,
+                message: 'Please enter a valid email address.',
+              },
+            }}
+          />
 
-          <div className="mb-8">
-            <label className="block text-gray-600 text-md font-light mb-2">
-              Password
-            </label>
-            <input
-              className="px-3 py-4 w-full text-gray-700 text-sm leading-none appearance-none border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-100"
-              type="password"
-              name="password"
-              placeholder="Password"
-              // ref={register({ required: true })}
-            />
-          </div>
+          <Form.Input
+            isRequired
+            mb={8}
+            type="password"
+            name="password"
+            label="Password"
+          />
 
-          <button
-            type="submit"
-            className="cursor-pointer rounded-full select-none outline-none focus:outline-none shadow-md bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-medium px-3 py-3 w-full mb-8"
-          >
+          <Form.SubmitButton w="full" rounded="full" size="lg">
             Log into Hub
-          </button>
+          </Form.SubmitButton>
+        </Form>
 
-          <hr className="mb-8" />
-
-          <div className="text-center">
-            <Typography.Text>
-              Forgot your password?{' '}
-              <Link href="/users">Recover your password!</Link>
-            </Typography.Text>
-          </div>
-        </form>
-      </div>
-    </div>
+        <Box mt={8} textAlign="center">
+          <Typography.Text>
+            Forgot your password?{' '}
+            <Link href="/users" color="blue.500">
+              Recover your password!
+            </Link>
+          </Typography.Text>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

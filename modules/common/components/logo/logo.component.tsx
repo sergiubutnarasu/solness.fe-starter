@@ -9,7 +9,9 @@ const Logo: FunctionComponent = () => (
       <Icon fontSize="20px" icon="collection" color="purple.500" />
     </Box>
 
-    <Typography.Text color="purple.500" fontSize='xs' fontWeight='semibold'>solness</Typography.Text>
+    <Typography.Text color="purple.500" fontSize="xs" fontWeight="semibold">
+      solness
+    </Typography.Text>
   </Box>
 );
 

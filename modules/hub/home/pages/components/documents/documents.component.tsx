@@ -53,13 +53,13 @@ const Documents: FunctionComponent = () => (
 
       <Grid columns={12} px={4} py={2} borderRadius={8} alignItems="center">
         <Grid.Item colSpan={6}>
-          <Typography.Text>Holidays.doc</Typography.Text>
+          <Typography.Text>Design System.pdf</Typography.Text>
         </Grid.Item>
         <Grid.Item colSpan={4}>
-          <Typography.Text color="gray">by Sergiu Butnarasu</Typography.Text>
+          <Typography.Text color="gray">by June Cha</Typography.Text>
         </Grid.Item>
         <Grid.Item colSpan={1}>
-          <Typography.Text color="gray">1.4 MB</Typography.Text>
+          <Typography.Text color="gray">8.6 MB</Typography.Text>
         </Grid.Item>
         <Grid.Item textAlign="right">
           <Button.Icon
@@ -81,13 +81,13 @@ const Documents: FunctionComponent = () => (
         alignItems="center"
       >
         <Grid.Item colSpan={6}>
-          <Typography.Text>Holidays.doc</Typography.Text>
+          <Typography.Text>Refactoring.doc</Typography.Text>
         </Grid.Item>
         <Grid.Item colSpan={4}>
-          <Typography.Text color="gray">by Sergiu Butnarasu</Typography.Text>
+          <Typography.Text color="gray">by Oscar Thomsen</Typography.Text>
         </Grid.Item>
         <Grid.Item colSpan={1}>
-          <Typography.Text color="gray">1.4 MB</Typography.Text>
+          <Typography.Text color="gray">0.8 MB</Typography.Text>
         </Grid.Item>
         <Grid.Item textAlign="right">
           <Button.Icon
@@ -102,13 +102,13 @@ const Documents: FunctionComponent = () => (
 
       <Grid columns={12} px={4} py={2} borderRadius={8} alignItems="center">
         <Grid.Item colSpan={6}>
-          <Typography.Text>Holidays.doc</Typography.Text>
+          <Typography.Text>Guidelines.doc</Typography.Text>
         </Grid.Item>
         <Grid.Item colSpan={4}>
-          <Typography.Text color="gray">by Sergiu Butnarasu</Typography.Text>
+          <Typography.Text color="gray">by Renee Sims</Typography.Text>
         </Grid.Item>
         <Grid.Item colSpan={1}>
-          <Typography.Text color="gray">1.4 MB</Typography.Text>
+          <Typography.Text color="gray">2.1 MB</Typography.Text>
         </Grid.Item>
         <Grid.Item textAlign="right">
           <Button.Icon
@@ -130,13 +130,13 @@ const Documents: FunctionComponent = () => (
         alignItems="center"
       >
         <Grid.Item colSpan={6}>
-          <Typography.Text>Holidays.doc</Typography.Text>
+          <Typography.Text>Retro.xlsx</Typography.Text>
         </Grid.Item>
         <Grid.Item colSpan={4}>
-          <Typography.Text color="gray">by Sergiu Butnarasu</Typography.Text>
+          <Typography.Text color="gray">by Lucrecia Calder</Typography.Text>
         </Grid.Item>
         <Grid.Item colSpan={1}>
-          <Typography.Text color="gray">1.4 MB</Typography.Text>
+          <Typography.Text color="gray">2.4 MB</Typography.Text>
         </Grid.Item>
         <Grid.Item textAlign="right">
           <Button.Icon

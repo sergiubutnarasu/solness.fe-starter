@@ -13,6 +13,7 @@ const DeleteUserZone: FunctionComponent<Props> = ({ userId }) => {
 
   return (
     <Panel
+      marginBottom={0}
       title="Danger zone"
       description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum
     maiores sit nemo sed tenetur quas. Accusantium, ratione nemo

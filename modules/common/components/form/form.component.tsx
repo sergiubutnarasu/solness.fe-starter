@@ -1,37 +1,53 @@
-import { Form as AntForm, FormProps } from 'antd';
-import React, { FunctionComponent } from 'react';
-import { useFormContext } from '~/common/providers';
+import {
+  FormControl,
+  FormErrorMessage,
+  FormHelperText,
+  FormLabel,
+} from '@chakra-ui/form-control';
+import React, { FunctionComponent, ReactNode } from 'react';
+import { FormProvider, useForm, UseFormProps } from 'react-hook-form';
 import CancelButton from '../cancel-button';
+import FormInput from '../form-input';
 import SubmitButton from '../submit-button';
 
 export interface CompoundProps {
-  Item: typeof AntForm.Item;
+  Control: typeof FormControl;
   CancelButton: typeof CancelButton;
+  ErrorMessage: typeof FormErrorMessage;
+  Helper: typeof FormHelperText;
+  Input: typeof FormInput;
+  Label: typeof FormLabel;
   SubmitButton: typeof SubmitButton;
 }
 
-const Form: FunctionComponent<FormProps> & CompoundProps = ({
-  children,
-  layout = 'vertical',
-  onFinish,
-  ...props
-}) => {
-  const { setSubmitting } = useFormContext();
+export interface Props<TFormValues> {
+  defaultValues?: UseFormProps<TFormValues>['defaultValues'];
+  children?: ReactNode;
+  onSubmit: (values: Partial<TFormValues>) => void;
+}
 
-  const handleFinish = (values: any) => {
-    setSubmitting(true);
-    onFinish(values);
-  };
+const Form = <TFormValues extends object>({
+  defaultValues,
+  onSubmit,
+  children,
+}: Props<TFormValues>) => {
+  const methods = useForm<TFormValues>({
+    defaultValues,
+  });
 
   return (
-    <AntForm {...props} layout={layout} onFinish={handleFinish}>
-      {children}
-    </AntForm>
+    <FormProvider {...methods}>
+      <form onSubmit={methods.handleSubmit(onSubmit)}>{children}</form>
+    </FormProvider>
   );
 };
 
-Form.Item = AntForm.Item;
+Form.Control = FormControl;
 Form.CancelButton = CancelButton;
+Form.ErrorMessage = FormErrorMessage;
+Form.Helper = FormHelperText;
+Form.Input = FormInput;
+Form.Label = FormLabel;
 Form.SubmitButton = SubmitButton;
 
 export default Form;

@@ -19,6 +19,7 @@ const UserPage: FunctionComponent<Props> = ({ userId }) => {
   return (
     <>
       <Page
+        marginBottom={8}
         title="User details"
         description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, quasi?"
       >

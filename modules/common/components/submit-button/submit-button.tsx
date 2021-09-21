@@ -1,16 +1,19 @@
 import React, { FunctionComponent } from 'react';
-import { useFormContext } from '~/common/providers';
+import { useFormContext } from 'react-hook-form';
 import Button, { ButtonProps } from '../button';
 
 const SubmitButton: FunctionComponent<ButtonProps> = ({
   children,
   ...props
 }) => {
-  const { submitting } = useFormContext();
+  const {
+    formState: { isSubmitting },
+  } = useFormContext();
 
   return (
     <Button
-      isLoading={submitting}
+      isLoading={isSubmitting}
+      disabled={isSubmitting}
       colorScheme="purple"
       type="submit"
       {...props}

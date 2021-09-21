@@ -1,15 +1,17 @@
 import React, { FunctionComponent } from 'react';
-import { useFormContext } from '~/common/providers';
+import { useFormContext } from 'react-hook-form';
 import Button, { ButtonProps } from '../button';
 
 const CancelButton: FunctionComponent<ButtonProps> = ({
   children,
   ...props
 }) => {
-  const { submitting } = useFormContext();
+  const {
+    formState: { isSubmitting },
+  } = useFormContext();
 
   return (
-    <Button disabled={submitting} variant="ghost" {...props}>
+    <Button disabled={isSubmitting} variant="ghost" {...props}>
       {children}
     </Button>
   );

@@ -1,8 +1,7 @@
-import { MailOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/router';
 import React, { FunctionComponent } from 'react';
-import { Form, Grid, Input, Section, Stack } from '~/common/components';
-import { useFormContext } from '~/common/providers';
+import { Form, Grid, Icon, Input, Section, Stack } from '~/common/components';
+import { EMAIL_VALIDATION_PATTERN } from '~/common/configs';
 import { User, UserInput } from '~/graphql-generated/types';
 import { useSaveUser } from './data';
 
@@ -12,7 +11,6 @@ export interface Props {
 
 const UserForm: FunctionComponent<Props> = ({ user }) => {
   const { push } = useRouter();
-  const { setSubmitting } = useFormContext();
 
   const { saveUser } = useSaveUser({
     onCompleted: () => {
@@ -34,41 +32,23 @@ const UserForm: FunctionComponent<Props> = ({ user }) => {
       enabled: true,
       role: 'Admin',
     });
-
-    setSubmitting(false);
   };
 
   const handleCancel = () => push('/users');
 
   return (
-    <Form initialValues={user} onFinish={handleSubmit}>
+    <Form defaultValues={user} onSubmit={handleSubmit}>
       <Section
         title="User information"
         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit."
       >
-        <Grid>
+        <Grid spacing={8}>
           <Grid.Item colSpan={6}>
-            <Form.Item
-              name="firstName"
-              label="First name"
-              rules={[
-                { required: true, message: 'Please input your first name!' },
-              ]}
-            >
-              <Input />
-            </Form.Item>
+            <Form.Input isRequired name="firstName" label="First name" />
           </Grid.Item>
 
           <Grid.Item colSpan={6}>
-            <Form.Item
-              name="lastName"
-              label="Last name"
-              rules={[
-                { required: true, message: 'Please input your last name!' },
-              ]}
-            >
-              <Input />
-            </Form.Item>
+            <Form.Input isRequired name="lastName" label="Last name" />
           </Grid.Item>
         </Grid>
       </Section>
@@ -77,21 +57,20 @@ const UserForm: FunctionComponent<Props> = ({ user }) => {
         title="Contact details"
         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit."
       >
-        <Grid>
+        <Grid spacing={8}>
           <Grid.Item colSpan={6}>
-            <Form.Item
+            <Form.Input
+              isRequired
               name="email"
               label="Email address"
-              rules={[
-                { required: true, message: 'Please input your email address!' },
-                {
-                  type: 'email',
-                  message: 'Please enter a valid email address!',
+              validators={{
+                pattern: {
+                  value: EMAIL_VALIDATION_PATTERN,
+                  message: 'Please enter a valid email address.',
                 },
-              ]}
-            >
-              <Input prefix={<MailOutlined />} />
-            </Form.Item>
+              }}
+              leftElement={<Icon icon="view" color="gray.500" />}
+            />
           </Grid.Item>
         </Grid>
       </Section>
