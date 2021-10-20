@@ -1,0 +1,19 @@
+{
+  "name": "@solness/hub",
+  "version": "0.0.1",
+  "author": "Sergiu Butnarasu",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@solness/common": "0.0.1",
+    "@solness/network": "0.0.1",
+    "@solness/security": "0.0.1",
+    "@solness/ui": "0.0.1",
+    "react": "17.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "17.0.30",
+    "eslint": "8.0.1",
+    "typescript": "4.4.4"
+  }
+}

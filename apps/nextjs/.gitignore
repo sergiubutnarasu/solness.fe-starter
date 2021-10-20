@@ -33,9 +33,3 @@ yarn-error.log*
 
 # vercel
 .vercel
-
-.vscode
-
-/packages/**/node_modules
-/apps/**/node_modules
-

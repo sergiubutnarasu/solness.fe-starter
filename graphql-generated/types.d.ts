@@ -16,28 +16,28 @@ export type Scalars = {
 };
 
 export type Mutation = {
-  saveUser: UserResponse;
   deleteUser: UserResponse;
+  saveUser: UserResponse;
+};
+
+export type MutationDeleteUserArgs = {
+  id: Scalars['Float'];
 };
 
 export type MutationSaveUserArgs = {
   model: UserInput;
 };
 
-export type MutationDeleteUserArgs = {
-  id: Scalars["Float"];
-};
-
 export type PageListInput = {
-  page?: Maybe<Scalars["Float"]>;
-  pageSize?: Maybe<Scalars["Float"]>;
+  page?: Maybe<Scalars['Float']>;
+  pageSize?: Maybe<Scalars['Float']>;
 };
 
 export type PaginatedUserResponse = {
   data?: Maybe<Array<User>>;
-  total: Scalars["Int"];
-  success: Scalars["Boolean"];
-  message?: Maybe<Scalars["String"]>;
+  message?: Maybe<Scalars['String']>;
+  success: Scalars['Boolean'];
+  total: Scalars['Int'];
 };
 
 export type Query = {
@@ -51,56 +51,62 @@ export type QueryFindUserArgs = {
 };
 
 export type QueryGetUserArgs = {
-  id: Scalars["Float"];
+  id: Scalars['Float'];
 };
 
 export type User = {
-  id?: Maybe<Scalars["Int"]>;
-  enabled: Scalars["Boolean"];
-  email: Scalars["String"];
-  firstName: Scalars["String"];
-  lastName: Scalars["String"];
-  role: Scalars["String"];
+  email: Scalars['String'];
+  enabled: Scalars['Boolean'];
+  firstName: Scalars['String'];
+  id?: Maybe<Scalars['Int']>;
+  lastName: Scalars['String'];
+  role: Scalars['String'];
 };
 
 export type UserInput = {
-  id?: Maybe<Scalars["Int"]>;
-  enabled: Scalars["Boolean"];
-  email: Scalars["String"];
-  firstName: Scalars["String"];
-  lastName: Scalars["String"];
-  role: Scalars["String"];
+  email: Scalars['String'];
+  enabled: Scalars['Boolean'];
+  firstName: Scalars['String'];
+  id?: Maybe<Scalars['Int']>;
+  lastName: Scalars['String'];
+  role: Scalars['String'];
 };
 
 export type UserResponse = {
   data?: Maybe<User>;
-  success: Scalars["Boolean"];
-  message?: Maybe<Scalars["String"]>;
+  message?: Maybe<Scalars['String']>;
+  success: Scalars['Boolean'];
 };
 
 export type DeleteUserMutationVariables = Exact<{
-  userId: Scalars["Float"];
+  userId: Scalars['Float'];
 }>;
 
 export type DeleteUserMutation = {
-  deleteUser: { data?: Maybe<{ id?: Maybe<number> }> };
+  deleteUser: { data?: { id?: number | null | undefined } | null | undefined };
 };
 
 export type GetUserQueryVariables = Exact<{
-  userId: Scalars["Float"];
+  userId: Scalars['Float'];
 }>;
 
 export type GetUserQuery = {
-  getUser?: Maybe<{
-    data?: Maybe<{
-      id?: Maybe<number>;
-      enabled: boolean;
-      firstName: string;
-      lastName: string;
-      email: string;
-      role: string;
-    }>;
-  }>;
+  getUser?:
+    | {
+        data?:
+          | {
+              id?: number | null | undefined;
+              enabled: boolean;
+              firstName: string;
+              lastName: string;
+              email: string;
+              role: string;
+            }
+          | null
+          | undefined;
+      }
+    | null
+    | undefined;
 };
 
 export type SaveUserMutationVariables = Exact<{
@@ -108,28 +114,32 @@ export type SaveUserMutationVariables = Exact<{
 }>;
 
 export type SaveUserMutation = {
-  saveUser: { data?: Maybe<{ id?: Maybe<number> }> };
+  saveUser: { data?: { id?: number | null | undefined } | null | undefined };
 };
 
 export type GetUsersQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetUsersQuery = {
-  allUser?: Maybe<{
-    data?: Maybe<
-      Array<{
-        id?: Maybe<number>;
-        enabled: boolean;
-        firstName: string;
-        lastName: string;
-        email: string;
-        role: string;
-      }>
-    >;
-  }>;
+  allUser?:
+    | {
+        data?:
+          | Array<{
+              id?: number | null | undefined;
+              enabled: boolean;
+              firstName: string;
+              lastName: string;
+              email: string;
+              role: string;
+            }>
+          | null
+          | undefined;
+      }
+    | null
+    | undefined;
 };
 
 export type UserFragment = {
-  id?: Maybe<number>;
+  id?: number | null | undefined;
   enabled: boolean;
   firstName: string;
   lastName: string;
