@@ -7,6 +7,9 @@
     "apps/*"
   ],
   "scripts": {
+    "build": "yarn workspace @solness/nextjs build",
+    "start": "yarn workspace @solness/nextjs start",
+    "start:dev": "yarn workspace @solness/nextjs dev",
     "generate": "graphql-codegen"
   },
   "dependencies": {},
