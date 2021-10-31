@@ -4,7 +4,7 @@ import { USER_FRAGMENT } from './user-fragment.gql';
 
 export const GET_USERS = gql`
   query GetUsers {
-    allUser {
+    users {
       data {
         ...User
       }
@@ -18,7 +18,7 @@ export const useGetUsers = () => {
   const { data, ...options } = useQuery<GetUsersQuery>(GET_USERS);
 
   return {
-    users: data?.allUser?.data,
+    users: data?.users?.data,
     ...options,
   };
 };

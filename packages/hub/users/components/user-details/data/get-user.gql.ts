@@ -7,7 +7,7 @@ import { USER_FRAGMENT } from '../../../data';
 
 const GET_USER = gql`
   query GetUser($userId: Float!) {
-    getUser(id: $userId) {
+    user(id: $userId) {
       data {
         ...User
       }
@@ -25,5 +25,5 @@ export const useGetUser = (userId: number) => {
     variables: { userId },
   });
 
-  return { user: data?.getUser?.data, ...restOptions };
+  return { user: data?.user?.data, ...restOptions };
 };

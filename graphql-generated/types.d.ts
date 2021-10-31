@@ -41,17 +41,16 @@ export type PaginatedUserResponse = {
 };
 
 export type Query = {
-  allUser?: Maybe<PaginatedUserResponse>;
-  findUser?: Maybe<PaginatedUserResponse>;
-  getUser?: Maybe<UserResponse>;
+  user: UserResponse;
+  users: PaginatedUserResponse;
 };
 
-export type QueryFindUserArgs = {
-  request: PageListInput;
-};
-
-export type QueryGetUserArgs = {
+export type QueryUserArgs = {
   id: Scalars['Float'];
+};
+
+export type QueryUsersArgs = {
+  request?: Maybe<PageListInput>;
 };
 
 export type User = {
@@ -60,7 +59,7 @@ export type User = {
   firstName: Scalars['String'];
   id?: Maybe<Scalars['Int']>;
   lastName: Scalars['String'];
-  role?: Maybe<Scalars['String']>;
+  role: Scalars['String'];
 };
 
 export type UserInput = {
@@ -69,7 +68,6 @@ export type UserInput = {
   firstName: Scalars['String'];
   id?: Maybe<Scalars['Int']>;
   lastName: Scalars['String'];
-  role?: Maybe<Scalars['String']>;
 };
 
 export type UserResponse = {
@@ -91,22 +89,19 @@ export type GetUserQueryVariables = Exact<{
 }>;
 
 export type GetUserQuery = {
-  getUser?:
-    | {
-        data?:
-          | {
-              id?: number | null | undefined;
-              enabled: boolean;
-              firstName: string;
-              lastName: string;
-              email: string;
-              role?: string | null | undefined;
-            }
-          | null
-          | undefined;
-      }
-    | null
-    | undefined;
+  user: {
+    data?:
+      | {
+          id?: number | null | undefined;
+          enabled: boolean;
+          firstName: string;
+          lastName: string;
+          email: string;
+          role: string;
+        }
+      | null
+      | undefined;
+  };
 };
 
 export type SaveUserMutationVariables = Exact<{
@@ -120,22 +115,19 @@ export type SaveUserMutation = {
 export type GetUsersQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetUsersQuery = {
-  allUser?:
-    | {
-        data?:
-          | Array<{
-              id?: number | null | undefined;
-              enabled: boolean;
-              firstName: string;
-              lastName: string;
-              email: string;
-              role?: string | null | undefined;
-            }>
-          | null
-          | undefined;
-      }
-    | null
-    | undefined;
+  users: {
+    data?:
+      | Array<{
+          id?: number | null | undefined;
+          enabled: boolean;
+          firstName: string;
+          lastName: string;
+          email: string;
+          role: string;
+        }>
+      | null
+      | undefined;
+  };
 };
 
 export type UserFragment = {
@@ -144,5 +136,5 @@ export type UserFragment = {
   firstName: string;
   lastName: string;
   email: string;
-  role?: string | null | undefined;
+  role: string;
 };
