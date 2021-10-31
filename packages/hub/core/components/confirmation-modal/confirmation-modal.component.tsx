@@ -36,10 +36,15 @@ const ConfirmationModal: FunctionComponent<Props> = ({
       </Modal.Body>
 
       <Modal.Footer>
-        <Button variant="ghost" onClick={onClose}>
+        <Button variant="ghost" disabled={loading} onClick={onClose}>
           Cancel
         </Button>
-        <Button colorScheme="red" isLoading={loading} onClick={onSubmit}>
+        <Button
+          colorScheme="red"
+          disabled={loading}
+          isLoading={loading}
+          onClick={onSubmit}
+        >
           Confirm
         </Button>
       </Modal.Footer>

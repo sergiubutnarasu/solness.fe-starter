@@ -60,7 +60,7 @@ export type User = {
   firstName: Scalars['String'];
   id?: Maybe<Scalars['Int']>;
   lastName: Scalars['String'];
-  role: Scalars['String'];
+  role?: Maybe<Scalars['String']>;
 };
 
 export type UserInput = {
@@ -69,7 +69,7 @@ export type UserInput = {
   firstName: Scalars['String'];
   id?: Maybe<Scalars['Int']>;
   lastName: Scalars['String'];
-  role: Scalars['String'];
+  role?: Maybe<Scalars['String']>;
 };
 
 export type UserResponse = {
@@ -100,7 +100,7 @@ export type GetUserQuery = {
               firstName: string;
               lastName: string;
               email: string;
-              role: string;
+              role?: string | null | undefined;
             }
           | null
           | undefined;
@@ -129,7 +129,7 @@ export type GetUsersQuery = {
               firstName: string;
               lastName: string;
               email: string;
-              role: string;
+              role?: string | null | undefined;
             }>
           | null
           | undefined;
@@ -144,5 +144,5 @@ export type UserFragment = {
   firstName: string;
   lastName: string;
   email: string;
-  role: string;
+  role?: string | null | undefined;
 };

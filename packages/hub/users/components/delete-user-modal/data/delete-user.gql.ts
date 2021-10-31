@@ -2,7 +2,7 @@ import { ApolloError, gql, useMutation } from '@apollo/client';
 import {
   DeleteUserMutation,
   DeleteUserMutationVariables,
-} from '../../../../../../graphql-generated/types';
+} from '~/graphql-generated/types';
 import { GET_USERS } from '../../../data';
 
 const DELETE_USER = gql`

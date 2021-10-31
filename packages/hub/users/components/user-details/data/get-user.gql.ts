@@ -2,7 +2,7 @@ import { gql, useQuery } from '@apollo/client';
 import {
   GetUserQuery,
   GetUserQueryVariables,
-} from '../../../../../../graphql-generated/types';
+} from '~/graphql-generated/types';
 import { USER_FRAGMENT } from '../../../data';
 
 const GET_USER = gql`

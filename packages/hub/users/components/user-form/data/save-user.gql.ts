@@ -3,7 +3,7 @@ import {
   SaveUserMutation,
   SaveUserMutationVariables,
   UserInput,
-} from '../../../../../../graphql-generated/types';
+} from '~/graphql-generated/types';
 
 const SAVE_USER = gql`
   mutation SaveUser($model: UserInput!) {
