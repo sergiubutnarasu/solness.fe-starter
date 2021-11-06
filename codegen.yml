@@ -2,8 +2,8 @@ schema: http://localhost:5000/graphql
 config:
   skipTypename: true,
 generates:
-  ./graphql-generated/types.d.ts:
-    documents: "packages/**/*.gql.ts"
+  ./generated/types/index.d.ts:
+    documents: 'packages/**/*.gql.ts'
     plugins:
       - typescript
       - typescript-operations

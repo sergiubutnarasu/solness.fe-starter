@@ -3,7 +3,7 @@ import {
   SaveUserMutation,
   SaveUserMutationVariables,
   UserInput,
-} from '~/graphql-generated/types';
+} from '@solness/generated-types';
 
 const SAVE_USER = gql`
   mutation SaveUser($model: UserInput!) {

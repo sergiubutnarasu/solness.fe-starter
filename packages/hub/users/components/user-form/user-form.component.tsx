@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import React, { FunctionComponent } from 'react';
 import { Form, Grid, Icon, Input, Section, Stack } from '@solness/ui';
 import { EMAIL_VALIDATION_PATTERN } from '@solness/common';
-import { User, UserInput } from '~/graphql-generated/types';
+import { User, UserInput } from '@solness/generated-types';
 import { useSaveUser } from './data';
 
 export interface Props {

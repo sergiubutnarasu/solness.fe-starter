@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "paths": {
-      "@solness/hub": ["../../../packages/hub"]
+      "@solness/hub": ["../../packages/hub"]
     }
   }
 }
