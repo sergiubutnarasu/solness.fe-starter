@@ -1,11 +1,14 @@
 import { EMAIL_VALIDATION_PATTERN } from '@solness/common';
 import { useSecurityContext } from '@solness/security';
 import { Box, Form, Typography } from '@solness/ui';
-import React, { FunctionComponent } from 'react';
+import { useRouter } from 'next/router';
+import React, { FunctionComponent, useState } from 'react';
 import { Link } from '../../../core';
 
 const LoginForm: FunctionComponent = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const { login } = useSecurityContext();
+  const { push } = useRouter();
 
   const onSubmit = async ({
     username = '',
@@ -13,7 +16,14 @@ const LoginForm: FunctionComponent = () => {
   }: {
     username?: string;
     password?: string;
-  }) => await login(username, password);
+  }) => {
+    const success = await login(username, password);
+
+    if (success) {
+      setIsLoading(true);
+      push('/');
+    }
+  };
 
   return (
     <Box
@@ -56,7 +66,12 @@ const LoginForm: FunctionComponent = () => {
             label="Password"
           />
 
-          <Form.SubmitButton w="full" rounded="full" size="lg">
+          <Form.SubmitButton
+            isLoading={isLoading}
+            w="full"
+            rounded="full"
+            size="lg"
+          >
             Log into Hub
           </Form.SubmitButton>
         </Form>

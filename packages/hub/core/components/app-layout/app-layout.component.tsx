@@ -7,12 +7,6 @@ import { ApiPath } from '../../configs';
 import ErrorBoundary from '../error-boundary';
 import HubLayout from '../hub-layout';
 
-const securityOptions = {
-  loginPath: ApiPath.loginPath,
-  logoutPath: ApiPath.logoutPath,
-  refreshTokenPath: ApiPath.refreshTokenPath,
-};
-
 const AppLayout: FunctionComponent = ({ children }) => {
   const { pathname } = useRouter();
 
@@ -28,7 +22,7 @@ const AppLayout: FunctionComponent = ({ children }) => {
 
   return (
     <ErrorBoundary>
-      <SecurityProvider {...securityOptions}>
+      <SecurityProvider>
         <GraphQLProvider schemaPath={ApiPath.graphQLSchemaPath}>
           <ChakraProvider>{content}</ChakraProvider>
         </GraphQLProvider>

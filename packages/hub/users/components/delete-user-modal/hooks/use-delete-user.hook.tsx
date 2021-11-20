@@ -1,17 +1,11 @@
 import { useFlag } from '@solness/common';
-import { useState } from 'react';
-import DeleteUserModal from '../delete-user-modal.component';
 import { useRouter } from 'next/router';
+import DeleteUserModal from '../delete-user-modal.component';
 
-export const useDeleteUser = () => {
+export const useDeleteUser = (userId: number) => {
   const { push } = useRouter();
-  const [userId, setUserId] = useState(0);
-  const { flag: isOpen, setFlag, resetFlag } = useFlag();
 
-  const showModal = (userId: number) => {
-    setUserId(userId);
-    setFlag();
-  };
+  const { flag: isOpen, setFlag, resetFlag } = useFlag();
 
   const handleSubmit = () => {
     resetFlag();
@@ -20,7 +14,7 @@ export const useDeleteUser = () => {
   };
 
   return {
-    showModal,
+    showModal: setFlag,
     renderModal: () =>
       isOpen && (
         <DeleteUserModal

@@ -8,7 +8,7 @@ export interface Props {
 
 const DeleteUserZone: FunctionComponent<Props> = ({ userId }) => {
   const { showModal: showDeleteUserModal, renderModal: renderDeleteUserModal } =
-    useDeleteUser();
+    useDeleteUser(userId);
 
   return (
     <Panel
@@ -20,11 +20,7 @@ const DeleteUserZone: FunctionComponent<Props> = ({ userId }) => {
     laudantium exercitationem!"
     >
       <Stack direction="row" justifyContent="flex-end">
-        <Button
-          variant="ghost"
-          colorScheme="red"
-          onClick={() => showDeleteUserModal(userId)}
-        >
+        <Button variant="ghost" colorScheme="red" onClick={showDeleteUserModal}>
           Delete user
         </Button>
       </Stack>

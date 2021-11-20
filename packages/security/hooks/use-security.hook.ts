@@ -1,57 +1,45 @@
-import { useCallback } from 'react';
-import { useFetch } from '@solness/common';
-import { SessionType } from '../types';
+import { useCallback, useState } from 'react';
+import { AuthHandler, SecurityContextProps, SessionType } from '../types';
 import useSession from './use-session.hook';
 
-const useSecurity = ({
-  loginPath,
-  logoutPath,
-  refreshTokenPath,
-}: {
-  loginPath: string;
-  logoutPath: string;
-  refreshTokenPath: string;
-}) => {
-  const { post } = useFetch();
+const useSecurity = (): SecurityContextProps => {
+  const [authHandler, setAuthHandler] = useState<AuthHandler | undefined>(
+    undefined,
+  );
   const { getSession, setSession, removeSession, isSessionExpired } =
     useSession();
 
   const login = useCallback(
     async (username: string, password: string) => {
-      const result = await post(loginPath, {
-        data: {
-          username,
-          password,
-        },
-      });
+      const result = await authHandler?.login(username, password);
 
-      if (result) {
-        await setSession(result as SessionType);
+      const isWithSuccess = result?.data?.login?.success;
+      const hasData = result?.data?.login?.data;
+      const isValid = Boolean(isWithSuccess && hasData);
 
-        window.location.href = '/';
+      if (isValid) {
+        await setSession(result.data.login.data as SessionType);
+
+        return true;
       }
 
-      return result as SessionType;
+      return false;
     },
 
-    [loginPath, post, setSession],
+    [authHandler, setSession],
   );
 
   const logout = useCallback(async () => {
     const session = await getSession();
 
     if (session) {
-      await post(logoutPath, {
-        data: {
-          refreshToken: session.refreshToken,
-        },
-      });
+      await authHandler?.logout(session.refreshToken);
 
       await removeSession();
 
       window.location.href = '/login';
     }
-  }, [logoutPath, post, getSession, removeSession]);
+  }, [authHandler, getSession, removeSession]);
 
   const refreshToken = useCallback(async () => {
     const session = await getSession();
@@ -59,20 +47,22 @@ const useSecurity = ({
     let result = undefined;
 
     if (session) {
-      result = await post(refreshTokenPath, {
-        data: {
-          accessToken: session.accessToken,
-          refreshToken: session.refreshToken,
-        },
-      });
+      result = await authHandler?.refreshToken(
+        session.refreshToken,
+        session.accessToken,
+      );
+
+      const isWithSuccess = result?.data?.refresh?.success;
+      const hasData = result?.data?.refresh?.data;
+      const isValid = Boolean(isWithSuccess && hasData);
+
+      if (isValid) {
+        await setSession(result.data.refresh.data as SessionType);
+      }
     }
 
-    if (result) {
-      await setSession(result as SessionType);
-    }
-
-    return result as SessionType;
-  }, [refreshTokenPath, post, getSession, setSession]);
+    return result?.data?.refresh?.data as SessionType;
+  }, [authHandler, getSession, setSession]);
 
   const checkToken = useCallback(async () => {
     if (await isSessionExpired()) {
@@ -86,6 +76,7 @@ const useSecurity = ({
     refreshToken,
     getSession,
     checkToken,
+    setAuthHandler,
   };
 };
 

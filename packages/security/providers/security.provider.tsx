@@ -1,24 +1,17 @@
-import React, { FunctionComponent } from "react";
-import { useSecurity } from "../hooks";
-import SecurityContext, { SecurityContextProps } from "./security.context";
+import React, { FunctionComponent } from 'react';
+import { useSecurity } from '../hooks';
+import { SecurityContextProps } from '../types';
+import SecurityContext from './security.context';
 
-export interface Props {
-  loginPath: string;
-  logoutPath: string;
-  refreshTokenPath: string;
-}
-
-const SecurityProvider: FunctionComponent<Props> = ({
-  children,
-  loginPath,
-  logoutPath,
-  refreshTokenPath,
-}) => {
-  const { login, logout, refreshToken, getSession, checkToken } = useSecurity({
-    loginPath,
-    logoutPath,
-    refreshTokenPath,
-  });
+const SecurityProvider: FunctionComponent = ({ children }) => {
+  const {
+    login,
+    logout,
+    refreshToken,
+    getSession,
+    checkToken,
+    setAuthHandler,
+  } = useSecurity();
 
   const value: SecurityContextProps = {
     login,
@@ -26,6 +19,7 @@ const SecurityProvider: FunctionComponent<Props> = ({
     refreshToken,
     getSession,
     checkToken,
+    setAuthHandler,
   };
 
   return (

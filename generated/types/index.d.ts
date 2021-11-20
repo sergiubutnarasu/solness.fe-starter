@@ -15,13 +15,80 @@ export type Scalars = {
   Float: number;
 };
 
+export type Company = {
+  email: Scalars['String'];
+  enabled: Scalars['Boolean'];
+  id?: Maybe<Scalars['Int']>;
+  name: Scalars['String'];
+  phone: Scalars['String'];
+  users?: Maybe<Array<CompanyUser>>;
+};
+
+export type CompanyInput = {
+  email: Scalars['String'];
+  enabled: Scalars['Boolean'];
+  id?: Maybe<Scalars['Int']>;
+  name: Scalars['String'];
+  phone: Scalars['String'];
+  users?: Maybe<Array<CompanyUserInput>>;
+};
+
+export type CompanyResponse = {
+  data?: Maybe<Company>;
+  messages?: Maybe<Array<Scalars['String']>>;
+  success: Scalars['Boolean'];
+};
+
+export type CompanyUser = {
+  companyId: Scalars['Float'];
+  enabled: Scalars['Boolean'];
+  id?: Maybe<Scalars['Int']>;
+  role: Scalars['String'];
+  userId: Scalars['Float'];
+};
+
+export type CompanyUserInput = {
+  companyId: Scalars['Float'];
+  enabled: Scalars['Boolean'];
+  id?: Maybe<Scalars['Int']>;
+  role: Scalars['String'];
+  userId: Scalars['Float'];
+};
+
 export type Mutation = {
+  deleteCompany: CompanyResponse;
   deleteUser: UserResponse;
+  login: TokenResponse;
+  logout: SimpleResponse;
+  refresh: TokenResponse;
+  saveCompany: CompanyResponse;
   saveUser: UserResponse;
+};
+
+export type MutationDeleteCompanyArgs = {
+  id: Scalars['Float'];
 };
 
 export type MutationDeleteUserArgs = {
   id: Scalars['Float'];
+};
+
+export type MutationLoginArgs = {
+  password: Scalars['String'];
+  username: Scalars['String'];
+};
+
+export type MutationLogoutArgs = {
+  refreshToken: Scalars['String'];
+};
+
+export type MutationRefreshArgs = {
+  accessToken: Scalars['String'];
+  refreshToken: Scalars['String'];
+};
+
+export type MutationSaveCompanyArgs = {
+  model: CompanyInput;
 };
 
 export type MutationSaveUserArgs = {
@@ -33,16 +100,33 @@ export type PageListInput = {
   pageSize?: Maybe<Scalars['Float']>;
 };
 
+export type PaginatedCompanyResponse = {
+  data?: Maybe<Array<Company>>;
+  messages?: Maybe<Array<Scalars['String']>>;
+  success: Scalars['Boolean'];
+  total: Scalars['Int'];
+};
+
 export type PaginatedUserResponse = {
   data?: Maybe<Array<User>>;
-  message?: Maybe<Scalars['String']>;
+  messages?: Maybe<Array<Scalars['String']>>;
   success: Scalars['Boolean'];
   total: Scalars['Int'];
 };
 
 export type Query = {
+  companies: PaginatedCompanyResponse;
+  company: CompanyResponse;
   user: UserResponse;
   users: PaginatedUserResponse;
+};
+
+export type QueryCompaniesArgs = {
+  request?: Maybe<PageListInput>;
+};
+
+export type QueryCompanyArgs = {
+  id: Scalars['Float'];
 };
 
 export type QueryUserArgs = {
@@ -51,6 +135,23 @@ export type QueryUserArgs = {
 
 export type QueryUsersArgs = {
   request?: Maybe<PageListInput>;
+};
+
+export type SimpleResponse = {
+  messages?: Maybe<Array<Scalars['String']>>;
+  success: Scalars['Boolean'];
+};
+
+export type TokenPayload = {
+  accessToken: Scalars['String'];
+  expiresIn: Scalars['Float'];
+  refreshToken: Scalars['String'];
+};
+
+export type TokenResponse = {
+  data?: Maybe<TokenPayload>;
+  messages?: Maybe<Array<Scalars['String']>>;
+  success: Scalars['Boolean'];
 };
 
 export type User = {
@@ -72,7 +173,7 @@ export type UserInput = {
 
 export type UserResponse = {
   data?: Maybe<User>;
-  message?: Maybe<Scalars['String']>;
+  messages?: Maybe<Array<Scalars['String']>>;
   success: Scalars['Boolean'];
 };
 
@@ -137,4 +238,44 @@ export type UserFragment = {
   lastName: string;
   email: string;
   role: string;
+};
+
+export type LoginMutationVariables = Exact<{
+  username: Scalars['String'];
+  password: Scalars['String'];
+}>;
+
+export type LoginMutation = {
+  login: {
+    success: boolean;
+    messages?: Array<string> | null | undefined;
+    data?:
+      | { accessToken: string; expiresIn: number; refreshToken: string }
+      | null
+      | undefined;
+  };
+};
+
+export type LogoutMutationVariables = Exact<{
+  refreshToken: Scalars['String'];
+}>;
+
+export type LogoutMutation = {
+  logout: { success: boolean; messages?: Array<string> | null | undefined };
+};
+
+export type RefreshMutationVariables = Exact<{
+  refreshToken: Scalars['String'];
+  accessToken: Scalars['String'];
+}>;
+
+export type RefreshMutation = {
+  refresh: {
+    success: boolean;
+    messages?: Array<string> | null | undefined;
+    data?:
+      | { accessToken: string; expiresIn: number; refreshToken: string }
+      | null
+      | undefined;
+  };
 };

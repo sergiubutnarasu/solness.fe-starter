@@ -4,6 +4,7 @@ import Button, { ButtonProps } from '../button';
 
 const SubmitButton: FunctionComponent<ButtonProps> = ({
   children,
+  isLoading,
   ...props
 }) => {
   const {
@@ -12,8 +13,8 @@ const SubmitButton: FunctionComponent<ButtonProps> = ({
 
   return (
     <Button
-      isLoading={isSubmitting}
-      disabled={isSubmitting}
+      isLoading={isLoading || isSubmitting}
+      disabled={isLoading || isSubmitting}
       colorScheme="purple"
       type="submit"
       {...props}

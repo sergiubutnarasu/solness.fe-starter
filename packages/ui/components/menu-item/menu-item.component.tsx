@@ -24,8 +24,8 @@ const MenuItem: FunctionComponent<Props> = ({
     variant="ghost"
     width="full"
     color="blue.800"
-    // fontWeight="semibold"
-    // fontSize='xs'
+    fontWeight="semibold"
+    fontSize="xs"
     bgColor={isActive ? 'gray.100' : undefined}
     leftIcon={<Icon icon={icon} fontSize="20px" color={iconColor} />}
   >
