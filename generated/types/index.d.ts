@@ -102,22 +102,18 @@ export type PageListInput = {
 
 export type PaginatedCompanyResponse = {
   data?: Maybe<Array<Company>>;
-  messages?: Maybe<Array<Scalars['String']>>;
-  success: Scalars['Boolean'];
   total: Scalars['Int'];
 };
 
 export type PaginatedUserResponse = {
   data?: Maybe<Array<User>>;
-  messages?: Maybe<Array<Scalars['String']>>;
-  success: Scalars['Boolean'];
   total: Scalars['Int'];
 };
 
 export type Query = {
   companies: PaginatedCompanyResponse;
-  company: CompanyResponse;
-  user: UserResponse;
+  company?: Maybe<Company>;
+  user?: Maybe<User>;
   users: PaginatedUserResponse;
 };
 
@@ -190,19 +186,17 @@ export type GetUserQueryVariables = Exact<{
 }>;
 
 export type GetUserQuery = {
-  user: {
-    data?:
-      | {
-          id?: number | null | undefined;
-          enabled: boolean;
-          firstName: string;
-          lastName: string;
-          email: string;
-          role: string;
-        }
-      | null
-      | undefined;
-  };
+  user?:
+    | {
+        id?: number | null | undefined;
+        enabled: boolean;
+        firstName: string;
+        lastName: string;
+        email: string;
+        role: string;
+      }
+    | null
+    | undefined;
 };
 
 export type SaveUserMutationVariables = Exact<{
