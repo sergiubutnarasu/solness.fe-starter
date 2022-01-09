@@ -15,7 +15,7 @@ const Users: FunctionComponent<Props> = () => {
   return (
     <>
       {users?.map(({ id, email, firstName, lastName, role }, index) => {
-        const userProfilePath = `users/edit/${id}`;
+        const userProfilePath = `users/${id}`;
         const color = index % 2 ? undefined : 'gray.50';
 
         return (

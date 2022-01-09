@@ -1,10 +1,11 @@
-import { onError as ApolloLinkError } from "@apollo/client/link/error";
+import { onError as ApolloLinkError } from '@apollo/client/link/error';
+import { GraphQLError } from 'graphql';
 
-export const createGraphQLErrorLink = (onError: (messages: string[]) => void) =>
+export const createGraphQLErrorLink = (
+  onError: (errors: readonly GraphQLError[]) => void,
+) =>
   ApolloLinkError(({ graphQLErrors }) => {
     if (graphQLErrors) {
-      const errors = graphQLErrors.map(({ message }) => message);
-
-      onError(errors);
+      onError(graphQLErrors);
     }
   });

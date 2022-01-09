@@ -1,11 +1,12 @@
+import { useSecurityContext } from '@solness/security';
+import { Layout } from '@solness/ui';
 import React, {
   FunctionComponent,
   ReactNode,
   useEffect,
   useState,
 } from 'react';
-import { Layout } from '@solness/ui';
-import { useSecurityContext } from '@solness/security';
+import ErrorBoundary from '../error-boundary';
 import Menu from '../menu';
 import Sidebar from '../sidebar';
 
@@ -37,7 +38,7 @@ const HubLayout: FunctionComponent<Props> = ({ children }) => {
 
   return (
     <Layout menu={<Menu />} sidebar={<Sidebar />}>
-      {children}
+      <ErrorBoundary>{children}</ErrorBoundary>
     </Layout>
   );
 };

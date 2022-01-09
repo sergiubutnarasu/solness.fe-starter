@@ -34,11 +34,10 @@ const useSecurity = (): SecurityContextProps => {
 
     if (session) {
       await authHandler?.logout(session.refreshToken);
-
       await removeSession();
-
-      window.location.href = '/login';
     }
+
+    window.location.href = '/login';
   }, [authHandler, getSession, removeSession]);
 
   const refreshToken = useCallback(async () => {
