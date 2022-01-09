@@ -1,9 +1,9 @@
-import { useRouter } from 'next/router';
-import React, { FunctionComponent } from 'react';
-import { Form, Grid, Icon, Input, Section, Stack } from '@solness/ui';
 import { EMAIL_VALIDATION_PATTERN } from '@solness/common';
 import { User, UserInput } from '@solness/generated-types';
-import { useSaveUser } from './data';
+import { Form, Grid, Icon, Section, Stack } from '@solness/ui';
+import { useRouter } from 'next/router';
+import React, { FunctionComponent } from 'react';
+import { useCreateUser, useUpdateUser } from './data';
 
 export interface Props {
   user?: User;
@@ -12,7 +12,14 @@ export interface Props {
 const UserForm: FunctionComponent<Props> = ({ user }) => {
   const { push } = useRouter();
 
-  const { saveUser } = useSaveUser({
+  const { createUser } = useCreateUser({
+    onCompleted: () => {
+      push('/users');
+    },
+    onError: (error) => alert(error.message),
+  });
+
+  const { updateUser } = useUpdateUser({
     onCompleted: () => {
       push('/users');
     },
@@ -24,13 +31,22 @@ const UserForm: FunctionComponent<Props> = ({ user }) => {
     lastName = '',
     email = '',
   }: Partial<UserInput>) => {
-    await saveUser({
-      id: user?.id,
-      firstName,
-      lastName,
-      email,
-      enabled: true,
-    });
+    if (user?.id) {
+      await updateUser({
+        id: user?.id,
+        firstName,
+        lastName,
+        email,
+        enabled: true,
+      });
+    } else {
+      await createUser({
+        firstName,
+        lastName,
+        email,
+        enabled: true,
+      });
+    }
   };
 
   const handleCancel = () => push('/users');

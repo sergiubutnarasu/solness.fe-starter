@@ -15,13 +15,28 @@ export type Scalars = {
   Float: number;
 };
 
+export type BaseAction = {
+  create: Scalars['Boolean'];
+  delete: Scalars['Boolean'];
+  update: Scalars['Boolean'];
+  view: Scalars['Boolean'];
+};
+
 export type Company = {
   email: Scalars['String'];
   enabled: Scalars['Boolean'];
   id?: Maybe<Scalars['Int']>;
   name: Scalars['String'];
   phone: Scalars['String'];
+  registerNumber: Scalars['String'];
   users?: Maybe<Array<CompanyUser>>;
+};
+
+export type CompanyAction = BaseAction & {
+  create: Scalars['Boolean'];
+  delete: Scalars['Boolean'];
+  update: Scalars['Boolean'];
+  view: Scalars['Boolean'];
 };
 
 export type CompanyInput = {
@@ -30,6 +45,7 @@ export type CompanyInput = {
   id?: Maybe<Scalars['Int']>;
   name: Scalars['String'];
   phone: Scalars['String'];
+  registerNumber: Scalars['String'];
   users?: Maybe<Array<CompanyUserInput>>;
 };
 
@@ -43,7 +59,7 @@ export type CompanyUser = {
   companyId: Scalars['Float'];
   enabled: Scalars['Boolean'];
   id?: Maybe<Scalars['Int']>;
-  role: Scalars['String'];
+  roles: Array<Scalars['String']>;
   userId: Scalars['Float'];
 };
 
@@ -51,18 +67,28 @@ export type CompanyUserInput = {
   companyId: Scalars['Float'];
   enabled: Scalars['Boolean'];
   id?: Maybe<Scalars['Int']>;
-  role: Scalars['String'];
+  roles: Array<Scalars['String']>;
   userId: Scalars['Float'];
 };
 
 export type Mutation = {
+  createCompany: CompanyResponse;
+  createUser: UserResponse;
   deleteCompany: CompanyResponse;
   deleteUser: UserResponse;
   login: TokenResponse;
   logout: SimpleResponse;
   refresh: TokenResponse;
-  saveCompany: CompanyResponse;
-  saveUser: UserResponse;
+  updateCompany: CompanyResponse;
+  updateUser: UserResponse;
+};
+
+export type MutationCreateCompanyArgs = {
+  model: CompanyInput;
+};
+
+export type MutationCreateUserArgs = {
+  model: UserInput;
 };
 
 export type MutationDeleteCompanyArgs = {
@@ -87,11 +113,11 @@ export type MutationRefreshArgs = {
   refreshToken: Scalars['String'];
 };
 
-export type MutationSaveCompanyArgs = {
+export type MutationUpdateCompanyArgs = {
   model: CompanyInput;
 };
 
-export type MutationSaveUserArgs = {
+export type MutationUpdateUserArgs = {
   model: UserInput;
 };
 
@@ -110,11 +136,17 @@ export type PaginatedUserResponse = {
   total: Scalars['Int'];
 };
 
+export type Permission = {
+  company: CompanyAction;
+  user: UserAction;
+};
+
 export type Query = {
   companies: PaginatedCompanyResponse;
   company?: Maybe<Company>;
   user?: Maybe<User>;
   users: PaginatedUserResponse;
+  viewer: Viewer;
 };
 
 export type QueryCompaniesArgs = {
@@ -159,6 +191,13 @@ export type User = {
   role: Scalars['String'];
 };
 
+export type UserAction = BaseAction & {
+  create: Scalars['Boolean'];
+  delete: Scalars['Boolean'];
+  update: Scalars['Boolean'];
+  view: Scalars['Boolean'];
+};
+
 export type UserInput = {
   email: Scalars['String'];
   enabled: Scalars['Boolean'];
@@ -171,6 +210,10 @@ export type UserResponse = {
   data?: Maybe<User>;
   messages?: Maybe<Array<Scalars['String']>>;
   success: Scalars['Boolean'];
+};
+
+export type Viewer = {
+  permissions: Permission;
 };
 
 export type DeleteUserMutationVariables = Exact<{
@@ -199,12 +242,20 @@ export type GetUserQuery = {
     | undefined;
 };
 
-export type SaveUserMutationVariables = Exact<{
+export type CreateUserMutationVariables = Exact<{
   model: UserInput;
 }>;
 
-export type SaveUserMutation = {
-  saveUser: { data?: { id?: number | null | undefined } | null | undefined };
+export type CreateUserMutation = {
+  createUser: { data?: { id?: number | null | undefined } | null | undefined };
+};
+
+export type UpdateUserMutationVariables = Exact<{
+  model: UserInput;
+}>;
+
+export type UpdateUserMutation = {
+  updateUser: { data?: { id?: number | null | undefined } | null | undefined };
 };
 
 export type GetUsersQueryVariables = Exact<{ [key: string]: never }>;

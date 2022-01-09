@@ -1,1 +1,2 @@
-export * from "./save-user.gql";
+export * from './create-user.gql';
+export * from './update-user.gql';
