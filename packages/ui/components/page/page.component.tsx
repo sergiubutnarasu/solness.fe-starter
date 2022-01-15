@@ -1,5 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 import Box, { Props as BoxProps } from '../box';
+import Skeleton from '../skeleton';
 import Stack from '../stack';
 import Typography from '../typography';
 
@@ -8,6 +9,7 @@ export type Props = BoxProps & {
   title: ReactNode;
   actions?: ReactNode;
   description?: ReactNode;
+  loading?: boolean;
 };
 
 const Page: FunctionComponent<Props> = ({
@@ -15,26 +17,33 @@ const Page: FunctionComponent<Props> = ({
   description,
   actions,
   children,
+  loading,
   ...rest
 }) => (
   <Box padding="6" borderRadius="md" boxShadow="sm" {...rest}>
-    <Box mb="8" borderBottom="1px" borderColor="gray.100" pb="16px">
+    <Box mb="6" borderBottom="1px" borderColor="gray.100" pb="6">
       <Stack direction="row" alignItems="center" justifyContent="space-between">
-        <Typography.Title as="h1" fontSize="2xl">
-          {title}
-        </Typography.Title>
+        <Skeleton.Text minWidth="50%" isLoaded={!loading} noOfLines={1}>
+          <Typography.Title as="h1" fontSize="2xl">
+            {title}
+          </Typography.Title>
+        </Skeleton.Text>
 
-        {actions && <>{actions}</>}
+        <Skeleton isLoaded={!loading}>{actions && <>{actions}</>}</Skeleton>
       </Stack>
 
       {description && (
         <Box mt="2">
-          <Typography.Text color="gray.500">{description}</Typography.Text>
+          <Skeleton.Text isLoaded={!loading} noOfLines={2}>
+            <Typography.Text color="gray.500">{description}</Typography.Text>
+          </Skeleton.Text>
         </Box>
       )}
     </Box>
 
-    {children}
+    <Skeleton.Text isLoaded={!loading} noOfLines={10}>
+      {children}
+    </Skeleton.Text>
   </Box>
 );
 

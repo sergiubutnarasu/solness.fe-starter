@@ -1,5 +1,5 @@
+import { Button, Grid, ListLoader, Typography } from '@solness/ui';
 import React, { FunctionComponent } from 'react';
-import { Button, Grid, Typography } from '@solness/ui';
 import { Link } from '../../../core';
 import { useGetUsers } from '../../data';
 
@@ -9,7 +9,7 @@ const Users: FunctionComponent<Props> = () => {
   const { users, loading } = useGetUsers();
 
   if (loading) {
-    return <>Loading</>;
+    return <ListLoader />;
   }
 
   return (

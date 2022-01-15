@@ -4,7 +4,7 @@ import {
   FormHelperText,
   FormLabel,
 } from '@chakra-ui/form-control';
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { FormProvider, useForm, UseFormProps } from 'react-hook-form';
 import CancelButton from '../cancel-button';
 import FormInput from '../form-input';

@@ -1,9 +1,10 @@
-import { ApolloError, gql, useMutation } from '@apollo/client';
+import { ApolloError, gql } from '@apollo/client';
 import {
   UpdateUserMutation,
   UpdateUserMutationVariables,
   UserInput,
 } from '@solness/generated-types';
+import { useMutation } from '@solness/network';
 
 const UPDATE_USER = gql`
   mutation UpdateUser($model: UserInput!) {

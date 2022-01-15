@@ -1,8 +1,9 @@
-import { ApolloError, gql, useMutation } from '@apollo/client';
+import { ApolloError, gql } from '@apollo/client';
 import {
   DeleteUserMutation,
   DeleteUserMutationVariables,
 } from '@solness/generated-types';
+import { useMutation } from '@solness/network';
 import { GET_USERS } from '../../../data';
 
 const DELETE_USER = gql`
