@@ -33,8 +33,9 @@ const useSecurity = (): SecurityContextProps => {
     const session = await getSession();
 
     if (session) {
-      await authHandler?.logout(session.refreshToken);
+      const refreshToken = session.refreshToken;
       await removeSession();
+      await authHandler?.logout(refreshToken);
     }
 
     window.location.href = '/login';

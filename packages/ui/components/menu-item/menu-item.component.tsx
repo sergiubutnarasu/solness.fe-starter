@@ -16,7 +16,6 @@ const MenuItem: FunctionComponent<Props> = ({
   isActive,
 }) => (
   <Button
-    as="span"
     pl={6}
     mb={1}
     size="lg"
