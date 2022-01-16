@@ -15,6 +15,7 @@ export enum Icon {
   home = 'home',
   left = 'left',
   loading = 'loading',
+  mail = 'mail',
   office = 'office',
   plus = 'plus',
   right = 'right',
