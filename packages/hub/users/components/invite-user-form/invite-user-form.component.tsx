@@ -3,23 +3,16 @@ import { User, UserInput } from '@solness/generated-types';
 import { Form, Grid, Icon, Section, Stack } from '@solness/ui';
 import { useRouter } from 'next/router';
 import React, { FunctionComponent } from 'react';
-import { useCreateUser, useUpdateUser } from './data';
+import { useInviteUser } from './data';
 
 export interface Props {
   user?: User;
 }
 
-const UserForm: FunctionComponent<Props> = ({ user }) => {
+const InviteUserForm: FunctionComponent<Props> = ({ user }) => {
   const { push } = useRouter();
 
-  const { createUser } = useCreateUser({
-    onCompleted: () => {
-      push('/users');
-    },
-    onError: (error) => alert(error.message),
-  });
-
-  const { updateUser } = useUpdateUser({
+  const { inviteUser } = useInviteUser({
     onCompleted: () => {
       push('/users');
     },
@@ -31,22 +24,11 @@ const UserForm: FunctionComponent<Props> = ({ user }) => {
     lastName = '',
     email = '',
   }: Partial<UserInput>) => {
-    if (user?.id) {
-      await updateUser({
-        id: user?.id,
-        firstName,
-        lastName,
-        email,
-        enabled: true,
-      });
-    } else {
-      await createUser({
-        firstName,
-        lastName,
-        email,
-        enabled: true,
-      });
-    }
+    await inviteUser({
+      firstName,
+      lastName,
+      email,
+    });
   };
 
   const handleCancel = () => push('/users');
@@ -98,4 +80,4 @@ const UserForm: FunctionComponent<Props> = ({ user }) => {
   );
 };
 
-export default UserForm;
+export default InviteUserForm;

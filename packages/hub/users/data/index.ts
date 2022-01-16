@@ -1,2 +1,2 @@
-export * from "./get-users.gql";
-export * from "./user-fragment.gql";
+export * from './get-company-users.gql';
+export * from './user-fragment.gql';

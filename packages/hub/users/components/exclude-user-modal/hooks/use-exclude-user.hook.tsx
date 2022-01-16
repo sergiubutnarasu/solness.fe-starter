@@ -1,8 +1,8 @@
 import { useFlag } from '@solness/common';
 import { useRouter } from 'next/router';
-import DeleteUserModal from '../delete-user-modal.component';
+import ExcludeUserModal from '../exclude-user-modal.component';
 
-export const useDeleteUser = (userId: number) => {
+export const useExcludeUser = (userId: number) => {
   const { push } = useRouter();
 
   const { flag: isOpen, setFlag, resetFlag } = useFlag();
@@ -17,7 +17,7 @@ export const useDeleteUser = (userId: number) => {
     showModal: setFlag,
     renderModal: () =>
       isOpen && (
-        <DeleteUserModal
+        <ExcludeUserModal
           userId={userId}
           onClose={resetFlag}
           onSubmit={handleSubmit}

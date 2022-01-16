@@ -29,12 +29,18 @@ export type Company = {
   name: Scalars['String'];
   phone: Scalars['String'];
   registerNumber: Scalars['String'];
-  users?: Maybe<Array<CompanyUser>>;
+  users?: Maybe<PaginatedCompanyUserResponse>;
+};
+
+export type CompanyUsersArgs = {
+  request?: Maybe<PageListInput>;
 };
 
 export type CompanyAction = BaseAction & {
   create: Scalars['Boolean'];
   delete: Scalars['Boolean'];
+  excludeUser: Scalars['Boolean'];
+  inviteUser: Scalars['Boolean'];
   update: Scalars['Boolean'];
   view: Scalars['Boolean'];
 };
@@ -60,7 +66,9 @@ export type CompanyUser = {
   enabled: Scalars['Boolean'];
   id?: Maybe<Scalars['Int']>;
   roles: Array<Scalars['String']>;
+  user: User;
   userId: Scalars['Float'];
+  verified: Scalars['Boolean'];
 };
 
 export type CompanyUserInput = {
@@ -71,11 +79,18 @@ export type CompanyUserInput = {
   userId: Scalars['Float'];
 };
 
+export type InviteUserInput = {
+  email: Scalars['String'];
+  firstName: Scalars['String'];
+  lastName: Scalars['String'];
+};
+
 export type Mutation = {
   createCompany: CompanyResponse;
-  createUser: UserResponse;
   deleteCompany: CompanyResponse;
   deleteUser: UserResponse;
+  excludeUser: SimpleResponse;
+  inviteUser: SimpleResponse;
   login: TokenResponse;
   logout: SimpleResponse;
   refresh: TokenResponse;
@@ -87,16 +102,20 @@ export type MutationCreateCompanyArgs = {
   model: CompanyInput;
 };
 
-export type MutationCreateUserArgs = {
-  model: UserInput;
-};
-
 export type MutationDeleteCompanyArgs = {
   id: Scalars['Float'];
 };
 
 export type MutationDeleteUserArgs = {
-  id: Scalars['Float'];
+  id?: Maybe<Scalars['Float']>;
+};
+
+export type MutationExcludeUserArgs = {
+  userId: Scalars['Float'];
+};
+
+export type MutationInviteUserArgs = {
+  model: InviteUserInput;
 };
 
 export type MutationLoginArgs = {
@@ -131,6 +150,11 @@ export type PaginatedCompanyResponse = {
   total: Scalars['Int'];
 };
 
+export type PaginatedCompanyUserResponse = {
+  data?: Maybe<Array<CompanyUser>>;
+  total: Scalars['Int'];
+};
+
 export type PaginatedUserResponse = {
   data?: Maybe<Array<User>>;
   total: Scalars['Int'];
@@ -154,7 +178,7 @@ export type QueryCompaniesArgs = {
 };
 
 export type QueryCompanyArgs = {
-  id: Scalars['Float'];
+  id?: Maybe<Scalars['Float']>;
 };
 
 export type QueryUserArgs = {
@@ -189,6 +213,7 @@ export type User = {
   id?: Maybe<Scalars['Int']>;
   lastName: Scalars['String'];
   role: Scalars['String'];
+  verified: Scalars['Boolean'];
 };
 
 export type UserAction = BaseAction & {
@@ -216,12 +241,23 @@ export type Viewer = {
   permissions: Permission;
 };
 
-export type DeleteUserMutationVariables = Exact<{
+export type ExcludeUserMutationVariables = Exact<{
   userId: Scalars['Float'];
 }>;
 
-export type DeleteUserMutation = {
-  deleteUser: { data?: { id?: number | null | undefined } | null | undefined };
+export type ExcludeUserMutation = {
+  excludeUser: {
+    success: boolean;
+    messages?: Array<string> | null | undefined;
+  };
+};
+
+export type InviteUserMutationVariables = Exact<{
+  model: InviteUserInput;
+}>;
+
+export type InviteUserMutation = {
+  inviteUser: { success: boolean; messages?: Array<string> | null | undefined };
 };
 
 export type GetUserQueryVariables = Exact<{
@@ -242,41 +278,38 @@ export type GetUserQuery = {
     | undefined;
 };
 
-export type CreateUserMutationVariables = Exact<{
-  model: UserInput;
-}>;
+export type GetCompanyUsersQueryVariables = Exact<{ [key: string]: never }>;
 
-export type CreateUserMutation = {
-  createUser: { data?: { id?: number | null | undefined } | null | undefined };
+export type GetCompanyUsersQuery = {
+  company?:
+    | {
+        id?: number | null | undefined;
+        users?:
+          | {
+              data?:
+                | Array<{
+                    id?: number | null | undefined;
+                    roles: Array<string>;
+                    user: {
+                      id?: number | null | undefined;
+                      enabled: boolean;
+                      firstName: string;
+                      lastName: string;
+                      email: string;
+                      role: string;
+                    };
+                  }>
+                | null
+                | undefined;
+            }
+          | null
+          | undefined;
+      }
+    | null
+    | undefined;
 };
 
-export type UpdateUserMutationVariables = Exact<{
-  model: UserInput;
-}>;
-
-export type UpdateUserMutation = {
-  updateUser: { data?: { id?: number | null | undefined } | null | undefined };
-};
-
-export type GetUsersQueryVariables = Exact<{ [key: string]: never }>;
-
-export type GetUsersQuery = {
-  users: {
-    data?:
-      | Array<{
-          id?: number | null | undefined;
-          enabled: boolean;
-          firstName: string;
-          lastName: string;
-          email: string;
-          role: string;
-        }>
-      | null
-      | undefined;
-  };
-};
-
-export type UserFragment = {
+export type UserFragmentFragment = {
   id?: number | null | undefined;
   enabled: boolean;
   firstName: string;

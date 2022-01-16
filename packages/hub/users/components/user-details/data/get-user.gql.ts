@@ -6,7 +6,7 @@ import { USER_FRAGMENT } from '../../../data';
 const GET_USER = gql`
   query GetUser($userId: Float!) {
     user(id: $userId) {
-      ...User
+      ...UserFragment
     }
   }
 

@@ -9,7 +9,7 @@ const UsersPage: FunctionComponent = () => {
       title="Users"
       description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, quasi?"
       actions={
-        <Link href="/users/add">
+        <Link href="/users/invite">
           <Button
             aria-label="Invite user"
             leftIcon={<Icon icon="plus" />}

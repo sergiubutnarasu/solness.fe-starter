@@ -1,7 +1,7 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const USER_FRAGMENT = gql`
-  fragment User on User {
+  fragment UserFragment on User {
     id
     enabled
     firstName

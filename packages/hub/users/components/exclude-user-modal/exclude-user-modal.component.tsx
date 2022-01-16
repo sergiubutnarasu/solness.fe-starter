@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { ConfirmationModal } from '../../../core/components';
-import { useDeleteUser } from './data';
+import { useExcludeUser } from './data';
 
 export interface Props {
   userId: number;
@@ -8,24 +8,24 @@ export interface Props {
   onSubmit: () => void;
 }
 
-const DeleteUserModal: FunctionComponent<Props> = ({
+const ExcludeUserModal: FunctionComponent<Props> = ({
   userId,
   onClose,
   onSubmit,
 }) => {
-  const { deleteUser, loading } = useDeleteUser({ onCompleted: onSubmit });
+  const { excludeUser, loading } = useExcludeUser({ onCompleted: onSubmit });
 
-  const handleSubmit = () => deleteUser(userId);
+  const handleSubmit = () => excludeUser(userId);
 
   return (
     <ConfirmationModal
       loading={loading}
-      title="Delete user"
-      description="Are you sure you want to delete this user?"
+      title="Exclude user"
+      description="Are you sure you want to exclude this user?"
       onClose={onClose}
       onSubmit={handleSubmit}
     />
   );
 };
 
-export default DeleteUserModal;
+export default ExcludeUserModal;

@@ -1,7 +1,6 @@
 import { Page } from '@solness/ui';
 import React, { FunctionComponent, useMemo } from 'react';
-import { UserDetails, UserForm } from '../../components';
-import DeleteUserZone from '../../components/delete-user-zone';
+import { UserDangerZone, UserDetails } from '../../components';
 
 export interface Props {
   userId?: number;
@@ -13,7 +12,7 @@ const UserPage: FunctionComponent<Props> = ({ userId }) => {
       return <UserDetails userId={userId} />;
     }
 
-    return <UserForm />;
+    throw Error('User ID is missing.');
   }, [userId]);
 
   return (
@@ -26,7 +25,7 @@ const UserPage: FunctionComponent<Props> = ({ userId }) => {
         {content}
       </Page>
 
-      {userId && <DeleteUserZone userId={userId} />}
+      {userId && <UserDangerZone userId={userId} />}
     </>
   );
 };

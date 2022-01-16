@@ -1,6 +1,4 @@
-import { Box, Grid, Skeleton, Stack } from '@solness/ui';
 import React, { FunctionComponent } from 'react';
-import UserForm from '../user-form';
 import { useGetUser } from './data';
 import { UserDetailsLoader } from './user-details-loader.component';
 
@@ -19,11 +17,7 @@ const UserDetails: FunctionComponent<Props> = ({ userId }) => {
     return null;
   }
 
-  return (
-    <>
-      <UserForm user={user} />
-    </>
-  );
+  return <></>;
 };
 
 export default UserDetails;

@@ -1,14 +1,16 @@
 import { Button, Panel, Stack } from '@solness/ui';
 import React, { FunctionComponent } from 'react';
-import { useDeleteUser } from '../delete-user-modal';
+import { useExcludeUser } from '../exclude-user-modal';
 
 export interface Props {
   userId: number;
 }
 
-const DeleteUserZone: FunctionComponent<Props> = ({ userId }) => {
-  const { showModal: showDeleteUserModal, renderModal: renderDeleteUserModal } =
-    useDeleteUser(userId);
+const UserDangerZone: FunctionComponent<Props> = ({ userId }) => {
+  const {
+    showModal: showExcludeUserModal,
+    renderModal: renderExcludeUserModal,
+  } = useExcludeUser(userId);
 
   return (
     <Panel
@@ -20,14 +22,18 @@ const DeleteUserZone: FunctionComponent<Props> = ({ userId }) => {
     laudantium exercitationem!"
     >
       <Stack direction="row" justifyContent="flex-end">
-        <Button variant="ghost" colorScheme="red" onClick={showDeleteUserModal}>
-          Delete user
+        <Button
+          variant="ghost"
+          colorScheme="red"
+          onClick={showExcludeUserModal}
+        >
+          Exclude user
         </Button>
       </Stack>
 
-      {renderDeleteUserModal()}
+      {renderExcludeUserModal()}
     </Panel>
   );
 };
 
-export default DeleteUserZone;
+export default UserDangerZone;
