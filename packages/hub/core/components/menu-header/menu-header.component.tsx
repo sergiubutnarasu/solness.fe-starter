@@ -1,5 +1,13 @@
 import { useSecurityContext } from '@solness/security';
-import { Avatar, Box, Button, Logo, Stack, Typography } from '@solness/ui';
+import {
+  Avatar,
+  Box,
+  Button,
+  Logo,
+  Stack,
+  Tooltip,
+  Typography,
+} from '@solness/ui';
 
 const MenuHeader = () => {
   const { logout } = useSecurityContext();
@@ -8,14 +16,18 @@ const MenuHeader = () => {
     <>
       <Stack mb="8" direction="row" justifyContent="space-between">
         <Logo />
-        <Button.Icon
-          aria-label="Notification"
-          icon="bell"
-          size="sm"
-          variant="link"
-          color="gray.500"
-          iconSize={20}
-        ></Button.Icon>
+
+        <Tooltip hasArrow label="Sign out">
+          <Button.Icon
+            aria-label="Log out"
+            icon="logout"
+            size="sm"
+            variant="link"
+            color="gray.500"
+            iconSize={20}
+            onClick={logout}
+          ></Button.Icon>
+        </Tooltip>
       </Stack>
 
       <Box mb="8" textAlign="center">
@@ -25,14 +37,15 @@ const MenuHeader = () => {
           mb={2}
         >
           <Avatar.Badge right="14px" bottom="14px" boxSize="1.5rem" bg="white">
-            <Button.Icon
-              aria-label="Edit your profile"
-              icon="cog"
-              variant="link"
-              colorScheme="blackAlpha"
-              color="gray.500"
-              onClick={logout}
-            ></Button.Icon>
+            <Tooltip hasArrow label="Edit profile">
+              <Button.Icon
+                aria-label="Edit your profile"
+                icon="cog"
+                variant="link"
+                colorScheme="blackAlpha"
+                color="gray.500"
+              ></Button.Icon>
+            </Tooltip>
           </Avatar.Badge>
         </Avatar>
 

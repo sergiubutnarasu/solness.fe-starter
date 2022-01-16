@@ -16,4 +16,5 @@ export { default as Panel } from './panel';
 export { default as Section } from './section';
 export { default as Skeleton } from './skeleton';
 export { default as Stack } from './stack';
+export { default as Tooltip } from './tooltip';
 export { default as Typography } from './typography';
