@@ -22,6 +22,13 @@ export type BaseAction = {
   view: Scalars['Boolean'];
 };
 
+export type CashAction = BaseAction & {
+  create: Scalars['Boolean'];
+  delete: Scalars['Boolean'];
+  update: Scalars['Boolean'];
+  view: Scalars['Boolean'];
+};
+
 export type Company = {
   email: Scalars['String'];
   enabled: Scalars['Boolean'];
@@ -77,6 +84,13 @@ export type CompanyUserInput = {
   id?: Maybe<Scalars['Int']>;
   roles: Array<Scalars['String']>;
   userId: Scalars['Float'];
+};
+
+export type InventoryAction = BaseAction & {
+  create: Scalars['Boolean'];
+  delete: Scalars['Boolean'];
+  update: Scalars['Boolean'];
+  view: Scalars['Boolean'];
 };
 
 export type InviteUserInput = {
@@ -161,7 +175,9 @@ export type PaginatedUserResponse = {
 };
 
 export type Permission = {
+  cash: CashAction;
   company: CompanyAction;
+  inventory: InventoryAction;
   user: UserAction;
 };
 
@@ -239,6 +255,19 @@ export type UserResponse = {
 
 export type Viewer = {
   permissions: Permission;
+};
+
+export type GetMenuContextQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetMenuContextQuery = {
+  viewer: {
+    permissions: {
+      user: { view: boolean };
+      company: { view: boolean };
+      cash: { view: boolean };
+      inventory: { view: boolean };
+    };
+  };
 };
 
 export type ExcludeUserMutationVariables = Exact<{

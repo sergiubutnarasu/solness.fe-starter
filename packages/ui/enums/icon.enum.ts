@@ -1,6 +1,7 @@
 export enum Icon {
   bell = 'bell',
   briefcase = 'briefcase',
+  calculator = 'calculator',
   calendar = 'calendar',
   check = 'check',
   close = 'close',

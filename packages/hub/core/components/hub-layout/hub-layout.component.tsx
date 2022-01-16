@@ -33,7 +33,7 @@ const HubLayout: FunctionComponent<Props> = ({ children }) => {
   }, [getSession, setIsLoading]);
 
   if (isLoading) {
-    return null; // TODO - display loading
+    return <>loading app</>; // TODO - display loading
   }
 
   return (

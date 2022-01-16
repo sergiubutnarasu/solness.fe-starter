@@ -10,6 +10,7 @@ import {
   HiDownload,
   HiMail,
   HiOutlineBriefcase,
+  HiOutlineCalculator,
   HiOutlineCalendar,
   HiOutlineCheck,
   HiOutlineCollection,
@@ -31,6 +32,7 @@ import { IconProps } from '../types';
 export const ICON_CONFIG: Record<Icon, FunctionComponent<IconProps>> = {
   [Icon.bell]: HiBell,
   [Icon.briefcase]: HiOutlineBriefcase,
+  [Icon.calculator]: HiOutlineCalculator,
   [Icon.calendar]: HiOutlineCalendar,
   [Icon.check]: HiOutlineCheck,
   [Icon.close]: HiX,

@@ -1,3 +1,4 @@
+import { GetMenuContextQuery } from '@solness/generated-types';
 import { useSecurityContext } from '@solness/security';
 import {
   Avatar,
@@ -9,15 +10,34 @@ import {
   Typography,
 } from '@solness/ui';
 import { useRouter } from 'next/router';
-import React, { FunctionComponent, useCallback } from 'react';
+import React, {
+  FunctionComponent,
+  memo,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
+import { Page } from '../../enums';
 import { ROUTES } from '../../routes';
 import Link from '../link';
+import { useGetMenuContext } from './data';
 
 const Menu: FunctionComponent = () => {
   const { logout } = useSecurityContext();
   const { asPath } = useRouter();
+  const [context, setContext] = useState<GetMenuContextQuery | undefined>(
+    undefined,
+  );
+  const { data } = useGetMenuContext({ skip: !!context });
 
-  const isActive = useCallback(
+  useEffect(() => {
+    if (data && !context) {
+      setContext(data);
+    }
+  }, [data, context, setContext]);
+
+  const checkIsActive = useCallback(
     (path: string) => {
       if (path === '/') {
         return path === asPath;
@@ -27,6 +47,21 @@ const Menu: FunctionComponent = () => {
     },
     [asPath],
   );
+
+  const availableRoutes = useMemo(() => {
+    if (context) {
+      return ROUTES.filter(
+        ({ identifier }) =>
+          !identifier || context.viewer.permissions[identifier as Page]?.view,
+      );
+    }
+
+    return [];
+  }, [context]);
+
+  if (!context) {
+    return <MainMenu>loading menu</MainMenu>;
+  }
 
   return (
     <MainMenu>
@@ -68,10 +103,10 @@ const Menu: FunctionComponent = () => {
         </Typography.Text>
       </Box>
 
-      {ROUTES.map(({ description, path, icon, iconColor }, index) => (
+      {availableRoutes.map(({ description, path, icon, iconColor }, index) => (
         <Link key={index} href={path}>
           <MainMenu.Item
-            isActive={isActive(path)}
+            isActive={checkIsActive(path)}
             icon={icon}
             iconColor={iconColor}
           >
@@ -83,4 +118,4 @@ const Menu: FunctionComponent = () => {
   );
 };
 
-export default Menu;
+export default memo(Menu);
