@@ -1,6 +1,6 @@
 import { Box, Grid, Skeleton, Stack } from '@solness/ui';
 
-const UserDetailsSection = () => (
+const CompanyUserSection = () => (
   <>
     <Box>
       <Box width="45%" mb="8">
@@ -32,10 +32,10 @@ const UserDetailsSection = () => (
   </>
 );
 
-export const UserDetailsLoader = () => (
+export const CompanyUserLoader = () => (
   <>
-    <UserDetailsSection />
-    <UserDetailsSection />
+    <CompanyUserSection />
+    <CompanyUserSection />
 
     <Stack direction="row" justifyContent="flex-end">
       <Skeleton height="10" width="8rem" />

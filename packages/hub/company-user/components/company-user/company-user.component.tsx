@@ -1,19 +1,19 @@
 import { Section } from '@solness/ui';
 import React, { FunctionComponent } from 'react';
-import UserDangerZone from '../user-danger-zone';
+import CompanyUserDangerZone from '../company-user-danger-zone';
+import { CompanyUserLoader } from './company-user-loader.component';
 import { useGetCompanyUser } from './data';
-import { UserDetailsLoader } from './user-details-loader.component';
 
 export interface Props {
   companyUserId: number;
 }
 
-const UserDetails: FunctionComponent<Props> = ({ companyUserId }) => {
+const CompanyUser: FunctionComponent<Props> = ({ companyUserId }) => {
   const { companyUser, allowExcludeUser, loading } =
     useGetCompanyUser(companyUserId);
 
   if (loading) {
-    return <UserDetailsLoader />;
+    return <CompanyUserLoader />;
   }
 
   if (!companyUser) {
@@ -30,10 +30,10 @@ const UserDetails: FunctionComponent<Props> = ({ companyUserId }) => {
       </Section>
 
       {companyUser.user.id && allowExcludeUser && (
-        <UserDangerZone userId={companyUser.user.id} />
+        <CompanyUserDangerZone userId={companyUser.user.id} />
       )}
     </>
   );
 };
 
-export default UserDetails;
+export default CompanyUser;

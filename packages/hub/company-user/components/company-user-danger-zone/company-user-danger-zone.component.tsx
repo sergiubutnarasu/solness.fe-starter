@@ -6,7 +6,7 @@ export interface Props {
   userId: number;
 }
 
-const UserDangerZone: FunctionComponent<Props> = ({ userId }) => {
+const CompanyUserDangerZone: FunctionComponent<Props> = ({ userId }) => {
   const {
     showModal: showExcludeUserModal,
     renderModal: renderExcludeUserModal,
@@ -35,4 +35,4 @@ const UserDangerZone: FunctionComponent<Props> = ({ userId }) => {
   );
 };
 
-export default UserDangerZone;
+export default CompanyUserDangerZone;

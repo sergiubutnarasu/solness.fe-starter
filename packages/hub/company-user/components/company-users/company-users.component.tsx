@@ -13,7 +13,7 @@ import { useGetCompanyUsers } from '../../data';
 
 export interface Props {}
 
-const Users: FunctionComponent<Props> = () => {
+const CompanyUsers: FunctionComponent<Props> = () => {
   const { users, loading } = useGetCompanyUsers();
 
   if (loading) {
@@ -74,4 +74,4 @@ const Users: FunctionComponent<Props> = () => {
   );
 };
 
-export default Users;
+export default CompanyUsers;

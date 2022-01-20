@@ -1,9 +1,9 @@
 import { Button, Icon, Page } from '@solness/ui';
 import React, { FunctionComponent } from 'react';
 import { Link } from '../../../core';
-import { Users } from '../../components';
+import { CompanyUsers } from '../../components';
 
-const UsersPage: FunctionComponent = () => {
+const CompanyUsersPage: FunctionComponent = () => {
   return (
     <Page
       title="Members"
@@ -21,9 +21,9 @@ const UsersPage: FunctionComponent = () => {
         </Link>
       }
     >
-      <Users />
+      <CompanyUsers />
     </Page>
   );
 };
 
-export default UsersPage;
+export default CompanyUsersPage;
