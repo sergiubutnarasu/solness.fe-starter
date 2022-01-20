@@ -1,4 +1,4 @@
-import { Button, Panel, Stack } from '@solness/ui';
+import { Button, Panel, Section, Stack } from '@solness/ui';
 import React, { FunctionComponent } from 'react';
 import { useExcludeUser } from '../exclude-user-modal';
 
@@ -13,8 +13,7 @@ const UserDangerZone: FunctionComponent<Props> = ({ userId }) => {
   } = useExcludeUser(userId);
 
   return (
-    <Panel
-      marginBottom={0}
+    <Section
       title="Danger zone"
       description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum
     maiores sit nemo sed tenetur quas. Accusantium, ratione nemo
@@ -32,7 +31,7 @@ const UserDangerZone: FunctionComponent<Props> = ({ userId }) => {
       </Stack>
 
       {renderExcludeUserModal()}
-    </Panel>
+    </Section>
   );
 };
 

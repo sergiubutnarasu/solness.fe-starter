@@ -21,6 +21,7 @@ export enum Icon {
   office = 'office',
   plus = 'plus',
   right = 'right',
+  shield = 'shield',
   up = 'up',
   user = 'user',
   users = 'users',

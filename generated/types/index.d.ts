@@ -184,6 +184,7 @@ export type Permission = {
 export type Query = {
   companies: PaginatedCompanyResponse;
   company?: Maybe<Company>;
+  companyUser?: Maybe<CompanyUser>;
   user?: Maybe<User>;
   users: PaginatedUserResponse;
   viewer: Viewer;
@@ -195,6 +196,10 @@ export type QueryCompaniesArgs = {
 
 export type QueryCompanyArgs = {
   id?: Maybe<Scalars['Float']>;
+};
+
+export type QueryCompanyUserArgs = {
+  id: Scalars['Float'];
 };
 
 export type QueryUserArgs = {
@@ -289,19 +294,23 @@ export type InviteUserMutation = {
   inviteUser: { success: boolean; messages?: Array<string> | null | undefined };
 };
 
-export type GetUserQueryVariables = Exact<{
-  userId: Scalars['Float'];
+export type GetCompanyUserQueryVariables = Exact<{
+  companyUserId: Scalars['Float'];
 }>;
 
-export type GetUserQuery = {
-  user?:
+export type GetCompanyUserQuery = {
+  viewer: { permissions: { company: { excludeUser: boolean } } };
+  companyUser?:
     | {
         id?: number | null | undefined;
-        enabled: boolean;
-        firstName: string;
-        lastName: string;
-        email: string;
-        role: string;
+        user: {
+          id?: number | null | undefined;
+          enabled: boolean;
+          firstName: string;
+          lastName: string;
+          email: string;
+          role: string;
+        };
       }
     | null
     | undefined;

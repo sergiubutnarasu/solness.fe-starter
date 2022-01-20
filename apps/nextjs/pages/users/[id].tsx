@@ -7,14 +7,16 @@ const DynamicPage = dynamic(() => import('@solness/hub/users/pages/user'), {
 });
 
 export interface Props {
-  id: number;
+  companyUserId: number;
 }
 
-const Page: FunctionComponent<Props> = ({ id }) => <DynamicPage userId={id} />;
+const Page: FunctionComponent<Props> = ({ companyUserId }) => (
+  <DynamicPage companyUserId={companyUserId} />
+);
 
 export const getServerSideProps = ({ params }: GetServerSidePropsContext) => {
-  const userId = params?.id as string;
-  return { props: { id: +userId } };
+  const companyUserId = params?.id as string;
+  return { props: { companyUserId: +companyUserId } };
 };
 
 export default Page;

@@ -1,5 +1,5 @@
-import React, { forwardRef, FunctionComponent } from 'react';
 import { Box as Component, BoxProps } from '@chakra-ui/react';
+import React, { forwardRef } from 'react';
 
 export type Props = BoxProps;
 

@@ -25,7 +25,14 @@ const Section: FunctionComponent<Props> = ({
   loading,
   ...props
 }) => (
-  <Box pb={8} mb={marginBottom} borderBottomWidth={1} {...props}>
+  <Box
+    pb={8}
+    mb={marginBottom}
+    borderBottomWidth={1}
+    borderColor="gray.100"
+    {...props}
+    _last={{ mb: 0, borderBottomWidth: 0, pb: 0 }}
+  >
     <Box mb="4" bgColor="transparent">
       <Stack direction="row" alignItems="center" justifyContent="space-between">
         <Skeleton.Text minWidth="50%" isLoaded={!loading} noOfLines={2}>

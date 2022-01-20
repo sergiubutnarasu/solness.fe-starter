@@ -1,1 +1,1 @@
-export * from "./get-user.gql";
+export * from './get-company-user.gql';

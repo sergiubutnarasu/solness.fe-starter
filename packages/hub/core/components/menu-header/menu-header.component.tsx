@@ -17,7 +17,7 @@ const MenuHeader = () => {
       <Stack mb="8" direction="row" justifyContent="space-between">
         <Logo />
 
-        <Tooltip hasArrow label="Sign out">
+        <Tooltip label="Sign out" display="flex" alignItems="center">
           <Button.Icon
             aria-label="Log out"
             icon="logout"
@@ -37,7 +37,7 @@ const MenuHeader = () => {
           mb={2}
         >
           <Avatar.Badge right="14px" bottom="14px" boxSize="1.5rem" bg="white">
-            <Tooltip hasArrow label="Edit profile">
+            <Tooltip label="Edit profile" display="flex" alignItems="center">
               <Button.Icon
                 aria-label="Edit your profile"
                 icon="cog"

@@ -1,9 +1,15 @@
-import { Tooltip as Component, TooltipProps as Props } from '@chakra-ui/react';
-import Box from '../box';
+import { PlacementWithLogical, Tooltip as Component } from '@chakra-ui/react';
+import { ReactNode } from 'react';
+import Box, { Props as BoxProps } from '../box';
 
-const Tooltip = ({ children, ...props }: Props) => (
-  <Component {...props} placement="auto">
-    <Box background="transparent" display="flex" alignItems="center">
+type Props = BoxProps & {
+  label?: ReactNode;
+  placement?: PlacementWithLogical;
+};
+
+const Tooltip = ({ children, label, placement = 'auto', ...props }: Props) => (
+  <Component hasArrow placement={placement} label={label}>
+    <Box background="transparent" {...props}>
       {children}
     </Box>
   </Component>
