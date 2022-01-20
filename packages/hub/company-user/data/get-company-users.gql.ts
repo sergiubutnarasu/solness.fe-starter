@@ -5,17 +5,28 @@ import { USER_FRAGMENT } from './user-fragment.gql';
 
 export const GET_COMPANY_USERS = gql`
   query GetCompanyUsers {
+    viewer {
+      permissions {
+        company {
+          inviteUser
+        }
+      }
+    }
     company {
       id
       users {
         data {
-          id
-          roles
-          user {
-            ...UserFragment
-          }
+          ...CompanyUserFragment
         }
       }
+    }
+  }
+
+  fragment CompanyUserFragment on CompanyUser {
+    id
+    roles
+    user {
+      ...UserFragment
     }
   }
 
@@ -27,7 +38,8 @@ export const useGetCompanyUsers = () => {
     useQuery<GetCompanyUsersQuery>(GET_COMPANY_USERS);
 
   return {
-    users: data?.company?.users?.data ?? [],
+    companyUsers: data?.company?.users?.data ?? [],
+    allowInviteUser: Boolean(data?.viewer.permissions.company.inviteUser),
     ...options,
   };
 };

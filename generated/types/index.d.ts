@@ -262,38 +262,6 @@ export type Viewer = {
   permissions: Permission;
 };
 
-export type GetMenuContextQueryVariables = Exact<{ [key: string]: never }>;
-
-export type GetMenuContextQuery = {
-  viewer: {
-    permissions: {
-      user: { view: boolean };
-      company: { view: boolean };
-      cash: { view: boolean };
-      inventory: { view: boolean };
-    };
-  };
-};
-
-export type ExcludeUserMutationVariables = Exact<{
-  userId: Scalars['Float'];
-}>;
-
-export type ExcludeUserMutation = {
-  excludeUser: {
-    success: boolean;
-    messages?: Array<string> | null | undefined;
-  };
-};
-
-export type InviteUserMutationVariables = Exact<{
-  model: InviteUserInput;
-}>;
-
-export type InviteUserMutation = {
-  inviteUser: { success: boolean; messages?: Array<string> | null | undefined };
-};
-
 export type GetCompanyUserQueryVariables = Exact<{
   companyUserId: Scalars['Float'];
 }>;
@@ -316,9 +284,29 @@ export type GetCompanyUserQuery = {
     | undefined;
 };
 
+export type ExcludeUserMutationVariables = Exact<{
+  userId: Scalars['Float'];
+}>;
+
+export type ExcludeUserMutation = {
+  excludeUser: {
+    success: boolean;
+    messages?: Array<string> | null | undefined;
+  };
+};
+
+export type InviteUserMutationVariables = Exact<{
+  model: InviteUserInput;
+}>;
+
+export type InviteUserMutation = {
+  inviteUser: { success: boolean; messages?: Array<string> | null | undefined };
+};
+
 export type GetCompanyUsersQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetCompanyUsersQuery = {
+  viewer: { permissions: { company: { inviteUser: boolean } } };
   company?:
     | {
         id?: number | null | undefined;
@@ -347,6 +335,19 @@ export type GetCompanyUsersQuery = {
     | undefined;
 };
 
+export type CompanyUserFragmentFragment = {
+  id?: number | null | undefined;
+  roles: Array<string>;
+  user: {
+    id?: number | null | undefined;
+    enabled: boolean;
+    firstName: string;
+    lastName: string;
+    email: string;
+    role: string;
+  };
+};
+
 export type UserFragmentFragment = {
   id?: number | null | undefined;
   enabled: boolean;
@@ -354,6 +355,19 @@ export type UserFragmentFragment = {
   lastName: string;
   email: string;
   role: string;
+};
+
+export type GetMenuContextQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetMenuContextQuery = {
+  viewer: {
+    permissions: {
+      user: { view: boolean };
+      company: { view: boolean };
+      cash: { view: boolean };
+      inventory: { view: boolean };
+    };
+  };
 };
 
 export type LoginMutationVariables = Exact<{

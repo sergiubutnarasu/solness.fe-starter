@@ -1,28 +1,16 @@
-import {
-  Box,
-  Button,
-  Grid,
-  Icon,
-  ListLoader,
-  Tooltip,
-  Typography,
-} from '@solness/ui';
+import { Button, Grid, Icon, Tooltip, Typography } from '@solness/ui';
+import { CompanyUserFragmentFragment } from 'generated/types';
 import React, { FunctionComponent } from 'react';
 import { Link } from '../../../core';
-import { useGetCompanyUsers } from '../../data';
 
-export interface Props {}
+export interface Props {
+  companyUsers: CompanyUserFragmentFragment[];
+}
 
-const CompanyUsers: FunctionComponent<Props> = () => {
-  const { users, loading } = useGetCompanyUsers();
-
-  if (loading) {
-    return <ListLoader />;
-  }
-
+const CompanyUsers: FunctionComponent<Props> = ({ companyUsers }) => {
   return (
     <>
-      {users?.map(
+      {companyUsers?.map(
         (
           { id: companyUserId, roles, user: { email, firstName, lastName } },
           index,
