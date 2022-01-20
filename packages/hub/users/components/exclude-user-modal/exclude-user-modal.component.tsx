@@ -20,8 +20,8 @@ const ExcludeUserModal: FunctionComponent<Props> = ({
   return (
     <ConfirmationModal
       loading={loading}
-      title="Exclude user"
-      description="Are you sure you want to exclude this user?"
+      title="Exclude member"
+      description="Are you sure you want to exclude this member?"
       onClose={onClose}
       onSubmit={handleSubmit}
     />

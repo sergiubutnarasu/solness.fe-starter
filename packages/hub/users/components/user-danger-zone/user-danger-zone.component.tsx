@@ -26,7 +26,7 @@ const UserDangerZone: FunctionComponent<Props> = ({ userId }) => {
           colorScheme="red"
           onClick={showExcludeUserModal}
         >
-          Exclude user
+          Exclude member
         </Button>
       </Stack>
 

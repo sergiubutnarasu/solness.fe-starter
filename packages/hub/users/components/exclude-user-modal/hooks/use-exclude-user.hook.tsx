@@ -10,7 +10,7 @@ export const useExcludeUser = (userId: number) => {
   const handleSubmit = () => {
     resetFlag();
 
-    push('/users');
+    push('/members');
   };
 
   return {

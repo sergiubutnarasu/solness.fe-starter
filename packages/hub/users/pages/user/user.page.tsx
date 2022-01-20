@@ -10,7 +10,7 @@ const UserPage: FunctionComponent<Props> = ({ companyUserId }) => (
   <>
     <Page
       marginBottom={8}
-      title="User details"
+      title="Member details"
       description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, quasi?"
     >
       <UserDetails companyUserId={companyUserId} />

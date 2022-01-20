@@ -4,9 +4,9 @@ import { MenuField } from './types';
 export const ROUTES: MenuField[] = [
   { description: 'Dashboard', path: '/', icon: 'home', iconColor: 'blue.500' },
   {
-    description: 'Users',
+    description: 'Members',
     identifier: Page.User,
-    path: '/users',
+    path: '/members',
     icon: 'users',
     iconColor: 'purple.500',
   },

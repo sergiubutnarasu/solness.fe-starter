@@ -6,17 +6,17 @@ import { Users } from '../../components';
 const UsersPage: FunctionComponent = () => {
   return (
     <Page
-      title="Users"
+      title="Members"
       description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, quasi?"
       actions={
-        <Link href="/users/invite">
+        <Link href="/members/invite">
           <Button
             aria-label="Invite user"
             leftIcon={<Icon icon="mail" />}
             colorScheme="purple"
             size="sm"
           >
-            Invite user
+            Invite member
           </Button>
         </Link>
       }

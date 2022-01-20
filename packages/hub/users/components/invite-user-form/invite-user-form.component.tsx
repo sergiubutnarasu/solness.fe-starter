@@ -14,7 +14,7 @@ const InviteUserForm: FunctionComponent<Props> = ({ user }) => {
 
   const { inviteUser } = useInviteUser({
     onCompleted: () => {
-      push('/users');
+      push('/members');
     },
     onError: (error) => alert(error.message),
   });
@@ -31,7 +31,7 @@ const InviteUserForm: FunctionComponent<Props> = ({ user }) => {
     });
   };
 
-  const handleCancel = () => push('/users');
+  const handleCancel = () => push('/members');
 
   return (
     <Form defaultValues={user} onSubmit={handleSubmit}>

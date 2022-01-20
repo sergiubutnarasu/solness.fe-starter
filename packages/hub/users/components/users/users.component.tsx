@@ -27,7 +27,7 @@ const Users: FunctionComponent<Props> = () => {
           { id: companyUserId, roles, user: { email, firstName, lastName } },
           index,
         ) => {
-          const userProfilePath = `users/${companyUserId}`;
+          const userProfilePath = `members/${companyUserId}`;
           const color = index % 2 ? undefined : 'gray.50';
 
           return (
