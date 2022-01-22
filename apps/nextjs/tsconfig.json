@@ -3,9 +3,12 @@
   "compilerOptions": {
     "paths": {
       "@solness/hub-auth": ["../../hub/auth"],
+      "@solness/hub-cash-register": ["../../hub/cash-register"],
+      "@solness/hub-company": ["../../hub/company"],
       "@solness/hub-company-user": ["../../hub/company-user"],
       "@solness/hub-core": ["../../hub/core"],
-      "@solness/hub-home": ["../../hub/home"]
+      "@solness/hub-home": ["../../hub/home"],
+      "@solness/hub-inventory": ["../../hub/inventory"]
     },
     "incremental": true
   }

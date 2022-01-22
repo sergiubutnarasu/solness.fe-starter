@@ -1,5 +1,13 @@
-import React from "react";
+import dynamic from 'next/dynamic';
+import React from 'react';
 
-const Page = () => <>Inventory</>;
+const DynamicPage = dynamic(
+  () => import('@solness/hub-inventory/pages/inventory'),
+  {
+    loading: () => <p>loading tada</p>,
+  },
+);
+
+const Page = () => <DynamicPage />;
 
 export default Page;
