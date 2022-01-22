@@ -9,7 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@solness/hub": "0.0.1",
+    "@solness/hub-auth": "0.0.1",
+    "@solness/hub-company-user": "0.0.1",
+    "@solness/hub-core": "0.0.1",
+    "@solness/hub-home": "0.0.1",
     "next": "12.0.3",
     "next-transpile-modules": "^9.0.0",
     "react": "17.0.2",

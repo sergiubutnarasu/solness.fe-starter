@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 import React from 'react';
 
-const DynamicPage = dynamic(() => import('@solness/hub/auth/pages/login'), {
+const DynamicPage = dynamic(() => import('@solness/hub-auth/pages/login'), {
   loading: () => <p>loading tada</p>,
 });
 

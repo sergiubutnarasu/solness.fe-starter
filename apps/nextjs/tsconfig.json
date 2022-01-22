@@ -2,7 +2,10 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "paths": {
-      "@solness/hub": ["../../packages/hub"]
+      "@solness/hub-auth": ["../../hub/auth"],
+      "@solness/hub-company-user": ["../../hub/company-user"],
+      "@solness/hub-core": ["../../hub/core"],
+      "@solness/hub-home": ["../../hub/home"]
     },
     "incremental": true
   }

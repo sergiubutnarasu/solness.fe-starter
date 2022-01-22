@@ -5,7 +5,8 @@
   "workspaces": [
     "packages/*",
     "apps/*",
-    "generated/*"
+    "generated/*",
+    "hub/*"
   ],
   "scripts": {
     "build": "yarn workspace @solness/nextjs build",

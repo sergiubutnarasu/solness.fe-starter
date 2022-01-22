@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 import React, { FunctionComponent } from 'react';
 
 const DynamicPage = dynamic(
-  () => import('@solness/hub/company-user/pages/company-user'),
+  () => import('@solness/hub-company-user/pages/company-user'),
   {
     loading: () => <p>loading tada</p>,
   },
