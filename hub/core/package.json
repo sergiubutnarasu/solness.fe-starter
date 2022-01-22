@@ -5,7 +5,6 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@solness/common": "0.0.1",
     "@solness/generated-types": "0.0.1",
     "@solness/network": "0.0.1",
     "@solness/security": "0.0.1",

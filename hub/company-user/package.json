@@ -8,7 +8,6 @@
     "@solness/common": "0.0.1",
     "@solness/generated-types": "0.0.1",
     "@solness/network": "0.0.1",
-    "@solness/security": "0.0.1",
     "@solness/ui": "0.0.1",
     "react": "17.0.2"
   },
