@@ -40,6 +40,7 @@ export type Company = {
   registerNumber: Scalars['String'];
   slogan?: Maybe<Scalars['String']>;
   users?: Maybe<PaginatedCompanyUserResponse>;
+  website?: Maybe<Scalars['String']>;
 };
 
 export type CompanyUsersArgs = {
@@ -64,6 +65,7 @@ export type CompanyInput = {
   registerNumber: Scalars['String'];
   slogan?: InputMaybe<Scalars['String']>;
   users?: InputMaybe<Array<CompanyUserInput>>;
+  website?: InputMaybe<Scalars['String']>;
 };
 
 export type CompanyResponse = {
@@ -385,6 +387,7 @@ export type GetCompanyQuery = {
         registerNumber: string;
         email: string;
         phone: string;
+        website?: string | null | undefined;
       }
     | null
     | undefined;
@@ -398,6 +401,7 @@ export type CompanyFragmentFragment = {
   registerNumber: string;
   email: string;
   phone: string;
+  website?: string | null | undefined;
 };
 
 export type GetMenuContextQueryVariables = Exact<{ [key: string]: never }>;

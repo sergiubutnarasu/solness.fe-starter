@@ -16,6 +16,7 @@ import {
   HiOutlineCollection,
   HiOutlineDocumentDuplicate,
   HiOutlineEye,
+  HiOutlineGlobeAlt,
   HiOutlineHome,
   HiOutlineLogout,
   HiOutlineMail,
@@ -65,4 +66,5 @@ export const ICON_CONFIG: Record<Icon, FunctionComponent<IconProps>> = {
   [Icon.users]: HiOutlineUsers,
   [Icon.user]: HiOutlineUser,
   [Icon.view]: HiOutlineEye,
+  [Icon.website]: HiOutlineGlobeAlt,
 };

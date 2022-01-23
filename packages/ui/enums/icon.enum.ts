@@ -29,4 +29,5 @@ export enum Icon {
   user = 'user',
   users = 'users',
   view = 'view',
+  website = 'website',
 }

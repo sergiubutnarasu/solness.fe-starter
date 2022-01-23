@@ -53,7 +53,7 @@ const CompanyPage = () => {
         <LabelValue label="Phone number">{company.phone}</LabelValue>
 
         <LabelValue stripped label="Website">
-          https://www.asociatiadepoveste.ro
+          {company.website}
         </LabelValue>
       </Section>
     </Page>

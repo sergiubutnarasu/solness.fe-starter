@@ -28,6 +28,7 @@ const CompanyForm = ({ company }: Props) => {
     description = '',
     email = '',
     phone = '',
+    website = '',
   }: Partial<CompanyInput>) => {
     await updateCompany({
       id: company.id,
@@ -37,6 +38,7 @@ const CompanyForm = ({ company }: Props) => {
       description,
       email,
       phone,
+      website,
     });
   };
 
@@ -52,7 +54,7 @@ const CompanyForm = ({ company }: Props) => {
           isRequired
           name="name"
           label="Organization name"
-          maxLength={250}
+          maxLength={150}
         />
         <Form.Input
           isRequired
@@ -60,7 +62,7 @@ const CompanyForm = ({ company }: Props) => {
           label="Register number"
           maxLength={150}
         />
-        <Form.Input name="slogan" label="Organization slogan" maxLength={250} />
+        <Form.Input name="slogan" label="Organization slogan" maxLength={150} />
         <Form.Textarea
           name="description"
           label="Description"
@@ -93,6 +95,14 @@ const CompanyForm = ({ company }: Props) => {
           label="Phone number"
           maxLength={150}
           leftElement={<Icon icon="phone" color="gray.500" />}
+        />
+
+        <Form.Input
+          isRequired
+          name="website"
+          label="Website"
+          maxLength={150}
+          leftElement={<Icon icon="website" color="gray.500" />}
         />
       </Section>
 

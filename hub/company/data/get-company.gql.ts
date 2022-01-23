@@ -24,6 +24,7 @@ const GET_COMPANY = gql`
     registerNumber
     email
     phone
+    website
   }
 `;
 
