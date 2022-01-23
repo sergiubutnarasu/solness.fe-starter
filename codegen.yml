@@ -3,7 +3,7 @@ config:
   skipTypename: true,
 generates:
   ./generated/types/index.d.ts:
-    documents: 'packages/**/*.gql.ts'
+    documents: '**/*.gql.ts'
     plugins:
       - typescript
       - typescript-operations

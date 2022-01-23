@@ -7,8 +7,14 @@ const WelcomeBox: FunctionComponent = () => (
       Welcome back, Sergiu Butnarasu!
     </Typography.Text>
     <Typography.Text fontSize="sm" color="white">
-      You have 6 unread <Typography.Text as="u">notifications</Typography.Text>{' '}
-      and 3 new <Typography.Text as="u">documents</Typography.Text>
+      You have 6 unread{' '}
+      <Typography.Text color="inherit" as="u">
+        notifications
+      </Typography.Text>{' '}
+      and 3 new{' '}
+      <Typography.Text color="inherit" as="u">
+        documents
+      </Typography.Text>
     </Typography.Text>
   </Box>
 );

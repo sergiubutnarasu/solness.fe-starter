@@ -1,46 +1,56 @@
 import { EMAIL_VALIDATION_PATTERN } from '@solness/common';
-import { User, UserInput } from '@solness/generated-types';
-import { Box, Form, Icon, Section, Stack } from '@solness/ui';
+import {
+  CompanyFragmentFragment,
+  CompanyInput,
+} from '@solness/generated-types';
+import { Form, Icon, Section, Stack } from '@solness/ui';
 import { useRouter } from 'next/router';
-import React, { FunctionComponent } from 'react';
-import { useInviteUser } from './data';
+import { useUpdateCompany } from './data';
 
-export interface Props {
-  user?: User;
-}
+type Props = {
+  company: CompanyFragmentFragment;
+};
 
-const InviteUserForm: FunctionComponent<Props> = ({ user }) => {
+const CompanyForm = ({ company }: Props) => {
   const { push } = useRouter();
 
-  const { inviteUser } = useInviteUser({
+  const { updateCompany } = useUpdateCompany({
     onCompleted: () => {
-      push('/members');
+      push('/organization');
     },
     onError: (error) => alert(error.message),
   });
 
   const handleSubmit = async ({
-    firstName = '',
-    lastName = '',
+    name = '',
+    registerNumber = '',
+    slogan = '',
+    description = '',
     email = '',
-  }: Partial<UserInput>) => {
-    await inviteUser({
-      firstName,
-      lastName,
+    phone = '',
+  }: Partial<CompanyInput>) => {
+    await updateCompany({
+      id: company.id,
+      name,
+      registerNumber,
+      slogan,
+      description,
       email,
+      phone,
     });
   };
 
-  const handleCancel = () => push('/members');
+  const handleCancel = () => push('/organization');
 
   return (
-    <Form defaultValues={user} onSubmit={handleSubmit}>
+    <Form defaultValues={company} onSubmit={handleSubmit}>
       <Section
         title="Basic information"
         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. dd dd dd"
       >
-        <Form.Input isRequired name="firstName" label="First name" />
-        <Form.Input isRequired name="lastName" label="Last name" />
+        <Form.Input isRequired name="name" label="Organization name" />
+        <Form.Input isRequired name="registerNumber" label="Register number" />
+        <Form.Input name="slogan" label="Organization slogan" />
       </Section>
 
       <Section
@@ -59,6 +69,13 @@ const InviteUserForm: FunctionComponent<Props> = ({ user }) => {
           }}
           leftElement={<Icon icon="mail" color="gray.500" />}
         />
+
+        <Form.Input
+          isRequired
+          name="phone"
+          label="Phone number"
+          leftElement={<Icon icon="phone" color="gray.500" />}
+        />
       </Section>
 
       <Stack direction="row" justifyContent="flex-end">
@@ -69,4 +86,4 @@ const InviteUserForm: FunctionComponent<Props> = ({ user }) => {
   );
 };
 
-export default InviteUserForm;
+export default CompanyForm;

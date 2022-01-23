@@ -27,7 +27,7 @@ const CompanyUsersPage: FunctionComponent = () => {
           <Link href="/members/invite">
             <Button
               aria-label="Invite user"
-              leftIcon={<Icon icon="mail" />}
+              leftIcon={<Icon icon="mail-solid" />}
               colorScheme="purple"
               size="sm"
             >

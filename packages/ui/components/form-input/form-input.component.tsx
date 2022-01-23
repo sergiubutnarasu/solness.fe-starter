@@ -16,7 +16,7 @@ const FormInput: FunctionComponent<Props> = ({
   validators,
   label,
   hint,
-  mb,
+  mb = 4,
   ...props
 }) => {
   const { register } = useFormContext();
@@ -28,6 +28,7 @@ const FormInput: FunctionComponent<Props> = ({
       isRequired={isRequired}
       hint={hint}
       mb={mb}
+      _last={{ mb: 0 }}
     >
       <Input
         {...props}

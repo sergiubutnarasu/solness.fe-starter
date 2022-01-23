@@ -5,11 +5,14 @@ import Typography from '../typography';
 
 const Logo: FunctionComponent = () => (
   <Box display="flex" alignItems="center">
-    <Box mr={1}>
-      <Icon fontSize="20px" icon="collection" color="purple.500" />
-    </Box>
+    <Icon mr={1} fontSize="20px" icon="collection" color="purple.500" />
 
-    <Typography.Text cursor='default' color="purple.500" fontSize="xs" fontWeight="semibold">
+    <Typography.Text
+      cursor="default"
+      color="purple.500"
+      fontSize="xs"
+      fontWeight="semibold"
+    >
       solness
     </Typography.Text>
   </Box>

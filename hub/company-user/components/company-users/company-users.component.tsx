@@ -30,7 +30,13 @@ const CompanyUsers: FunctionComponent<Props> = ({ companyUsers }) => {
             >
               <Grid.Item textAlign="center">
                 {roles.some((role) => role === 'Owner') && (
-                  <Tooltip as="span" placement="top" label="Owner">
+                  <Tooltip
+                    as="span"
+                    display="inline-flex"
+                    verticalAlign="middle"
+                    placement="top"
+                    label="Owner"
+                  >
                     <Icon icon="shield" />
                   </Tooltip>
                 )}

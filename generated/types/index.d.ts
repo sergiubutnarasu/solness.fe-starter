@@ -1,4 +1,5 @@
 export type Maybe<T> = T | null;
+export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K];
 };
@@ -30,17 +31,19 @@ export type CashAction = BaseAction & {
 };
 
 export type Company = {
+  description?: Maybe<Scalars['String']>;
   email: Scalars['String'];
   enabled: Scalars['Boolean'];
   id?: Maybe<Scalars['Int']>;
   name: Scalars['String'];
   phone: Scalars['String'];
   registerNumber: Scalars['String'];
+  slogan?: Maybe<Scalars['String']>;
   users?: Maybe<PaginatedCompanyUserResponse>;
 };
 
 export type CompanyUsersArgs = {
-  request?: Maybe<PageListInput>;
+  request?: InputMaybe<PageListInput>;
 };
 
 export type CompanyAction = BaseAction & {
@@ -53,13 +56,14 @@ export type CompanyAction = BaseAction & {
 };
 
 export type CompanyInput = {
+  description?: InputMaybe<Scalars['String']>;
   email: Scalars['String'];
-  enabled: Scalars['Boolean'];
-  id?: Maybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
   name: Scalars['String'];
   phone: Scalars['String'];
   registerNumber: Scalars['String'];
-  users?: Maybe<Array<CompanyUserInput>>;
+  slogan?: InputMaybe<Scalars['String']>;
+  users?: InputMaybe<Array<CompanyUserInput>>;
 };
 
 export type CompanyResponse = {
@@ -81,7 +85,7 @@ export type CompanyUser = {
 export type CompanyUserInput = {
   companyId: Scalars['Float'];
   enabled: Scalars['Boolean'];
-  id?: Maybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
   roles: Array<Scalars['String']>;
   userId: Scalars['Float'];
 };
@@ -121,7 +125,7 @@ export type MutationDeleteCompanyArgs = {
 };
 
 export type MutationDeleteUserArgs = {
-  id?: Maybe<Scalars['Float']>;
+  id?: InputMaybe<Scalars['Float']>;
 };
 
 export type MutationExcludeUserArgs = {
@@ -155,8 +159,8 @@ export type MutationUpdateUserArgs = {
 };
 
 export type PageListInput = {
-  page?: Maybe<Scalars['Float']>;
-  pageSize?: Maybe<Scalars['Float']>;
+  page?: InputMaybe<Scalars['Float']>;
+  pageSize?: InputMaybe<Scalars['Float']>;
 };
 
 export type PaginatedCompanyResponse = {
@@ -191,11 +195,11 @@ export type Query = {
 };
 
 export type QueryCompaniesArgs = {
-  request?: Maybe<PageListInput>;
+  request?: InputMaybe<PageListInput>;
 };
 
 export type QueryCompanyArgs = {
-  id?: Maybe<Scalars['Float']>;
+  id?: InputMaybe<Scalars['Float']>;
 };
 
 export type QueryCompanyUserArgs = {
@@ -207,7 +211,7 @@ export type QueryUserArgs = {
 };
 
 export type QueryUsersArgs = {
-  request?: Maybe<PageListInput>;
+  request?: InputMaybe<PageListInput>;
 };
 
 export type SimpleResponse = {
@@ -248,7 +252,7 @@ export type UserInput = {
   email: Scalars['String'];
   enabled: Scalars['Boolean'];
   firstName: Scalars['String'];
-  id?: Maybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['Int']>;
   lastName: Scalars['String'];
 };
 
@@ -355,6 +359,45 @@ export type UserFragmentFragment = {
   lastName: string;
   email: string;
   role: string;
+};
+
+export type UpdateCompanyMutationVariables = Exact<{
+  model: CompanyInput;
+}>;
+
+export type UpdateCompanyMutation = {
+  updateCompany: {
+    success: boolean;
+    messages?: Array<string> | null | undefined;
+  };
+};
+
+export type GetCompanyQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetCompanyQuery = {
+  viewer: { permissions: { company: { update: boolean } } };
+  company?:
+    | {
+        id?: number | null | undefined;
+        name: string;
+        slogan?: string | null | undefined;
+        description?: string | null | undefined;
+        registerNumber: string;
+        email: string;
+        phone: string;
+      }
+    | null
+    | undefined;
+};
+
+export type CompanyFragmentFragment = {
+  id?: number | null | undefined;
+  name: string;
+  slogan?: string | null | undefined;
+  description?: string | null | undefined;
+  registerNumber: string;
+  email: string;
+  phone: string;
 };
 
 export type GetMenuContextQueryVariables = Exact<{ [key: string]: never }>;
