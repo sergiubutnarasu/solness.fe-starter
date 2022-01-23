@@ -39,8 +39,18 @@ const InviteUserForm: FunctionComponent<Props> = ({ user }) => {
         title="Basic information"
         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. dd dd dd"
       >
-        <Form.Input isRequired name="firstName" label="First name" />
-        <Form.Input isRequired name="lastName" label="Last name" />
+        <Form.Input
+          isRequired
+          maxLength={50}
+          name="firstName"
+          label="First name"
+        />
+        <Form.Input
+          isRequired
+          maxLength={50}
+          name="lastName"
+          label="Last name"
+        />
       </Section>
 
       <Section
@@ -51,6 +61,7 @@ const InviteUserForm: FunctionComponent<Props> = ({ user }) => {
           isRequired
           name="email"
           label="Email address"
+          maxLength={150}
           validators={{
             pattern: {
               value: EMAIL_VALIDATION_PATTERN,

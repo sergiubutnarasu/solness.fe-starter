@@ -48,9 +48,19 @@ const CompanyForm = ({ company }: Props) => {
         title="Basic information"
         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. dd dd dd"
       >
-        <Form.Input isRequired name="name" label="Organization name" />
-        <Form.Input isRequired name="registerNumber" label="Register number" />
-        <Form.Input name="slogan" label="Organization slogan" />
+        <Form.Input
+          isRequired
+          name="name"
+          label="Organization name"
+          maxLength={250}
+        />
+        <Form.Input
+          isRequired
+          name="registerNumber"
+          label="Register number"
+          maxLength={150}
+        />
+        <Form.Input name="slogan" label="Organization slogan" maxLength={250} />
       </Section>
 
       <Section
@@ -61,6 +71,7 @@ const CompanyForm = ({ company }: Props) => {
           isRequired
           name="email"
           label="Email address"
+          maxLength={150}
           validators={{
             pattern: {
               value: EMAIL_VALIDATION_PATTERN,
@@ -74,6 +85,7 @@ const CompanyForm = ({ company }: Props) => {
           isRequired
           name="phone"
           label="Phone number"
+          maxLength={150}
           leftElement={<Icon icon="phone" color="gray.500" />}
         />
       </Section>

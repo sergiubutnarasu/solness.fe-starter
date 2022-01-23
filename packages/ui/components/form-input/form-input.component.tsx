@@ -8,11 +8,13 @@ export type Props = InputProps & {
   validators?: Partial<RegisterOptions>;
   label?: ReactNode;
   hint?: ReactNode;
+  maxLength?: number;
 };
 
 const FormInput: FunctionComponent<Props> = ({
   name,
   isRequired,
+  maxLength,
   validators,
   label,
   hint,
@@ -36,6 +38,10 @@ const FormInput: FunctionComponent<Props> = ({
           required: {
             value: Boolean(isRequired),
             message: `The ${name} field is required.`,
+          },
+          maxLength: maxLength && {
+            value: maxLength,
+            message: `Max length exceeded. (${maxLength})`,
           },
           ...validators,
         })}
