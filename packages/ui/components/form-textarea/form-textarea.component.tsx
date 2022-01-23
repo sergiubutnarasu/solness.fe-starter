@@ -1,10 +1,10 @@
 import { defaultValidators } from '@solness/common';
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { RegisterOptions, useFormContext } from 'react-hook-form';
 import FormField from '../form-field';
-import Input, { Props as InputProps } from '../input';
+import Textarea, { Props as TextareaProps } from '../textarea';
 
-export type Props = InputProps & {
+export type Props = TextareaProps & {
   name: string;
   validators?: Partial<RegisterOptions>;
   label?: ReactNode;
@@ -12,7 +12,7 @@ export type Props = InputProps & {
   maxLength?: number;
 };
 
-const FormInput: FunctionComponent<Props> = ({
+const FormTextarea = ({
   name,
   isRequired,
   maxLength,
@@ -21,7 +21,7 @@ const FormInput: FunctionComponent<Props> = ({
   hint,
   mb = 4,
   ...props
-}) => {
+}: Props) => {
   const { register } = useFormContext();
 
   return (
@@ -32,7 +32,7 @@ const FormInput: FunctionComponent<Props> = ({
       hint={hint}
       mb={mb}
     >
-      <Input
+      <Textarea
         {...props}
         {...register(name, {
           ...defaultValidators({ name, isRequired, maxLength }),
@@ -43,4 +43,4 @@ const FormInput: FunctionComponent<Props> = ({
   );
 };
 
-export default FormInput;
+export default FormTextarea;

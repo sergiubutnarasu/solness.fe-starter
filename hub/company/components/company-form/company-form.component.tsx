@@ -61,6 +61,12 @@ const CompanyForm = ({ company }: Props) => {
           maxLength={150}
         />
         <Form.Input name="slogan" label="Organization slogan" maxLength={250} />
+        <Form.Textarea
+          name="description"
+          label="Description"
+          rows={10}
+          maxLength={1000}
+        />
       </Section>
 
       <Section

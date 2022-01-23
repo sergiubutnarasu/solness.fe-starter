@@ -6,7 +6,7 @@ type Props = {
 };
 
 const CompanyDetailsCard = ({
-  company: { name, registerNumber, slogan },
+  company: { name, registerNumber, slogan, description },
 }: Props) => (
   <Box p={8} borderWidth={1} borderRadius="md" boxShadow="sm">
     <Typography.Title fontWeight="semibold">{name}</Typography.Title>
@@ -21,14 +21,7 @@ const CompanyDetailsCard = ({
       </Typography.Text>
     )}
 
-    <Typography.Text mt={4}>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique
-      blanditiis eaque aperiam? Eaque molestias iusto facere recusandae nisi,
-      at, doloremque reprehenderit enim ipsam voluptatum fugit delectus? Sed
-      esse iusto nulla? Harum quia pariatur dolorem rem repellat totam sunt non
-      labore tempora saepe perspiciatis, cupiditate ab nobis voluptate illum
-      ipsa minima.
-    </Typography.Text>
+    {description && <Typography.Text mt={4}>{description}</Typography.Text>}
   </Box>
 );
 

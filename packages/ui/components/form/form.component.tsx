@@ -8,6 +8,7 @@ import React, { ReactNode } from 'react';
 import { FormProvider, useForm, UseFormProps } from 'react-hook-form';
 import CancelButton from '../cancel-button';
 import FormInput from '../form-input';
+import FormTextarea from '../form-textarea';
 import SubmitButton from '../submit-button';
 
 export interface CompoundProps {
@@ -18,6 +19,7 @@ export interface CompoundProps {
   Input: typeof FormInput;
   Label: typeof FormLabel;
   SubmitButton: typeof SubmitButton;
+  Textarea: typeof FormTextarea;
 }
 
 export interface Props<TFormValues> {
@@ -49,5 +51,6 @@ Form.Helper = FormHelperText;
 Form.Input = FormInput;
 Form.Label = FormLabel;
 Form.SubmitButton = SubmitButton;
+Form.Textarea = FormTextarea;
 
 export default Form;

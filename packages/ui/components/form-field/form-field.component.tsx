@@ -28,7 +28,12 @@ const FormField: FunctionComponent<Props> = ({
   } = useFormContext();
 
   return (
-    <FormControl id={name} isInvalid={errors[name]?.message} {...props}>
+    <FormControl
+      id={name}
+      isInvalid={errors[name]?.message}
+      _last={{ mb: 0 }}
+      {...props}
+    >
       {label && (
         <FormLabel fontSize="sm" fontWeight="normal" color="blue.900">
           {label} {!isRequired && <>(optional)</>}
