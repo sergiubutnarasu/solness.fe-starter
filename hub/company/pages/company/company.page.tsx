@@ -1,5 +1,5 @@
 import { Link } from '@solness/hub-core';
-import { Box, Button, Icon, Page, Section, Tag, Typography } from '@solness/ui';
+import { Button, Icon, LabelValue, Page, Section } from '@solness/ui';
 import { CompanyDetailsCard } from 'hub/company/components';
 import { useGetCompany } from '../../data';
 
@@ -40,17 +40,21 @@ const CompanyPage = () => {
     >
       <Section
         title="Main information"
-        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, laborum?"
+        description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
       >
         <CompanyDetailsCard company={company} />
       </Section>
 
       <Section title="Contact details">
-        <Tag fontSize="xs" mr={2}>
-          Email: {company.email}
-        </Tag>
+        <LabelValue stripped label="Email">
+          {company.email}
+        </LabelValue>
 
-        <Tag fontSize="xs">Phone number: {company.phone}</Tag>
+        <LabelValue label="Phone number">{company.phone}</LabelValue>
+
+        <LabelValue stripped label="Website">
+          https://www.asociatiadepoveste.ro
+        </LabelValue>
       </Section>
     </Page>
   );

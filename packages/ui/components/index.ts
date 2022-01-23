@@ -6,6 +6,7 @@ export { default as Form } from './form';
 export { default as Grid } from './grid';
 export { default as Icon } from './icon';
 export { default as Input } from './input';
+export { default as LabelValue } from './label-value';
 export { default as Layout } from './layout';
 export { default as ListLoader } from './list-loader';
 export { default as Logo } from './logo';

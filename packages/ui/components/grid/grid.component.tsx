@@ -1,7 +1,4 @@
-import {
-  SimpleGrid as Component,
-  SimpleGridProps as Props,
-} from '@chakra-ui/react';
+import { SimpleGrid as Component, SimpleGridProps } from '@chakra-ui/react';
 
 import React, { FunctionComponent } from 'react';
 import GridItem from '../grid-item';
@@ -9,6 +6,8 @@ import GridItem from '../grid-item';
 type CompoundProps = {
   Item: typeof GridItem;
 };
+
+export type Props = SimpleGridProps;
 
 const Grid: FunctionComponent<Props> & CompoundProps = ({
   columns = 12,

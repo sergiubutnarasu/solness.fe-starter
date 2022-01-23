@@ -8,7 +8,7 @@ type Props = {
 const CompanyDetailsCard = ({
   company: { name, registerNumber, slogan, description },
 }: Props) => (
-  <Box p={8} borderWidth={1} borderRadius="md" boxShadow="sm">
+  <Box>
     <Typography.Title fontWeight="semibold">{name}</Typography.Title>
 
     <Tag fontSize="xs" mt={2}>

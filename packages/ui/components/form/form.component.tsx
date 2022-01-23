@@ -7,6 +7,7 @@ import {
 import React, { ReactNode } from 'react';
 import { FormProvider, useForm, UseFormProps } from 'react-hook-form';
 import CancelButton from '../cancel-button';
+import FormField from '../form-field';
 import FormInput from '../form-input';
 import FormTextarea from '../form-textarea';
 import SubmitButton from '../submit-button';
@@ -15,6 +16,7 @@ export interface CompoundProps {
   Control: typeof FormControl;
   CancelButton: typeof CancelButton;
   ErrorMessage: typeof FormErrorMessage;
+  Field: typeof FormField;
   Helper: typeof FormHelperText;
   Input: typeof FormInput;
   Label: typeof FormLabel;
@@ -47,6 +49,7 @@ const Form = <TFormValues extends object>({
 Form.Control = FormControl;
 Form.CancelButton = CancelButton;
 Form.ErrorMessage = FormErrorMessage;
+Form.Field = FormField;
 Form.Helper = FormHelperText;
 Form.Input = FormInput;
 Form.Label = FormLabel;
