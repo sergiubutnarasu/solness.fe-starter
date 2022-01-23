@@ -13,13 +13,16 @@ export type Props = Omit<InputProps, 'left' | 'right'> & {
 };
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ leftElement, rightElement, children, ...props }: Props, ref) => (
+  (
+    { leftElement, rightElement, children, fontSize = 'sm', ...props }: Props,
+    ref,
+  ) => (
     <InputGroup>
       {leftElement && (
         <InputLeftElement pointerEvents="none" children={leftElement} />
       )}
 
-      <Component ref={ref} {...props} />
+      <Component ref={ref} fontSize={fontSize} {...props} />
 
       {rightElement && (
         <InputRightElement pointerEvents="none" children={rightElement} />

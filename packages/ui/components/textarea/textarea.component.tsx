@@ -3,8 +3,10 @@ import React, { forwardRef } from 'react';
 
 export type Props = TextareaProps;
 
-const Textarea = forwardRef<HTMLTextAreaElement, Props>((props: Props, ref) => (
-  <Component ref={ref} {...props} />
-));
+const Textarea = forwardRef<HTMLTextAreaElement, Props>(
+  ({ fontSize = 'sm', ...props }: Props, ref) => (
+    <Component ref={ref} fontSize={fontSize} {...props} />
+  ),
+);
 
 export default Textarea;
