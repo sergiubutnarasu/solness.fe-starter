@@ -8,7 +8,8 @@
       "@solness/hub-company-user": ["../../hub/company-user"],
       "@solness/hub-core": ["../../hub/core"],
       "@solness/hub-home": ["../../hub/home"],
-      "@solness/hub-inventory": ["../../hub/inventory"]
+      "@solness/hub-inventory": ["../../hub/inventory"],
+      "@solness/hub-profile": ["../../hub/profile"]
     },
     "incremental": true
   }

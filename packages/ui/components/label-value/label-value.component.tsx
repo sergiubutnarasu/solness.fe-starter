@@ -25,9 +25,7 @@ const LabelValue = ({
 
   const valueContent = useMemo(() => {
     if (typeof children === 'string') {
-      return (
-        <Typography.Text fontWeight="semibold">{children}</Typography.Text>
-      );
+      return <Typography.Text>{children}</Typography.Text>;
     }
 
     return children;

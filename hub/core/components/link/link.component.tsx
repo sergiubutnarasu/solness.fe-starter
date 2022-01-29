@@ -1,9 +1,9 @@
-import { LinkProps } from '@chakra-ui/react';
+import { BoxProps } from '@chakra-ui/react';
 import { Box, ColorType } from '@solness/ui';
 import NextLink from 'next/link';
 import React, { FunctionComponent } from 'react';
 
-export type Props = LinkProps & {
+export type Props = BoxProps & {
   href: string;
   as?: 'div' | 'span' | 'a';
   color?: ColorType;
@@ -14,9 +14,16 @@ const Link: FunctionComponent<Props> = ({
   children,
   href,
   color,
+  ...props
 }) => (
   <NextLink href={href}>
-    <Box background="transparent" as={as} color={color}>
+    <Box
+      background="transparent"
+      cursor="pointer"
+      as={as}
+      color={color}
+      {...props}
+    >
       {children}
     </Box>
   </NextLink>

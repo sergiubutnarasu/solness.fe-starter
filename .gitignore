@@ -38,4 +38,5 @@ yarn-error.log*
 
 /packages/**/node_modules
 /apps/**/node_modules
+/hub/**/node_modules
 

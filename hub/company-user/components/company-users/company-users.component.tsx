@@ -37,7 +37,7 @@ const CompanyUsers: FunctionComponent<Props> = ({ companyUsers }) => {
                     placement="top"
                     label="Owner"
                   >
-                    <Icon icon="shield" />
+                    <Icon icon="shield" color='green.500' />
                   </Tooltip>
                 )}
               </Grid.Item>

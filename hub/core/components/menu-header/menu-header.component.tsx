@@ -3,11 +3,13 @@ import {
   Avatar,
   Box,
   Button,
+  Icon,
   Logo,
   Stack,
   Tooltip,
   Typography,
 } from '@solness/ui';
+import Link from '../link';
 
 const MenuHeader = () => {
   const { logout } = useSecurityContext();
@@ -38,13 +40,14 @@ const MenuHeader = () => {
         >
           <Avatar.Badge right="14px" bottom="14px" boxSize="1.5rem" bg="white">
             <Tooltip label="Edit profile" display="flex" alignItems="center">
-              <Button.Icon
-                aria-label="Edit your profile"
-                icon="cog"
-                variant="link"
-                colorScheme="blackAlpha"
-                color="gray.500"
-              ></Button.Icon>
+              <Link href="/me" fontSize={1}>
+                <Icon
+                  aria-label="Edit your profile"
+                  icon="cog"
+                  color="gray.500"
+                  cursor="pointer"
+                />
+              </Link>
             </Tooltip>
           </Avatar.Badge>
         </Avatar>
