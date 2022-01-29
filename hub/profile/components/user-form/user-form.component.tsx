@@ -1,5 +1,12 @@
 import { UserFragmentFragment, UserInput } from '@solness/generated-types';
-import { Avatar, Button, Form, Stack, Tooltip } from '@solness/ui';
+import {
+  Avatar,
+  Button,
+  Form,
+  Stack,
+  Tooltip,
+  useNotification,
+} from '@solness/ui';
 import { useUpdateUser } from './data';
 
 type Props = {
@@ -7,11 +14,12 @@ type Props = {
 };
 
 const UserForm = ({ user }: Props) => {
+  const { showSuccess, showError } = useNotification();
   const { updateUser } = useUpdateUser({
     onCompleted: () => {
-      alert('Success');
+      showSuccess('User data was updated.');
     },
-    onError: (error) => alert(error.message),
+    onError: (error) => showError(error.message),
   });
 
   const handleSubmit = async ({

@@ -1,6 +1,6 @@
 import { EMAIL_VALIDATION_PATTERN } from '@solness/common';
 import { InviteUserInput, User } from '@solness/generated-types';
-import { Form, Icon, Section, Stack } from '@solness/ui';
+import { Form, Icon, Section, Stack, useNotification } from '@solness/ui';
 import { useRouter } from 'next/router';
 import React, { FunctionComponent } from 'react';
 import { useInviteUser } from './data';
@@ -11,12 +11,13 @@ export interface Props {
 
 const InviteUserForm: FunctionComponent<Props> = ({ user }) => {
   const { push } = useRouter();
+  const { showError } = useNotification();
 
   const { inviteUser } = useInviteUser({
     onCompleted: () => {
       push('/members');
     },
-    onError: (error) => alert(error.message),
+    onError: (error) => showError(error.message),
   });
 
   const handleSubmit = async ({

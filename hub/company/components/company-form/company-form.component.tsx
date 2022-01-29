@@ -3,7 +3,7 @@ import {
   CompanyFragmentFragment,
   CompanyInput,
 } from '@solness/generated-types';
-import { Form, Icon, Section, Stack } from '@solness/ui';
+import { Form, Icon, Section, Stack, useNotification } from '@solness/ui';
 import { useRouter } from 'next/router';
 import { useUpdateCompany } from './data';
 
@@ -13,12 +13,13 @@ type Props = {
 
 const CompanyForm = ({ company }: Props) => {
   const { push } = useRouter();
+  const { showError } = useNotification();
 
   const { updateCompany } = useUpdateCompany({
     onCompleted: () => {
       push('/organization');
     },
-    onError: (error) => alert(error.message),
+    onError: (error) => showError(error.message),
   });
 
   const handleSubmit = async ({

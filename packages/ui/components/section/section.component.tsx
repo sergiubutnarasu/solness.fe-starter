@@ -22,7 +22,7 @@ const Section: FunctionComponent<Props> = ({
   description,
   actions,
   children,
-  padding = 6,
+  paddingBottom = 8,
   marginBottom = 8,
   loading,
   direction = 'column',
@@ -34,7 +34,7 @@ const Section: FunctionComponent<Props> = ({
   return (
     <Grid
       spacing={4}
-      pb={8}
+      pb={paddingBottom}
       mb={marginBottom}
       borderBottomWidth={1}
       borderColor="gray.100"

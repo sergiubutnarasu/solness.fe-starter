@@ -20,8 +20,8 @@ const Page: FunctionComponent<Props> = ({
   loading,
   ...rest
 }) => (
-  <Box padding="6" borderRadius="md" boxShadow="sm" {...rest}>
-    <Box mb="6" borderBottom="1px" borderColor="gray.100" pb="6">
+  <Box padding={8} borderRadius="md" boxShadow="sm" {...rest}>
+    <Box pb={6} mb={8} borderBottom="1px" borderColor="gray.100">
       <Stack direction="row" alignItems="center" justifyContent="space-between">
         <Skeleton.Text minWidth="50%" isLoaded={!loading} noOfLines={1}>
           <Typography.Title as="h1" fontSize="2xl">
