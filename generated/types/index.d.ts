@@ -209,7 +209,7 @@ export type QueryCompanyUserArgs = {
 };
 
 export type QueryUserArgs = {
-  id: Scalars['Float'];
+  id?: InputMaybe<Scalars['Float']>;
 };
 
 export type QueryUsersArgs = {
@@ -234,12 +234,14 @@ export type TokenResponse = {
 };
 
 export type User = {
+  description?: Maybe<Scalars['String']>;
   email: Scalars['String'];
   enabled: Scalars['Boolean'];
   firstName: Scalars['String'];
   id?: Maybe<Scalars['Int']>;
   lastName: Scalars['String'];
   role: Scalars['String'];
+  title?: Maybe<Scalars['String']>;
   verified: Scalars['Boolean'];
 };
 
@@ -251,11 +253,13 @@ export type UserAction = BaseAction & {
 };
 
 export type UserInput = {
+  description?: InputMaybe<Scalars['String']>;
   email: Scalars['String'];
   enabled: Scalars['Boolean'];
   firstName: Scalars['String'];
   id?: InputMaybe<Scalars['Int']>;
   lastName: Scalars['String'];
+  title?: InputMaybe<Scalars['String']>;
 };
 
 export type UserResponse = {
@@ -277,6 +281,8 @@ export type GetCompanyUserQuery = {
   companyUser?:
     | {
         id?: number | null | undefined;
+        verified: boolean;
+        roles: Array<string>;
         user: {
           id?: number | null | undefined;
           enabled: boolean;
@@ -284,6 +290,8 @@ export type GetCompanyUserQuery = {
           lastName: string;
           email: string;
           role: string;
+          title?: string | null | undefined;
+          description?: string | null | undefined;
         };
       }
     | null
@@ -322,6 +330,7 @@ export type GetCompanyUsersQuery = {
                 | Array<{
                     id?: number | null | undefined;
                     roles: Array<string>;
+                    verified: boolean;
                     user: {
                       id?: number | null | undefined;
                       enabled: boolean;
@@ -329,6 +338,8 @@ export type GetCompanyUsersQuery = {
                       lastName: string;
                       email: string;
                       role: string;
+                      title?: string | null | undefined;
+                      description?: string | null | undefined;
                     };
                   }>
                 | null
@@ -344,6 +355,7 @@ export type GetCompanyUsersQuery = {
 export type CompanyUserFragmentFragment = {
   id?: number | null | undefined;
   roles: Array<string>;
+  verified: boolean;
   user: {
     id?: number | null | undefined;
     enabled: boolean;
@@ -351,6 +363,8 @@ export type CompanyUserFragmentFragment = {
     lastName: string;
     email: string;
     role: string;
+    title?: string | null | undefined;
+    description?: string | null | undefined;
   };
 };
 
@@ -361,6 +375,8 @@ export type UserFragmentFragment = {
   lastName: string;
   email: string;
   role: string;
+  title?: string | null | undefined;
+  description?: string | null | undefined;
 };
 
 export type UpdateCompanyMutationVariables = Exact<{
@@ -415,6 +431,15 @@ export type GetMenuContextQuery = {
       inventory: { view: boolean };
     };
   };
+  user?:
+    | {
+        id?: number | null | undefined;
+        firstName: string;
+        lastName: string;
+        title?: string | null | undefined;
+      }
+    | null
+    | undefined;
 };
 
 export type LoginMutationVariables = Exact<{

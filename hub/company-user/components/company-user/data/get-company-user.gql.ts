@@ -17,6 +17,8 @@ const GET_COMPANY_USER = gql`
     }
     companyUser(id: $companyUserId) {
       id
+      verified
+      roles
       user {
         ...UserFragment
       }

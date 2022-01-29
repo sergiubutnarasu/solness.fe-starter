@@ -20,6 +20,13 @@ const GET_MENU_CONTEXT = gql`
         }
       }
     }
+
+    user {
+      id
+      firstName
+      lastName
+      title
+    }
   }
 `;
 

@@ -2,6 +2,7 @@ import { Button, Grid, Icon, Tooltip, Typography } from '@solness/ui';
 import { CompanyUserFragmentFragment } from 'generated/types';
 import React, { FunctionComponent } from 'react';
 import { Link } from '../../../core';
+import CompanyUserIcon from '../company-user-icon';
 
 export interface Props {
   companyUsers: CompanyUserFragmentFragment[];
@@ -12,7 +13,12 @@ const CompanyUsers: FunctionComponent<Props> = ({ companyUsers }) => {
     <>
       {companyUsers?.map(
         (
-          { id: companyUserId, roles, user: { email, firstName, lastName } },
+          {
+            id: companyUserId,
+            verified,
+            roles,
+            user: { email, firstName, lastName },
+          },
           index,
         ) => {
           const userProfilePath = `members/${companyUserId}`;
@@ -29,17 +35,7 @@ const CompanyUsers: FunctionComponent<Props> = ({ companyUsers }) => {
               columns={25}
             >
               <Grid.Item textAlign="center">
-                {roles.some((role) => role === 'Owner') && (
-                  <Tooltip
-                    as="span"
-                    display="inline-flex"
-                    verticalAlign="middle"
-                    placement="top"
-                    label="Owner"
-                  >
-                    <Icon icon="shield" color='green.500' />
-                  </Tooltip>
-                )}
+                <CompanyUserIcon verified={verified} roles={roles} />
               </Grid.Item>
               <Grid.Item colSpan={8}>
                 <Typography.Text>

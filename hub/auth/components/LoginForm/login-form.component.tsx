@@ -46,7 +46,7 @@ const LoginForm: FunctionComponent = () => {
           onSubmit={onSubmit}
         >
           <Form.Input
-            mb={4}
+            size={'lg'}
             isRequired
             name="username"
             label="Email address"
@@ -60,7 +60,7 @@ const LoginForm: FunctionComponent = () => {
 
           <Form.Input
             isRequired
-            mb={8}
+            size="lg"
             type="password"
             name="password"
             label="Password"
@@ -71,8 +71,9 @@ const LoginForm: FunctionComponent = () => {
             w="full"
             rounded="full"
             size="lg"
+            mt="8"
           >
-            Log into Hub
+            I'm ready!
           </Form.SubmitButton>
         </Form>
 

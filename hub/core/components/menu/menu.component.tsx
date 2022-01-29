@@ -42,7 +42,13 @@ const Menu: FunctionComponent = () => {
 
   return (
     <MainMenu>
-      <MenuHeader />
+      {context.user && (
+        <MenuHeader
+          firstName={context.user.firstName}
+          lastName={context.user.lastName}
+          title={context.user.title}
+        />
+      )}
       <MenuList list={availableRoutes} />
     </MainMenu>
   );

@@ -11,7 +11,13 @@ import {
 } from '@solness/ui';
 import Link from '../link';
 
-const MenuHeader = () => {
+type Props = {
+  firstName: string;
+  lastName: string;
+  title?: string | null;
+};
+
+const MenuHeader = ({ firstName, lastName, title }: Props) => {
   const { logout } = useSecurityContext();
 
   return (
@@ -53,10 +59,10 @@ const MenuHeader = () => {
         </Avatar>
 
         <Typography.Text fontSize="sm" fontWeight="semibold">
-          Sergiu Butnarasu
+          {firstName} {lastName}
         </Typography.Text>
         <Typography.Text fontSize="xs" color="gray.500">
-          Web Developer
+          {title ?? 'Unknown'}
         </Typography.Text>
       </Box>
     </>

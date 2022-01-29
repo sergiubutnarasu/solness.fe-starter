@@ -5,7 +5,12 @@ export type Props = TextareaProps;
 
 const Textarea = forwardRef<HTMLTextAreaElement, Props>(
   ({ fontSize = 'sm', ...props }: Props, ref) => (
-    <Component ref={ref} fontSize={fontSize} {...props} />
+    <Component
+      ref={ref}
+      fontSize={fontSize}
+      _focus={{ borderColor: 'gray.500' }}
+      {...props}
+    />
   ),
 );
 

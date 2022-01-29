@@ -25,6 +25,7 @@ export const GET_COMPANY_USERS = gql`
   fragment CompanyUserFragment on CompanyUser {
     id
     roles
+    verified
     user {
       ...UserFragment
     }

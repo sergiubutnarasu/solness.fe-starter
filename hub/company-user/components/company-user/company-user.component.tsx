@@ -1,6 +1,16 @@
-import { Section } from '@solness/ui';
+import {
+  Avatar,
+  Box,
+  Icon,
+  LabelValue,
+  Section,
+  Tag,
+  Tooltip,
+  Typography,
+} from '@solness/ui';
 import React, { FunctionComponent } from 'react';
 import CompanyUserDangerZone from '../company-user-danger-zone';
+import CompanyUserIcon from '../company-user-icon';
 import { CompanyUserLoader } from './company-user-loader.component';
 import { useGetCompanyUser } from './data';
 
@@ -20,18 +30,49 @@ const CompanyUser: FunctionComponent<Props> = ({ companyUserId }) => {
     return null;
   }
 
+  const {
+    verified,
+    roles,
+    user: { id: userId, firstName, lastName, email, title, description },
+  } = companyUser;
+
   return (
     <>
       <Section
         title="Details"
-        description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem, reiciendis!"
+        description="Lorem ipsum dolor sit, amet consectetur!"
       >
-        {companyUser.user.firstName} {companyUser.user.lastName}
+        <Box display="flex" alignItems="center" mb="2">
+          <Avatar
+            size="md"
+            src="https://en.gravatar.com/userimage/128015720/b81c215fc33e0db0461f4974d2d2cabf.jpg?size=200"
+            mb={2}
+          >
+            <Avatar.Badge bg="white">
+              <CompanyUserIcon verified={verified} roles={roles} />
+            </Avatar.Badge>
+          </Avatar>
+
+          <Box ml="2">
+            <Typography.Title fontSize="md" fontWeight="semibold">
+              {firstName} {lastName}
+            </Typography.Title>
+
+            <Typography.Text fontSize="xs" color="gray.500">
+              {title ?? 'Unknown'}
+            </Typography.Text>
+          </Box>
+        </Box>
+
+        <LabelValue stripped label="Email">
+          {email}
+        </LabelValue>
+        <LabelValue label="Description">
+          {description ?? 'Description is missing'}
+        </LabelValue>
       </Section>
 
-      {companyUser.user.id && allowExcludeUser && (
-        <CompanyUserDangerZone userId={companyUser.user.id} />
-      )}
+      {userId && allowExcludeUser && <CompanyUserDangerZone userId={userId} />}
     </>
   );
 };

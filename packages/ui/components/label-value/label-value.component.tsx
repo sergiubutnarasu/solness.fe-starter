@@ -17,7 +17,7 @@ const LabelValue = ({
 
   const labelContent = useMemo(() => {
     if (typeof label === 'string') {
-      return <Typography.Text>{label}</Typography.Text>;
+      return <Typography.Text color="gray.500">{label}</Typography.Text>;
     }
 
     return label;

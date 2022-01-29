@@ -22,7 +22,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         <InputLeftElement pointerEvents="none" children={leftElement} />
       )}
 
-      <Component ref={ref} fontSize={fontSize} {...props} />
+      <Component
+        ref={ref}
+        fontSize={fontSize}
+        _focus={{ borderColor: 'gray.500' }}
+        {...props}
+      />
 
       {rightElement && (
         <InputRightElement pointerEvents="none" children={rightElement} />
