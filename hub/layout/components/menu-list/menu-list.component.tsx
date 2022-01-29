@@ -1,8 +1,8 @@
+import { Link } from '@solness/hub-core';
+import { MenuField } from '@solness/hub-core/types';
 import { Menu } from '@solness/ui';
 import { useRouter } from 'next/router';
 import { useCallback } from 'react';
-import { MenuField } from '../../types';
-import Link from '../link';
 
 type Props = {
   list: MenuField[];

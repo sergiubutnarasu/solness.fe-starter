@@ -56,13 +56,16 @@ const CompanyForm = ({ company }: Props) => {
           label="Organization name"
           maxLength={150}
         />
+
         <Form.Input
           isRequired
           name="registerNumber"
           label="Register number"
           maxLength={150}
         />
+
         <Form.Input name="slogan" label="Organization slogan" maxLength={150} />
+
         <Form.Textarea
           name="description"
           label="Description"
@@ -108,7 +111,7 @@ const CompanyForm = ({ company }: Props) => {
 
       <Stack direction="row" justifyContent="flex-end">
         <Form.CancelButton onClick={handleCancel}>Cancel</Form.CancelButton>
-        <Form.SubmitButton>Save user</Form.SubmitButton>
+        <Form.SubmitButton>Save details</Form.SubmitButton>
       </Stack>
     </Form>
   );

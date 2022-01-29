@@ -1,10 +1,9 @@
 import { ChakraProvider } from '@chakra-ui/react';
+import { ApiPath, ErrorBoundary } from '@solness/hub-core';
 import { GraphQLProvider } from '@solness/network';
 import { SecurityProvider } from '@solness/security';
 import { useRouter } from 'next/router';
 import React, { FunctionComponent, useMemo } from 'react';
-import { ApiPath } from '../../configs';
-import ErrorBoundary from '../error-boundary';
 import HubLayout from '../hub-layout';
 
 const AppLayout: FunctionComponent = ({ children }) => {

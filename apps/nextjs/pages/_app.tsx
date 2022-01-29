@@ -1,5 +1,5 @@
+import { AppLayout } from '@solness/hub-layout';
 import React from 'react';
-import { AppLayout } from '@solness/hub-core';
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: { Component: any; pageProps: any }) {

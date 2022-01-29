@@ -74,7 +74,7 @@ const InviteUserForm: FunctionComponent<Props> = ({ user }) => {
 
       <Stack direction="row" justifyContent="flex-end">
         <Form.CancelButton onClick={handleCancel}>Cancel</Form.CancelButton>
-        <Form.SubmitButton>Save user</Form.SubmitButton>
+        <Form.SubmitButton>Invite member</Form.SubmitButton>
       </Stack>
     </Form>
   );

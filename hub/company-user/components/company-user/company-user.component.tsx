@@ -43,11 +43,7 @@ const CompanyUser: FunctionComponent<Props> = ({ companyUserId }) => {
         description="Lorem ipsum dolor sit, amet consectetur!"
       >
         <Box display="flex" alignItems="center" mb="2">
-          <Avatar
-            size="md"
-            src="https://en.gravatar.com/userimage/128015720/b81c215fc33e0db0461f4974d2d2cabf.jpg?size=200"
-            mb={2}
-          >
+          <Avatar size="md" mb={2}>
             <Avatar.Badge bg="white">
               <CompanyUserIcon verified={verified} roles={roles} />
             </Avatar.Badge>

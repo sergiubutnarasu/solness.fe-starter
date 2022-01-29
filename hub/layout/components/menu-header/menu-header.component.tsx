@@ -1,3 +1,4 @@
+import { Link } from '@solness/hub-core';
 import { useSecurityContext } from '@solness/security';
 import {
   Avatar,
@@ -9,7 +10,6 @@ import {
   Tooltip,
   Typography,
 } from '@solness/ui';
-import Link from '../link';
 
 type Props = {
   firstName: string;
@@ -39,11 +39,7 @@ const MenuHeader = ({ firstName, lastName, title }: Props) => {
       </Stack>
 
       <Box mb="8" textAlign="center">
-        <Avatar
-          size="2xl"
-          src="https://en.gravatar.com/userimage/128015720/b81c215fc33e0db0461f4974d2d2cabf.jpg?size=200"
-          mb={2}
-        >
+        <Avatar size="2xl" mb={2}>
           <Avatar.Badge right="14px" bottom="14px" boxSize="1.5rem" bg="white">
             <Tooltip label="Edit profile" display="flex" alignItems="center">
               <Link href="/me" fontSize={1}>

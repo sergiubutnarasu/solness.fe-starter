@@ -1,4 +1,6 @@
 import { GetMenuContextQuery } from '@solness/generated-types';
+import { Page } from '@solness/hub-core/enums';
+import { ROUTES } from '@solness/hub-core/routes';
 import { Menu as MainMenu } from '@solness/ui';
 import React, {
   FunctionComponent,
@@ -7,8 +9,6 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { Page } from '../../enums';
-import { ROUTES } from '../../routes';
 import MenuHeader from '../menu-header';
 import MenuList from '../menu-list/menu-list.component';
 import { useGetMenuContext } from './data';

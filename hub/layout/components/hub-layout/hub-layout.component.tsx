@@ -1,3 +1,4 @@
+import { ErrorBoundary } from '@solness/hub-core';
 import { useSecurityContext } from '@solness/security';
 import { Layout } from '@solness/ui';
 import React, {
@@ -6,7 +7,6 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import ErrorBoundary from '../error-boundary';
 import Menu from '../menu';
 import Sidebar from '../sidebar';
 
