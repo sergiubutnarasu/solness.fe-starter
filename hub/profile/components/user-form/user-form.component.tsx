@@ -1,11 +1,30 @@
-import { UserInput } from '@solness/generated-types';
+import { UserFragmentFragment, UserInput } from '@solness/generated-types';
 import { Avatar, Button, Form, Stack, Tooltip } from '@solness/ui';
+import { useUpdateUser } from './data';
 
-const UserForm = () => {
-  const handleSubmit = async ({}: Partial<UserInput>) => {};
+type Props = {
+  user: UserFragmentFragment;
+};
+
+const UserForm = ({ user }: Props) => {
+  const { updateUser } = useUpdateUser({
+    onCompleted: () => {
+      alert('Success');
+    },
+    onError: (error) => alert(error.message),
+  });
+
+  const handleSubmit = async ({
+    firstName = '',
+    lastName = '',
+    title = '',
+    description = '',
+  }: Partial<UserInput>) => {
+    await updateUser({ firstName, lastName, title, description });
+  };
 
   return (
-    <Form defaultValues={{}} onSubmit={handleSubmit}>
+    <Form defaultValues={user} onSubmit={handleSubmit}>
       <Stack mb={4} direction="row" alignItems="center">
         <Avatar />
         <Tooltip

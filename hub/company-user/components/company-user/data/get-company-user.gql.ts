@@ -3,8 +3,8 @@ import {
   GetCompanyUserQuery,
   GetCompanyUserQueryVariables,
 } from '@solness/generated-types';
+import { USER_FRAGMENT } from '@solness/hub-core/data';
 import { useQuery } from '@solness/network';
-import { USER_FRAGMENT } from '../../../data';
 
 const GET_COMPANY_USER = gql`
   query GetCompanyUser($companyUserId: Float!) {

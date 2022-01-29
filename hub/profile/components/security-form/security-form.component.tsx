@@ -1,10 +1,14 @@
 import { Box, Button, LabelValue, Tooltip } from '@solness/ui';
 
-const SecurityForm = () => {
+type Props = {
+  email: string;
+};
+
+const SecurityForm = ({ email }: Props) => {
   return (
     <>
       <LabelValue stripped label="Email Address">
-        sergiu@butnarasu.ro
+        {email}
       </LabelValue>
 
       <Box mt={4}>

@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 import { GetCompanyUsersQuery } from '@solness/generated-types';
+import { USER_FRAGMENT } from '@solness/hub-core/data';
 import { useQuery } from '@solness/network';
-import { USER_FRAGMENT } from './user-fragment.gql';
 
 export const GET_COMPANY_USERS = gql`
   query GetCompanyUsers {

@@ -254,8 +254,6 @@ export type UserAction = BaseAction & {
 
 export type UserInput = {
   description?: InputMaybe<Scalars['String']>;
-  email: Scalars['String'];
-  enabled: Scalars['Boolean'];
   firstName: Scalars['String'];
   id?: InputMaybe<Scalars['Int']>;
   lastName: Scalars['String'];
@@ -368,17 +366,6 @@ export type CompanyUserFragmentFragment = {
   };
 };
 
-export type UserFragmentFragment = {
-  id?: number | null | undefined;
-  enabled: boolean;
-  firstName: string;
-  lastName: string;
-  email: string;
-  role: string;
-  title?: string | null | undefined;
-  description?: string | null | undefined;
-};
-
 export type UpdateCompanyMutationVariables = Exact<{
   model: CompanyInput;
 }>;
@@ -420,6 +407,17 @@ export type CompanyFragmentFragment = {
   website?: string | null | undefined;
 };
 
+export type UserFragmentFragment = {
+  id?: number | null | undefined;
+  enabled: boolean;
+  firstName: string;
+  lastName: string;
+  email: string;
+  role: string;
+  title?: string | null | undefined;
+  description?: string | null | undefined;
+};
+
 export type GetMenuContextQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetMenuContextQuery = {
@@ -437,6 +435,32 @@ export type GetMenuContextQuery = {
         firstName: string;
         lastName: string;
         title?: string | null | undefined;
+      }
+    | null
+    | undefined;
+};
+
+export type UpdateUserMutationVariables = Exact<{
+  model: UserInput;
+}>;
+
+export type UpdateUserMutation = {
+  updateUser: { success: boolean; messages?: Array<string> | null | undefined };
+};
+
+export type GetUserQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetUserQuery = {
+  user?:
+    | {
+        id?: number | null | undefined;
+        enabled: boolean;
+        firstName: string;
+        lastName: string;
+        email: string;
+        role: string;
+        title?: string | null | undefined;
+        description?: string | null | undefined;
       }
     | null
     | undefined;
