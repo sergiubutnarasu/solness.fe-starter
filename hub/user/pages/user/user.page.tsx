@@ -2,7 +2,7 @@ import { Page, Section } from '@solness/ui';
 import { SecurityForm, UserForm } from '../../components';
 import { useGetUser } from './data';
 
-const ProfilePage = () => {
+const UserPage = () => {
   const { user, loading } = useGetUser();
 
   if (loading) {
@@ -42,4 +42,4 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilePage;
+export default UserPage;

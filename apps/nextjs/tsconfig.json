@@ -10,7 +10,7 @@
       "@solness/hub-home": ["../../hub/home"],
       "@solness/hub-inventory": ["../../hub/inventory"],
       "@solness/hub-layout": ["../../hub/layout"],
-      "@solness/hub-profile": ["../../hub/profile"]
+      "@solness/hub-user": ["../../hub/user"]
     },
     "incremental": true
   }

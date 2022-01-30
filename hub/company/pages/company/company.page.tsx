@@ -1,6 +1,6 @@
 import { Link } from '@solness/hub-core';
 import { Button, Icon, LabelValue, Page, Section } from '@solness/ui';
-import { CompanyDetailsCard } from 'hub/company/components';
+import { CompanyDetailsCard } from '../../components';
 import { useGetCompany } from '../../data';
 
 const CompanyPage = () => {
