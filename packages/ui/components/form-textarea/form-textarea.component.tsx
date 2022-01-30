@@ -15,6 +15,7 @@ export type Props = TextareaProps & {
 const FormTextarea = ({
   name,
   isRequired,
+  minLength,
   maxLength,
   validators,
   label,
@@ -35,7 +36,7 @@ const FormTextarea = ({
       <Textarea
         {...props}
         {...register(name, {
-          ...defaultValidators({ name, isRequired, maxLength }),
+          ...defaultValidators({ name, isRequired, minLength, maxLength }),
           ...validators,
         })}
       />

@@ -31,13 +31,7 @@ const UserPage = () => {
         <UserForm user={user} />
       </Section>
 
-      <Section
-        title="Security"
-        description="Your email address represents the key to enter in this platform to
-        simplify the login process."
-      >
-        <SecurityForm email={user.email} />
-      </Section>
+      <SecurityForm email={user.email} />
     </Page>
   );
 };

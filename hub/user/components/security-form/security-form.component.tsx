@@ -1,27 +1,54 @@
-import { Box, Button, LabelValue, Tooltip } from '@solness/ui';
+import { Box, Button, LabelValue, Section, Tooltip } from '@solness/ui';
+import { useState } from 'react';
+import ChangePasswordForm from '../change-password-form';
 
 type Props = {
   email: string;
 };
 
 const SecurityForm = ({ email }: Props) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleSection = () => {
+    setIsVisible((value) => !value);
+  };
+
   return (
     <>
-      <LabelValue stripped label="Email Address">
-        {email}
-      </LabelValue>
+      <Section
+        title="Security"
+        description="Your email address represents the key to enter in this platform to
+        simplify the login process."
+      >
+        <>
+          <LabelValue stripped label="Email Address">
+            {email}
+          </LabelValue>
 
-      <Box mt={4}>
-        <Tooltip
-          label="This action will be available soon"
-          placement="top"
-          display="inline-block"
-          mr={2}
-        >
-          <Button disabled>Change email address</Button>
-        </Tooltip>
-        <Button>Change password</Button>
-      </Box>
+          <Box mt={4}>
+            <Tooltip
+              label="This action will be available soon"
+              placement="top"
+              display="inline-block"
+              mr={2}
+            >
+              <Button disabled>Change email address</Button>
+            </Tooltip>
+            {!isVisible && (
+              <Button onClick={toggleSection}>Change password</Button>
+            )}
+          </Box>
+        </>
+      </Section>
+
+      {isVisible && (
+        <Section title="Change password">
+          <ChangePasswordForm
+            onCancel={toggleSection}
+            onSuccess={toggleSection}
+          />
+        </Section>
+      )}
     </>
   );
 };

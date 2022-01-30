@@ -30,6 +30,11 @@ export type CashAction = BaseAction & {
   view: Scalars['Boolean'];
 };
 
+export type ChangePasswordInput = {
+  newPassword: Scalars['String'];
+  oldPassword: Scalars['String'];
+};
+
 export type Company = {
   description?: Maybe<Scalars['String']>;
   email: Scalars['String'];
@@ -106,6 +111,7 @@ export type InviteUserInput = {
 };
 
 export type Mutation = {
+  changePassword: SimpleResponse;
   createCompany: CompanyResponse;
   deleteCompany: CompanyResponse;
   deleteUser: UserResponse;
@@ -116,6 +122,10 @@ export type Mutation = {
   refresh: TokenResponse;
   updateCompany: CompanyResponse;
   updateUser: UserResponse;
+};
+
+export type MutationChangePasswordArgs = {
+  model: ChangePasswordInput;
 };
 
 export type MutationCreateCompanyArgs = {
@@ -438,6 +448,17 @@ export type GetMenuContextQuery = {
       }
     | null
     | undefined;
+};
+
+export type ChangePasswordMutationVariables = Exact<{
+  model: ChangePasswordInput;
+}>;
+
+export type ChangePasswordMutation = {
+  changePassword: {
+    success: boolean;
+    messages?: Array<string> | null | undefined;
+  };
 };
 
 export type UpdateUserMutationVariables = Exact<{

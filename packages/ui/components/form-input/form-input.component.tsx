@@ -16,6 +16,7 @@ const FormInput: FunctionComponent<Props> = ({
   name,
   isRequired,
   maxLength,
+  minLength,
   validators,
   label,
   hint,
@@ -35,7 +36,7 @@ const FormInput: FunctionComponent<Props> = ({
       <Input
         {...props}
         {...register(name, {
-          ...defaultValidators({ name, isRequired, maxLength }),
+          ...defaultValidators({ name, isRequired, minLength, maxLength }),
           ...validators,
         })}
       />

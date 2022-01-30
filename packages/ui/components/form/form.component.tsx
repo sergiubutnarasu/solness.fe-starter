@@ -10,6 +10,7 @@ import CancelButton from '../cancel-button';
 import FormField from '../form-field';
 import FormInput from '../form-input';
 import FormTextarea from '../form-textarea';
+import FormWatchOn from '../form-watch-on';
 import SubmitButton from '../submit-button';
 
 export interface CompoundProps {
@@ -22,6 +23,7 @@ export interface CompoundProps {
   Label: typeof FormLabel;
   SubmitButton: typeof SubmitButton;
   Textarea: typeof FormTextarea;
+  WatchOn: typeof FormWatchOn;
 }
 
 export interface Props<TFormValues> {
@@ -55,5 +57,6 @@ Form.Input = FormInput;
 Form.Label = FormLabel;
 Form.SubmitButton = SubmitButton;
 Form.Textarea = FormTextarea;
+Form.WatchOn = FormWatchOn;
 
 export default Form;
