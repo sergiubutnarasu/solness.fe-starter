@@ -112,6 +112,7 @@ export type InviteUserInput = {
 
 export type Mutation = {
   changePassword: SimpleResponse;
+  checkResetPasswordToken: SimpleResponse;
   createCompany: CompanyResponse;
   deleteCompany: CompanyResponse;
   deleteUser: UserResponse;
@@ -120,12 +121,18 @@ export type Mutation = {
   login: TokenResponse;
   logout: SimpleResponse;
   refresh: TokenResponse;
+  resetPassword: SimpleResponse;
+  sendResetPasswordEmail: SimpleResponse;
   updateCompany: CompanyResponse;
   updateUser: UserResponse;
 };
 
 export type MutationChangePasswordArgs = {
   model: ChangePasswordInput;
+};
+
+export type MutationCheckResetPasswordTokenArgs = {
+  token: Scalars['String'];
 };
 
 export type MutationCreateCompanyArgs = {
@@ -160,6 +167,15 @@ export type MutationLogoutArgs = {
 export type MutationRefreshArgs = {
   accessToken: Scalars['String'];
   refreshToken: Scalars['String'];
+};
+
+export type MutationResetPasswordArgs = {
+  newPassword: Scalars['String'];
+  token: Scalars['String'];
+};
+
+export type MutationSendResetPasswordEmailArgs = {
+  email: Scalars['String'];
 };
 
 export type MutationUpdateCompanyArgs = {
@@ -278,6 +294,40 @@ export type UserResponse = {
 
 export type Viewer = {
   permissions: Permission;
+};
+
+export type CheckResetPasswordTokenMutationVariables = Exact<{
+  token: Scalars['String'];
+}>;
+
+export type CheckResetPasswordTokenMutation = {
+  checkResetPasswordToken: {
+    success: boolean;
+    messages?: Array<string> | null | undefined;
+  };
+};
+
+export type ResetPasswordMutationVariables = Exact<{
+  token: Scalars['String'];
+  newPassword: Scalars['String'];
+}>;
+
+export type ResetPasswordMutation = {
+  resetPassword: {
+    success: boolean;
+    messages?: Array<string> | null | undefined;
+  };
+};
+
+export type SendResetPasswordEmailMutationVariables = Exact<{
+  email: Scalars['String'];
+}>;
+
+export type SendResetPasswordEmailMutation = {
+  sendResetPasswordEmail: {
+    success: boolean;
+    messages?: Array<string> | null | undefined;
+  };
 };
 
 export type GetCompanyUserQueryVariables = Exact<{

@@ -11,8 +11,10 @@ const AppLayout: FunctionComponent = ({ children }) => {
 
   const content = useMemo(() => {
     const isLoginPage = pathname === '/login';
+    const isRecoveryPage = pathname.startsWith('/recovery');
+    const isPublicPage = isLoginPage || isRecoveryPage;
 
-    if (isLoginPage) {
+    if (isPublicPage) {
       return <>{children}</>;
     }
 
