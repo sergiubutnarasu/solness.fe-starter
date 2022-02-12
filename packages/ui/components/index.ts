@@ -2,6 +2,7 @@ export { default as Alert } from './alert';
 export { default as Avatar } from './avatar';
 export { default as Box } from './box';
 export { default as Button } from './button';
+export { default as Calendar } from './calendar';
 export { default as Form } from './form';
 export { default as Grid } from './grid';
 export { default as Icon } from './icon';
@@ -21,3 +22,4 @@ export { default as Tag } from './tag';
 export { default as Textarea } from './textarea';
 export { default as Tooltip } from './tooltip';
 export { default as Typography } from './typography';
+

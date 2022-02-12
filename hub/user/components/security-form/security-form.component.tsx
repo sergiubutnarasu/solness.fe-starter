@@ -1,4 +1,4 @@
-import { Box, Button, LabelValue, Section, Tooltip } from '@solness/ui';
+import { Box, Button, LabelValue, Section } from '@solness/ui';
 import { useState } from 'react';
 import ChangePasswordForm from '../change-password-form';
 
@@ -26,14 +26,6 @@ const SecurityForm = ({ email }: Props) => {
           </LabelValue>
 
           <Box mt={4}>
-            <Tooltip
-              label="This action will be available soon"
-              placement="top"
-              display="inline-block"
-              mr={2}
-            >
-              <Button disabled>Change email address</Button>
-            </Tooltip>
             {!isVisible && (
               <Button onClick={toggleSection}>Change password</Button>
             )}
