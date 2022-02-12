@@ -1,13 +1,11 @@
 {
-  "name": "@solness/security",
+  "name": "@solness/date",
   "version": "0.0.1",
   "author": "Sergiu Butnarasu",
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "react": "17.0.2",
-    "@solness/common": "0.0.1",
-    "@solness/date": "0.0.1"
+    "dayjs": "^1.10.7"
   },
   "devDependencies": {
     "@types/react": "17.0.30",

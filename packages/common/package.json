@@ -6,7 +6,6 @@
   "private": true,
   "dependencies": {
     "localforage": "^1.9.0",
-    "moment": "^2.29.1",
     "react": "17.0.2"
   },
   "devDependencies": {
