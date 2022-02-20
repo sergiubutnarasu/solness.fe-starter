@@ -2,6 +2,7 @@ import { GetMenuContextQuery } from '@solness/generated-types';
 import { Page } from '@solness/hub-core/enums';
 import { ROUTES } from '@solness/hub-core/routes';
 import { Menu as MainMenu } from '@solness/ui';
+import { useHubContext } from 'hub/core';
 import React, {
   FunctionComponent,
   memo,
@@ -18,12 +19,18 @@ const Menu: FunctionComponent = () => {
     undefined,
   );
   const { data } = useGetMenuContext({ skip: !!context });
+  const { user, setUser } = useHubContext();
 
   useEffect(() => {
     if (data && !context) {
       setContext(data);
+
+      if (data.user) {
+        const { id, firstName, lastName, title } = data.user;
+        setUser({ id, firstName, lastName, title });
+      }
     }
-  }, [data, context, setContext]);
+  }, [data, context, setContext, setUser]);
 
   const availableRoutes = useMemo(() => {
     if (context) {
@@ -36,7 +43,7 @@ const Menu: FunctionComponent = () => {
     return [];
   }, [context]);
 
-  if (!context) {
+  if (!user || !context) {
     return <MainMenu>loading menu</MainMenu>;
   }
 
@@ -44,9 +51,9 @@ const Menu: FunctionComponent = () => {
     <MainMenu>
       {context.user && (
         <MenuHeader
-          firstName={context.user.firstName}
-          lastName={context.user.lastName}
-          title={context.user.title}
+          firstName={user.firstName}
+          lastName={user.lastName}
+          title={user.title}
         />
       )}
       <MenuList list={availableRoutes} />

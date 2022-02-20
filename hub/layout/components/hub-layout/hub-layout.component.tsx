@@ -1,4 +1,4 @@
-import { ErrorBoundary } from '@solness/hub-core';
+import { ErrorBoundary, HubProvider } from '@solness/hub-core';
 import { useSecurityContext } from '@solness/security';
 import { Layout } from '@solness/ui';
 import React, {
@@ -37,9 +37,11 @@ const HubLayout: FunctionComponent<Props> = ({ children }) => {
   }
 
   return (
-    <Layout menu={<Menu />} sidebar={<Sidebar />}>
-      <ErrorBoundary>{children}</ErrorBoundary>
-    </Layout>
+    <HubProvider>
+      <Layout menu={<Menu />} sidebar={<Sidebar />}>
+        <ErrorBoundary>{children}</ErrorBoundary>
+      </Layout>
+    </HubProvider>
   );
 };
 

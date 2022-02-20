@@ -1,4 +1,5 @@
 import { UserFragmentFragment, UserInput } from '@solness/generated-types';
+import { useHubContext } from '@solness/hub-core';
 import {
   Avatar,
   Button,
@@ -15,6 +16,8 @@ type Props = {
 
 const UserForm = ({ user }: Props) => {
   const { showSuccess, showError } = useNotification();
+  const { user: appUser, setUser } = useHubContext();
+
   const { updateUser } = useUpdateUser({
     onCompleted: () => {
       showSuccess('User data was updated.');
@@ -28,7 +31,16 @@ const UserForm = ({ user }: Props) => {
     title = '',
     description = '',
   }: Partial<UserInput>) => {
-    await updateUser({ firstName, lastName, title, description });
+    const { data } = await updateUser({
+      firstName,
+      lastName,
+      title,
+      description,
+    });
+
+    if (data?.updateUser.success) {
+      setUser({ id: appUser?.id, firstName, lastName, title });
+    }
   };
 
   return (
