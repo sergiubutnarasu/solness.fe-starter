@@ -14,6 +14,8 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  /** A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format. */
+  DateTime: any;
 };
 
 export type BaseAction = {
@@ -30,6 +32,27 @@ export type CashAction = BaseAction & {
   view: Scalars['Boolean'];
 };
 
+export type CashRegisterEntry = {
+  annexNumber?: Maybe<Scalars['String']>;
+  companyId: Scalars['Float'];
+  date: Scalars['DateTime'];
+  description: Scalars['String'];
+  docNumber: Scalars['String'];
+  enabled: Scalars['Boolean'];
+  id?: Maybe<Scalars['Int']>;
+  value: Scalars['Int'];
+};
+
+export type CashRegisterEntryInput = {
+  annexNumber?: InputMaybe<Scalars['String']>;
+  companyId?: InputMaybe<Scalars['Float']>;
+  date: Scalars['DateTime'];
+  description: Scalars['String'];
+  docNumber: Scalars['String'];
+  id?: InputMaybe<Scalars['Int']>;
+  value: Scalars['Int'];
+};
+
 export type ChangePasswordInput = {
   newPassword: Scalars['String'];
   oldPassword: Scalars['String'];
@@ -40,6 +63,8 @@ export type Company = {
   email: Scalars['String'];
   enabled: Scalars['Boolean'];
   id?: Maybe<Scalars['Int']>;
+  initialCashValue?: Maybe<Scalars['String']>;
+  initialIndex?: Maybe<Scalars['Int']>;
   name: Scalars['String'];
   phone: Scalars['String'];
   registerNumber: Scalars['String'];
@@ -69,7 +94,6 @@ export type CompanyInput = {
   phone: Scalars['String'];
   registerNumber: Scalars['String'];
   slogan?: InputMaybe<Scalars['String']>;
-  users?: InputMaybe<Array<CompanyUserInput>>;
   website?: InputMaybe<Scalars['String']>;
 };
 
@@ -89,14 +113,6 @@ export type CompanyUser = {
   verified: Scalars['Boolean'];
 };
 
-export type CompanyUserInput = {
-  companyId: Scalars['Float'];
-  enabled: Scalars['Boolean'];
-  id?: InputMaybe<Scalars['Int']>;
-  roles: Array<Scalars['String']>;
-  userId: Scalars['Float'];
-};
-
 export type InventoryAction = BaseAction & {
   create: Scalars['Boolean'];
   delete: Scalars['Boolean'];
@@ -114,6 +130,8 @@ export type Mutation = {
   changePassword: SimpleResponse;
   checkResetPasswordToken: SimpleResponse;
   createCompany: CompanyResponse;
+  deleteCashRegister: SimpleResponse;
+  deleteCashRegisterEntries: SimpleResponse;
   deleteCompany: CompanyResponse;
   deleteUser: UserResponse;
   excludeUser: SimpleResponse;
@@ -122,6 +140,7 @@ export type Mutation = {
   logout: SimpleResponse;
   refresh: TokenResponse;
   resetPassword: SimpleResponse;
+  saveCashRegister: SimpleResponse;
   sendResetPasswordEmail: SimpleResponse;
   updateCompany: CompanyResponse;
   updateUser: UserResponse;
@@ -137,6 +156,14 @@ export type MutationCheckResetPasswordTokenArgs = {
 
 export type MutationCreateCompanyArgs = {
   model: CompanyInput;
+};
+
+export type MutationDeleteCashRegisterArgs = {
+  date: Scalars['DateTime'];
+};
+
+export type MutationDeleteCashRegisterEntriesArgs = {
+  ids: Array<Scalars['Int']>;
 };
 
 export type MutationDeleteCompanyArgs = {
@@ -172,6 +199,10 @@ export type MutationRefreshArgs = {
 export type MutationResetPasswordArgs = {
   newPassword: Scalars['String'];
   token: Scalars['String'];
+};
+
+export type MutationSaveCashRegisterArgs = {
+  entities: Array<CashRegisterEntryInput>;
 };
 
 export type MutationSendResetPasswordEmailArgs = {
@@ -214,12 +245,18 @@ export type Permission = {
 };
 
 export type Query = {
+  cashRegisterEntries: Array<CashRegisterEntry>;
+  cashRegisters: Array<Scalars['String']>;
   companies: PaginatedCompanyResponse;
   company?: Maybe<Company>;
   companyUser?: Maybe<CompanyUser>;
   user?: Maybe<User>;
   users: PaginatedUserResponse;
   viewer: Viewer;
+};
+
+export type QueryCashRegisterEntriesArgs = {
+  date: Scalars['DateTime'];
 };
 
 export type QueryCompaniesArgs = {
@@ -561,12 +598,12 @@ export type LogoutMutation = {
   logout: { success: boolean; messages?: Array<string> | null | undefined };
 };
 
-export type RefreshMutationVariables = Exact<{
+export type RefreshTokenMutationVariables = Exact<{
   refreshToken: Scalars['String'];
   accessToken: Scalars['String'];
 }>;
 
-export type RefreshMutation = {
+export type RefreshTokenMutation = {
   refresh: {
     success: boolean;
     messages?: Array<string> | null | undefined;

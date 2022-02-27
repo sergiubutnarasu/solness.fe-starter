@@ -1,5 +1,4 @@
 import { useStorage } from '@solness/common';
-import { addSeconds, isAfter } from '@solness/date';
 import { useCallback } from 'react';
 import { ACCESS_STORAGE_KEY } from '../config';
 import { SessionType } from '../types';
@@ -15,8 +14,6 @@ const useSession = () => {
 
   const setSession = useCallback(
     async (session: SessionType) => {
-      const date = addSeconds(session.expiresIn);
-      session.expireDate = date;
       return await set(session);
     },
     [set],
@@ -24,21 +21,10 @@ const useSession = () => {
 
   const removeSession = useCallback(async () => await clear(), [clear]);
 
-  const isSessionExpired = useCallback(async () => {
-    const session = await get<SessionType>();
-
-    if (!session?.expireDate) {
-      return true;
-    }
-
-    return isAfter(session.expireDate);
-  }, [get]);
-
   return {
     getSession,
     setSession,
     removeSession,
-    isSessionExpired,
   };
 };
 

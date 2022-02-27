@@ -4,21 +4,14 @@ import { SecurityContextProps } from '../types';
 import SecurityContext from './security.context';
 
 const SecurityProvider: FunctionComponent = ({ children }) => {
-  const {
-    login,
-    logout,
-    refreshToken,
-    getSession,
-    checkToken,
-    setAuthHandler,
-  } = useSecurity();
+  const { login, logout, refreshToken, getSession, setAuthHandler } =
+    useSecurity();
 
   const value: SecurityContextProps = {
     login,
     logout,
     refreshToken,
     getSession,
-    checkToken,
     setAuthHandler,
   };
 

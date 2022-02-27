@@ -20,10 +20,10 @@ const GraphQLProvider: FunctionComponent<Props> = ({
   children,
   schemaPath,
 }) => {
-  const { getSession, checkToken, setAuthHandler } = useSecurityContext();
+  const { getSession, setAuthHandler } = useSecurityContext();
   const { handleErrors } = useErrorHandler();
 
-  const authLink = createGraphQLAuthLink({ getSession, checkToken });
+  const authLink = createGraphQLAuthLink({ getSession });
   const httpLink = createGraphQLHttpLink(schemaPath);
   const errorLink = createGraphQLErrorLink(handleErrors);
   const cache = createGraphQLCache();

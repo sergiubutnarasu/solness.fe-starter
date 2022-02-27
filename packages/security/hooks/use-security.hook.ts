@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react';
+import { isRefreshTokenResponseValid } from '../helpers';
 import { AuthHandler, SecurityContextProps, SessionType } from '../types';
 import useSession from './use-session.hook';
 
@@ -6,8 +7,7 @@ const useSecurity = (): SecurityContextProps => {
   const [authHandler, setAuthHandler] = useState<AuthHandler | undefined>(
     undefined,
   );
-  const { getSession, setSession, removeSession, isSessionExpired } =
-    useSession();
+  const { getSession, setSession, removeSession } = useSession();
 
   const login = useCallback(
     async (username: string, password: string) => {
@@ -52,9 +52,7 @@ const useSecurity = (): SecurityContextProps => {
         session.accessToken,
       );
 
-      const isWithSuccess = result?.data?.refresh?.success;
-      const hasData = result?.data?.refresh?.data;
-      const isValid = Boolean(isWithSuccess && hasData);
+      const isValid = isRefreshTokenResponseValid(result);
 
       if (isValid) {
         await setSession(result.data.refresh.data as SessionType);
@@ -64,18 +62,11 @@ const useSecurity = (): SecurityContextProps => {
     return result?.data?.refresh?.data as SessionType;
   }, [authHandler, getSession, setSession]);
 
-  const checkToken = useCallback(async () => {
-    if (await isSessionExpired()) {
-      await refreshToken();
-    }
-  }, [isSessionExpired, refreshToken]);
-
   return {
     login,
     logout,
     refreshToken,
     getSession,
-    checkToken,
     setAuthHandler,
   };
 };

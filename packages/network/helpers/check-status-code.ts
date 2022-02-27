@@ -6,9 +6,7 @@ export const checkStatusCode = (
   statusCode: NetworkStatusCode,
 ) =>
   errors.some(
-    ({
-      extensions: {
-        exception: { status },
-      },
-    }) => status === statusCode,
+    (error) =>
+      error?.extensions?.exception?.status === statusCode ||
+      error?.extensions?.response?.statusCode === statusCode,
   );

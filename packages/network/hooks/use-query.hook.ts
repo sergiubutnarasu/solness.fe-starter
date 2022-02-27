@@ -6,6 +6,9 @@ import {
   QueryResult,
   TypedDocumentNode,
 } from '@apollo/client';
+import { useMemo } from 'react';
+import { NetworkStatusCode } from '../config';
+import { checkStatusCode } from '../helpers';
 
 export const useQuery = <TData = any, TVariables = OperationVariables>(
   query: DocumentNode | TypedDocumentNode<TData, TVariables>,
@@ -16,7 +19,14 @@ export const useQuery = <TData = any, TVariables = OperationVariables>(
     options,
   );
 
-  if (!data && error) {
+  const hasUnauthorizedError = useMemo(
+    () =>
+      error?.graphQLErrors &&
+      checkStatusCode(error.graphQLErrors, NetworkStatusCode.UNAUTHORIZED),
+    [error],
+  );
+
+  if (!data && error && !hasUnauthorizedError) {
     throw error;
   }
 

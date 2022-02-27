@@ -10,7 +10,6 @@ export type SecurityContextProps = {
   logout: () => Promise<void>;
   refreshToken: () => Promise<SessionType>;
   getSession: () => Promise<SessionType | undefined>;
-  checkToken: () => Promise<void>;
   setAuthHandler: (auth: AuthHandler) => void;
 };
 

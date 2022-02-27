@@ -14,9 +14,6 @@ const SecurityContext = createContext<SecurityContextProps>({
   getSession: () => {
     throw new Error('getSession is not implemented');
   },
-  checkToken: () => {
-    throw new Error('checkToken is not implemented');
-  },
   setAuthHandler: () => {
     throw new Error('setAuthHandler is not implemented');
   },
