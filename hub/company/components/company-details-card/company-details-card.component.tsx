@@ -1,9 +1,9 @@
 import { CompanyFragmentFragment } from '@solness/generated-types';
 import { Box, Tag, Typography } from '@solness/ui';
 
-type Props = {
+interface Props {
   company: CompanyFragmentFragment;
-};
+}
 
 const CompanyDetailsCard = ({
   company: { name, registerNumber, slogan, description },

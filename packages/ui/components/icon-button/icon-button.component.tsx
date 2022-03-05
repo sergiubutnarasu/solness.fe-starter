@@ -3,10 +3,10 @@ import React, { FunctionComponent } from 'react';
 import { IconType } from '../../types';
 import Icon from '../icon';
 
-export type Props = Omit<IconButtonProps, 'icon'> & {
+export interface Props extends Omit<IconButtonProps, 'icon'> {
   icon: IconType;
   iconSize?: number;
-};
+}
 
 const IconButton: FunctionComponent<Props> = ({
   icon,

@@ -3,7 +3,9 @@ import { Button, Form, Stack, Typography, useNotification } from '@solness/ui';
 import { useRouter } from 'next/router';
 import { useResetPassword } from './data';
 
-type Props = { token: string };
+interface Props {
+  token: string;
+}
 
 const ResetPasswordForm = ({ token }: Props) => {
   const { push } = useRouter();

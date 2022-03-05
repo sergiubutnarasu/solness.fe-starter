@@ -4,13 +4,13 @@ import { RegisterOptions, useFormContext } from 'react-hook-form';
 import FormField from '../form-field';
 import Textarea, { Props as TextareaProps } from '../textarea';
 
-export type Props = TextareaProps & {
+export interface Props extends TextareaProps {
   name: string;
   validators?: Partial<RegisterOptions>;
   label?: ReactNode;
   hint?: ReactNode;
   maxLength?: number;
-};
+}
 
 const FormTextarea = ({
   name,

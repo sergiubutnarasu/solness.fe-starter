@@ -7,7 +7,7 @@ type CompoundProps = {
   Item: typeof GridItem;
 };
 
-export type Props = SimpleGridProps;
+export interface Props extends SimpleGridProps {}
 
 const Grid: FunctionComponent<Props> & CompoundProps = ({
   columns = 12,

@@ -7,10 +7,10 @@ import {
 } from '@chakra-ui/input';
 import React, { forwardRef, ReactNode } from 'react';
 
-export type Props = Omit<InputProps, 'left' | 'right'> & {
+export interface Props extends Omit<InputProps, 'left' | 'right'> {
   leftElement?: ReactNode;
   rightElement?: ReactNode;
-};
+}
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (

@@ -5,9 +5,9 @@ import AuthLayout from '../auth-layout';
 import ResetPasswordForm from '../reset-password-form';
 import { useCheckResetPasswordToken } from './data';
 
-type Props = {
+interface Props {
   token: string;
-};
+}
 
 const CheckResetPasswordToken = ({ token }: Props) => {
   const { showError } = useNotification();
@@ -45,8 +45,12 @@ const CheckResetPasswordToken = ({ token }: Props) => {
     return <ResetPasswordForm token={token} />;
   }, [data]);
 
-  if (!data && loading) {
+  if (loading) {
     return <>loading reset</>;
+  }
+
+  if (!data) {
+    return null;
   }
 
   return <AuthLayout title="Reset your password">{content}</AuthLayout>;

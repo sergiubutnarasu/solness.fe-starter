@@ -1,9 +1,9 @@
-type Props = {
+interface Props {
   name: string;
   isRequired?: boolean;
   minLength?: number;
   maxLength?: number;
-};
+}
 
 export const defaultValidators = ({
   name,

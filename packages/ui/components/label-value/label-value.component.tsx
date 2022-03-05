@@ -2,10 +2,10 @@ import { PropsWithChildren, ReactNode, useMemo } from 'react';
 import Grid, { Props as GridProps } from '../grid';
 import Typography from '../typography';
 
-type Props = GridProps & {
+interface Props extends GridProps {
   label: ReactNode;
   stripped?: boolean;
-};
+}
 
 const LabelValue = ({
   children,

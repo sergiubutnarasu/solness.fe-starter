@@ -3,11 +3,11 @@ import { Box, ColorType } from '@solness/ui';
 import NextLink from 'next/link';
 import React, { FunctionComponent } from 'react';
 
-export type Props = BoxProps & {
+export interface Props extends BoxProps {
   href: string;
   as?: 'div' | 'span' | 'a';
   color?: ColorType;
-};
+}
 
 const Link: FunctionComponent<Props> = ({
   as = 'a',

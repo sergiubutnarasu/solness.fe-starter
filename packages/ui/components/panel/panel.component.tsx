@@ -5,14 +5,14 @@ import Skeleton from '../skeleton';
 import Stack from '../stack';
 import Typography from '../typography';
 
-export type Props = BoxProps & {
+export interface Props extends Omit<BoxProps, 'title'> {
   children: ReactNode;
   title: ReactNode;
   titleColor?: ColorType;
   actions?: ReactNode;
   description?: ReactNode;
   loading?: boolean;
-};
+}
 
 const Panel: FunctionComponent<Props> = ({
   title,

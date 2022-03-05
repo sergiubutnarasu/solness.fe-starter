@@ -1,9 +1,9 @@
 import { Icon, Tooltip } from '@solness/ui';
 
-type Props = {
+interface Props {
   verified: boolean;
   roles: string[];
-};
+}
 
 const CompanyUserIcon = ({ verified, roles }: Props) => {
   if (roles.some((role) => role === 'Owner')) {

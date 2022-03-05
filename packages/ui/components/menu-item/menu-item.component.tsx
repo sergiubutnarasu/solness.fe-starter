@@ -3,11 +3,11 @@ import { ColorType, IconType } from '../../types';
 import Button from '../button';
 import Icon from '../icon';
 
-type Props = {
+interface Props {
   isActive?: boolean;
   icon?: IconType;
   iconColor?: ColorType;
-};
+}
 
 const MenuItem: FunctionComponent<Props> = ({
   children,

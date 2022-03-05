@@ -2,9 +2,9 @@ import { NetworkStatusCode } from '@solness/network/config';
 import { Alert, Box } from '@solness/ui';
 import { ErrorTitleMapping } from './config';
 
-type Props = {
+interface Props {
   code?: NetworkStatusCode;
-};
+}
 
 const Error = ({ code }: Props) => {
   const title = code ? ErrorTitleMapping[code] : 'Oops! Something went wrong!';

@@ -4,9 +4,9 @@ import { Menu } from '@solness/ui';
 import { useRouter } from 'next/router';
 import { useCallback } from 'react';
 
-type Props = {
+interface Props {
   list: MenuField[];
-};
+}
 
 const MenuList = ({ list }: Props) => {
   const { asPath } = useRouter();

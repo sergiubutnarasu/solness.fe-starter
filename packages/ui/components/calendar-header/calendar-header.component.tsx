@@ -3,11 +3,11 @@ import Button from '../button';
 import Grid from '../grid';
 import Typography from '../typography';
 
-type Props = {
+interface Props {
   value: Date;
   onPreviousClick: () => void;
   onNextClick: () => void;
-};
+}
 
 const CalendarHeader = ({ value, onPreviousClick, onNextClick }: Props) => {
   const month = MONTHS[value.getMonth()];

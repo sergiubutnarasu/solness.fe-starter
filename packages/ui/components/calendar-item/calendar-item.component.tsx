@@ -2,13 +2,13 @@ import { ReactNode } from 'react';
 import Button from '../button';
 import Grid from '../grid';
 
-type Props = {
+interface Props {
   day: number;
   isSelected?: boolean;
   isToday?: boolean;
   notCurrentMonth?: boolean;
   onSelect?: (day: number) => void;
-};
+}
 
 const CalendarItem = ({
   day,

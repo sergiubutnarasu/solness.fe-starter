@@ -40,7 +40,14 @@ export type CashRegisterEntry = {
   docNumber: Scalars['String'];
   enabled: Scalars['Boolean'];
   id?: Maybe<Scalars['Int']>;
-  value: Scalars['Int'];
+  value: Scalars['Float'];
+};
+
+export type CashRegisterEntryDetails = {
+  companyCashDetails: CompanyCashDetails;
+  entries: Array<CashRegisterEntry>;
+  previousEntriesCount: Scalars['Float'];
+  previousTotalValue: Scalars['Float'];
 };
 
 export type CashRegisterEntryInput = {
@@ -50,7 +57,7 @@ export type CashRegisterEntryInput = {
   description: Scalars['String'];
   docNumber: Scalars['String'];
   id?: InputMaybe<Scalars['Int']>;
-  value: Scalars['Int'];
+  value: Scalars['Float'];
 };
 
 export type ChangePasswordInput = {
@@ -63,8 +70,8 @@ export type Company = {
   email: Scalars['String'];
   enabled: Scalars['Boolean'];
   id?: Maybe<Scalars['Int']>;
+  initialCashIndex?: Maybe<Scalars['Int']>;
   initialCashValue?: Maybe<Scalars['String']>;
-  initialIndex?: Maybe<Scalars['Int']>;
   name: Scalars['String'];
   phone: Scalars['String'];
   registerNumber: Scalars['String'];
@@ -84,6 +91,11 @@ export type CompanyAction = BaseAction & {
   inviteUser: Scalars['Boolean'];
   update: Scalars['Boolean'];
   view: Scalars['Boolean'];
+};
+
+export type CompanyCashDetails = {
+  initialCashIndex?: Maybe<Scalars['Float']>;
+  initialCashValue?: Maybe<Scalars['Float']>;
 };
 
 export type CompanyInput = {
@@ -245,7 +257,7 @@ export type Permission = {
 };
 
 export type Query = {
-  cashRegisterEntries: Array<CashRegisterEntry>;
+  cashRegisterEntries: CashRegisterEntryDetails;
   cashRegisters: Array<Scalars['String']>;
   companies: PaginatedCompanyResponse;
   company?: Maybe<Company>;
@@ -263,16 +275,8 @@ export type QueryCompaniesArgs = {
   request?: InputMaybe<PageListInput>;
 };
 
-export type QueryCompanyArgs = {
-  id?: InputMaybe<Scalars['Float']>;
-};
-
 export type QueryCompanyUserArgs = {
   id: Scalars['Float'];
-};
-
-export type QueryUserArgs = {
-  id?: InputMaybe<Scalars['Float']>;
 };
 
 export type QueryUsersArgs = {
@@ -365,6 +369,13 @@ export type SendResetPasswordEmailMutation = {
     success: boolean;
     messages?: Array<string> | null | undefined;
   };
+};
+
+export type GetCashRegistersQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetCashRegistersQuery = {
+  cashRegisters: Array<string>;
+  viewer: { permissions: { cash: { create: boolean } } };
 };
 
 export type GetCompanyUserQueryVariables = Exact<{

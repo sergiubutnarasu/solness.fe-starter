@@ -1,7 +1,7 @@
 import { Textarea as Component, TextareaProps } from '@chakra-ui/react';
 import React, { forwardRef } from 'react';
 
-export type Props = TextareaProps;
+export interface Props extends TextareaProps {}
 
 const Textarea = forwardRef<HTMLTextAreaElement, Props>(
   ({ fontSize = 'sm', ...props }: Props, ref) => (

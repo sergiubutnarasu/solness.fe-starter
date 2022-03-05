@@ -1,7 +1,7 @@
 import { Box as Component, BoxProps } from '@chakra-ui/react';
 import React, { forwardRef } from 'react';
 
-export type Props = BoxProps;
+export interface Props extends BoxProps {}
 
 const Box = forwardRef<HTMLDivElement, Props>(
   ({ children, bg = 'white', ...props }, ref) => (

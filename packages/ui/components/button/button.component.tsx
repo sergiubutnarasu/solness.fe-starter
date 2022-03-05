@@ -6,7 +6,7 @@ type CompoundProps = {
   Icon: typeof IconButton;
 };
 
-export type Props = ButtonProps;
+export interface Props extends ButtonProps {}
 
 const Button: FunctionComponent<Props> & CompoundProps = ({
   fontSize = 'sm',

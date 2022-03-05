@@ -6,13 +6,13 @@ import {
   useWatch,
 } from 'react-hook-form';
 
-type Props = {
+interface Props {
   name: string[];
   children: (
     data: string[],
     options: UseFormReturn<FieldValues, object>,
   ) => ReactNode | void;
-};
+}
 
 const FormWatchOn = ({ name, children }: Props) => {
   const context = useFormContext();

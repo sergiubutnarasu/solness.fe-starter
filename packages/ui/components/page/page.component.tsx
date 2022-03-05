@@ -4,13 +4,13 @@ import Skeleton from '../skeleton';
 import Stack from '../stack';
 import Typography from '../typography';
 
-export type Props = BoxProps & {
+export interface Props extends Omit<BoxProps, 'title'> {
   children: ReactNode;
   title: ReactNode;
   actions?: ReactNode;
   description?: ReactNode;
   loading?: boolean;
-};
+}
 
 const Page: FunctionComponent<Props> = ({
   title,

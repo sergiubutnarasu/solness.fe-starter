@@ -7,9 +7,9 @@ import { Form, Icon, Section, Stack, useNotification } from '@solness/ui';
 import { useRouter } from 'next/router';
 import { useUpdateCompany } from './data';
 
-type Props = {
+interface Props {
   company: CompanyFragmentFragment;
-};
+}
 
 const CompanyForm = ({ company }: Props) => {
   const { push } = useRouter();

@@ -4,10 +4,10 @@ import CalendarBody from '../calendar-body';
 import CalendarHeader from '../calendar-header';
 import CalendarSubheader from '../calendar-subheader';
 
-type Props = {
+interface Props {
   value?: Date;
   onSelect?: (date: Date) => void;
-};
+}
 
 const Calendar = ({ value, onSelect }: Props) => {
   const today = useRef(new Date());

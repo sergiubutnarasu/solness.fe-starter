@@ -2,9 +2,9 @@ import { ReactNode, useState } from 'react';
 import { AppUser } from '../types';
 import HubContext from './hub.context';
 
-type Props = {
+interface Props {
   children: ReactNode;
-};
+}
 
 const HubProvider = ({ children }: Props) => {
   const [user, setUser] = useState<AppUser>();

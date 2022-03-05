@@ -2,9 +2,9 @@ import { Box, Button, LabelValue, Section } from '@solness/ui';
 import { useState } from 'react';
 import ChangePasswordForm from '../change-password-form';
 
-type Props = {
+interface Props {
   email: string;
-};
+}
 
 const SecurityForm = ({ email }: Props) => {
   const [isVisible, setIsVisible] = useState(false);

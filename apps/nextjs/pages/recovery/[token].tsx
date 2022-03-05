@@ -6,9 +6,9 @@ const DynamicPage = dynamic(() => import('@solness/hub-auth/pages/recovery'), {
   loading: () => <p>loading tada</p>,
 });
 
-type Props = {
+interface Props {
   token?: string;
-};
+}
 
 const Page = ({ token }: Props) => <DynamicPage token={token} />;
 

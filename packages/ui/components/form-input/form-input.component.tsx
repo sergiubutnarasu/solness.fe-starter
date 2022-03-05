@@ -4,13 +4,13 @@ import { RegisterOptions, useFormContext } from 'react-hook-form';
 import FormField from '../form-field';
 import Input, { Props as InputProps } from '../input';
 
-export type Props = InputProps & {
+export interface Props extends InputProps {
   name: string;
   validators?: Partial<RegisterOptions>;
   label?: ReactNode;
   hint?: ReactNode;
   maxLength?: number;
-};
+}
 
 const FormInput: FunctionComponent<Props> = ({
   name,

@@ -5,9 +5,9 @@ import {
   SendResetPasswordForm,
 } from '../../components';
 
-type Props = {
+interface Props {
   token?: string;
-};
+}
 
 const RecoveryPage = ({ token }: Props) => {
   const content = useMemo(() => {

@@ -11,11 +11,11 @@ import {
   Typography,
 } from '@solness/ui';
 
-type Props = {
+interface Props {
   firstName: string;
   lastName: string;
   title?: string | null;
-};
+}
 
 const MenuHeader = ({ firstName, lastName, title }: Props) => {
   const { logout } = useSecurityContext();

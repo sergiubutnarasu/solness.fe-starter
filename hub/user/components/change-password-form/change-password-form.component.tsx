@@ -1,10 +1,10 @@
 import { Form, Stack, Typography, useNotification } from '@solness/ui';
 import { useChangePassword } from './data';
 
-type Props = {
+interface Props {
   onCancel: () => void;
   onSuccess: () => void;
-};
+}
 
 const ChangePasswordForm = ({ onCancel, onSuccess }: Props) => {
   const { showSuccess, showError } = useNotification();

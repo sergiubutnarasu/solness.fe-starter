@@ -3,11 +3,11 @@ import CalendarItem from '../calendar-item';
 import Grid from '../grid';
 import { useGetViewerDates } from './hooks';
 
-type Props = {
+interface Props {
   value: Date;
   viewerDate: Date;
   onSelect: (date: Date) => void;
-};
+}
 
 const CalendarBody = ({ value, viewerDate, onSelect }: Props) => {
   const { previousDays, currentDays, nextDays } = useGetViewerDates(viewerDate);

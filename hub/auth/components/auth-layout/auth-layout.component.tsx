@@ -1,9 +1,9 @@
 import { Box, Typography } from '@solness/ui';
 import { PropsWithChildren, ReactNode } from 'react';
 
-type Props = {
+interface Props {
   title: string;
-};
+}
 
 const AuthLayout = ({ title, children }: PropsWithChildren<Props>) => (
   <Box

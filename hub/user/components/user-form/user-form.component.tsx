@@ -10,9 +10,9 @@ import {
 } from '@solness/ui';
 import { useUpdateUser } from './data';
 
-type Props = {
+interface Props {
   user: UserFragmentFragment;
-};
+}
 
 const UserForm = ({ user }: Props) => {
   const { showSuccess, showError } = useNotification();
