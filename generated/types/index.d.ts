@@ -262,6 +262,7 @@ export type Query = {
   companies: PaginatedCompanyResponse;
   company?: Maybe<Company>;
   companyUser?: Maybe<CompanyUser>;
+  lastEntryDate?: Maybe<Scalars['DateTime']>;
   user?: Maybe<User>;
   users: PaginatedUserResponse;
   viewer: Viewer;
@@ -374,6 +375,7 @@ export type SendResetPasswordEmailMutation = {
 export type GetCashRegistersQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetCashRegistersQuery = {
+  lastEntryDate?: any | null | undefined;
   cashRegisters: Array<string>;
   viewer: { permissions: { cash: { create: boolean } } };
 };

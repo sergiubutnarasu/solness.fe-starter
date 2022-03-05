@@ -1,4 +1,4 @@
-import dayjs from 'dayjs';
+import { add } from './add.helper';
 
 export const addMonths = (value: Date, months: number) =>
-  dayjs(value).add(months, 'month').toDate();
+  add(value, months, 'month');

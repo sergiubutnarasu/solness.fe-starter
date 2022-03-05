@@ -7,6 +7,7 @@ export interface Props extends BoxProps {
   href: string;
   as?: 'div' | 'span' | 'a';
   color?: ColorType;
+  passHref?: boolean;
 }
 
 const Link: FunctionComponent<Props> = ({
@@ -14,9 +15,10 @@ const Link: FunctionComponent<Props> = ({
   children,
   href,
   color,
+  passHref = true,
   ...props
 }) => (
-  <NextLink href={href}>
+  <NextLink passHref={passHref} href={href}>
     <Box
       background="transparent"
       cursor="pointer"

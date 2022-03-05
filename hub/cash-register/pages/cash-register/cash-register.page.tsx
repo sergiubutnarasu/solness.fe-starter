@@ -22,7 +22,13 @@ const CashRegisterPage = () => {
     <Page
       title="Cash Register"
       description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, laborum?"
-      actions={<>{hasCreatePermissions && <CashRegisterActions />}</>}
+      actions={
+        <>
+          {hasCreatePermissions && (
+            <CashRegisterActions lastEntryDate={data?.lastEntryDate} />
+          )}
+        </>
+      }
     >
       <Box width="20%">
         <Calendar />

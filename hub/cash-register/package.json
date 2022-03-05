@@ -5,7 +5,9 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "@solness/date": "0.0.1",
     "@solness/generated-types": "0.0.1",
+    "@solness/hub-core": "0.0.1",
     "@solness/network": "0.0.1",
     "@solness/ui": "0.0.1",
     "react": "17.0.2"

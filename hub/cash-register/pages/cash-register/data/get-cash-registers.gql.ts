@@ -12,6 +12,7 @@ export const GET_CASH_REGISTERS = gql`
       }
     }
 
+    lastEntryDate
     cashRegisters
   }
 `;
