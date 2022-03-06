@@ -51,7 +51,6 @@ export type CashRegisterEntryDetails = {
 
 export type CashRegisterEntryInput = {
   annexNumber?: InputMaybe<Scalars['String']>;
-  companyId?: InputMaybe<Scalars['Float']>;
   date: Scalars['DateTime'];
   description: Scalars['String'];
   docNumber: Scalars['String'];
@@ -411,6 +410,25 @@ export type GetCompanyCashDetailsQuery = {
       }
     | null
     | undefined;
+};
+
+export type GetCashRegisterEntriesQueryVariables = Exact<{
+  date: Scalars['DateTime'];
+}>;
+
+export type GetCashRegisterEntriesQuery = {
+  cashRegisterEntries: {
+    previousTotalValue: number;
+    previousEntriesCount: number;
+    entries: Array<{
+      id?: number | null | undefined;
+      date: any;
+      docNumber: string;
+      annexNumber?: string | null | undefined;
+      description: string;
+      value: number;
+    }>;
+  };
 };
 
 export type GetCashRegistersQueryVariables = Exact<{ [key: string]: never }>;

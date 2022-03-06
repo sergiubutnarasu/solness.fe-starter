@@ -8,3 +8,4 @@ export * from './is-after.helper';
 export * from './is-same';
 export * from './is-today.helper';
 export * from './last-day-of-month-in-the-week.helper';
+export * from './is-valid-date.helper';
