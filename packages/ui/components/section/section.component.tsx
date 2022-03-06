@@ -14,6 +14,8 @@ export interface Props extends Omit<BoxProps, 'title'> {
   description?: ReactNode;
   loading?: boolean;
   direction?: 'row' | 'column';
+  leftColSpan?: number;
+  rightColSpan?: number;
 }
 
 const Section: FunctionComponent<Props> = ({
@@ -26,10 +28,12 @@ const Section: FunctionComponent<Props> = ({
   marginBottom = 8,
   loading,
   direction = 'column',
+  leftColSpan = 5,
+  rightColSpan = 7,
   ...props
 }) => {
-  const leftColSpan = direction === 'row' ? 12 : 5;
-  const rightColSpan = direction === 'row' ? 12 : 7;
+  const calculatedLeftColSpan = direction === 'row' ? 12 : leftColSpan;
+  const calculatedRightColSpan = direction === 'row' ? 12 : rightColSpan;
 
   return (
     <Grid
@@ -41,7 +45,7 @@ const Section: FunctionComponent<Props> = ({
       {...props}
       _last={{ mb: 0, borderBottomWidth: 0, pb: 0 }}
     >
-      <Grid.Item colSpan={leftColSpan}>
+      <Grid.Item colSpan={calculatedLeftColSpan}>
         <Stack
           direction="row"
           alignItems="center"
@@ -70,7 +74,7 @@ const Section: FunctionComponent<Props> = ({
         )}
       </Grid.Item>
 
-      <Grid.Item colSpan={rightColSpan}>
+      <Grid.Item colSpan={calculatedRightColSpan}>
         <Skeleton.Text isLoaded={!loading} noOfLines={5}>
           {children}
         </Skeleton.Text>

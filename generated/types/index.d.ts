@@ -44,7 +44,6 @@ export type CashRegisterEntry = {
 };
 
 export type CashRegisterEntryDetails = {
-  companyCashDetails: CompanyCashDetails;
   entries: Array<CashRegisterEntry>;
   previousEntriesCount: Scalars['Float'];
   previousTotalValue: Scalars['Float'];
@@ -66,6 +65,7 @@ export type ChangePasswordInput = {
 };
 
 export type Company = {
+  cashDetails?: Maybe<CompanyCashDetails>;
   description?: Maybe<Scalars['String']>;
   email: Scalars['String'];
   enabled: Scalars['Boolean'];
@@ -94,8 +94,13 @@ export type CompanyAction = BaseAction & {
 };
 
 export type CompanyCashDetails = {
-  initialCashIndex?: Maybe<Scalars['Float']>;
+  initialCashIndex?: Maybe<Scalars['Int']>;
   initialCashValue?: Maybe<Scalars['Float']>;
+};
+
+export type CompanyCashDetailsInput = {
+  initialCashIndex?: InputMaybe<Scalars['Int']>;
+  initialCashValue?: InputMaybe<Scalars['Float']>;
 };
 
 export type CompanyInput = {
@@ -155,6 +160,7 @@ export type Mutation = {
   saveCashRegister: SimpleResponse;
   sendResetPasswordEmail: SimpleResponse;
   updateCompany: CompanyResponse;
+  updateCompanyCashDetails: SimpleResponse;
   updateUser: UserResponse;
 };
 
@@ -223,6 +229,10 @@ export type MutationSendResetPasswordEmailArgs = {
 
 export type MutationUpdateCompanyArgs = {
   model: CompanyInput;
+};
+
+export type MutationUpdateCompanyCashDetailsArgs = {
+  model: CompanyCashDetailsInput;
 };
 
 export type MutationUpdateUserArgs = {
@@ -370,6 +380,37 @@ export type SendResetPasswordEmailMutation = {
     success: boolean;
     messages?: Array<string> | null | undefined;
   };
+};
+
+export type UpdateCompanyCashDetailsMutationVariables = Exact<{
+  model: CompanyCashDetailsInput;
+}>;
+
+export type UpdateCompanyCashDetailsMutation = {
+  updateCompanyCashDetails: {
+    success: boolean;
+    messages?: Array<string> | null | undefined;
+  };
+};
+
+export type GetCompanyCashDetailsQueryVariables = Exact<{
+  [key: string]: never;
+}>;
+
+export type GetCompanyCashDetailsQuery = {
+  company?:
+    | {
+        id?: number | null | undefined;
+        cashDetails?:
+          | {
+              initialCashIndex?: number | null | undefined;
+              initialCashValue?: number | null | undefined;
+            }
+          | null
+          | undefined;
+      }
+    | null
+    | undefined;
 };
 
 export type GetCashRegistersQueryVariables = Exact<{ [key: string]: never }>;

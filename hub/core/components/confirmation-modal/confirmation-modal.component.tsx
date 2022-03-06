@@ -23,7 +23,7 @@ const ConfirmationModal: FunctionComponent<Props> = ({
         <Typography.Text>{title}</Typography.Text>
       </Modal.Header>
 
-      <Modal.Close size="sm" />
+      <Modal.Close color='gray.500' size="sm" _focus={{ border: 'none' }} />
 
       <Modal.Body>
         {description && (

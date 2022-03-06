@@ -1,5 +1,5 @@
-import { Box, Calendar, ListLoader, Page } from '@solness/ui';
-import { CashRegisterActions } from '../../components';
+import { ListLoader, Page } from '@solness/ui';
+import { CashRegisterActions, CashRegisters } from '../../components';
 import { useGetCashRegisters } from './data';
 
 const CashRegisterPage = () => {
@@ -30,9 +30,7 @@ const CashRegisterPage = () => {
         </>
       }
     >
-      <Box width="20%">
-        <Calendar />
-      </Box>
+      {data?.cashRegisters && <CashRegisters registers={data.cashRegisters} />}
     </Page>
   );
 };
