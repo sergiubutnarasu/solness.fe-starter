@@ -1,18 +1,17 @@
 import { Button, Form, Modal, useNotification } from '@solness/ui';
-import {
-  CompanyCashDetails,
-  CompanyCashDetailsInput,
-} from '@solness/generated-types';
+import { CompanyCashDetailsInput } from '@solness/generated-types';
 import { useUpdateCompanyCashDetails } from './data';
 
 interface Props {
-  companyCashDetails?: CompanyCashDetails | null;
+  initialCashIndex?: number | null;
+  initialCashValue?: string | null;
   onClose: () => void;
   onSubmit: () => void;
 }
 
 const UpdateCompanyCashDetailsForm = ({
-  companyCashDetails,
+  initialCashIndex = 1,
+  initialCashValue,
   onClose,
   onSubmit,
 }: Props) => {
@@ -24,9 +23,6 @@ const UpdateCompanyCashDetailsForm = ({
     },
     onError: (error) => showError(error.message),
   });
-
-  const initialCashIndex = companyCashDetails?.initialCashIndex ?? 1;
-  const initialCashValue = companyCashDetails?.initialCashValue;
 
   const handleSubmit = async ({
     initialCashIndex: newIndex = 1,
@@ -40,7 +36,10 @@ const UpdateCompanyCashDetailsForm = ({
 
   return (
     <Form
-      defaultValues={{ initialCashIndex, initialCashValue }}
+      defaultValues={{
+        initialCashIndex,
+        initialCashValue: Number(initialCashValue),
+      }}
       onSubmit={handleSubmit}
     >
       <Modal.Body>

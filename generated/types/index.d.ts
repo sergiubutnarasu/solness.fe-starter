@@ -64,7 +64,6 @@ export type ChangePasswordInput = {
 };
 
 export type Company = {
-  cashDetails?: Maybe<CompanyCashDetails>;
   description?: Maybe<Scalars['String']>;
   email: Scalars['String'];
   enabled: Scalars['Boolean'];
@@ -90,11 +89,6 @@ export type CompanyAction = BaseAction & {
   inviteUser: Scalars['Boolean'];
   update: Scalars['Boolean'];
   view: Scalars['Boolean'];
-};
-
-export type CompanyCashDetails = {
-  initialCashIndex?: Maybe<Scalars['Int']>;
-  initialCashValue?: Maybe<Scalars['Float']>;
 };
 
 export type CompanyCashDetailsInput = {
@@ -400,13 +394,8 @@ export type GetCompanyCashDetailsQuery = {
   company?:
     | {
         id?: number | null | undefined;
-        cashDetails?:
-          | {
-              initialCashIndex?: number | null | undefined;
-              initialCashValue?: number | null | undefined;
-            }
-          | null
-          | undefined;
+        initialCashIndex?: number | null | undefined;
+        initialCashValue?: string | null | undefined;
       }
     | null
     | undefined;

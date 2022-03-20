@@ -19,7 +19,8 @@ const UpdateCompanyCashDetailsModal = ({ onClose, onSubmit }: Props) => {
 
     return (
       <UpdateCompanyCashDetailsForm
-        companyCashDetails={cashDetails}
+        initialCashIndex={cashDetails?.initialCashIndex}
+        initialCashValue={cashDetails?.initialCashValue}
         onClose={onClose}
         onSubmit={onSubmit}
       />

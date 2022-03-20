@@ -6,10 +6,9 @@ export const GET_COMPANY_CASH_DETAILS = gql`
   query GetCompanyCashDetails {
     company {
       id
-      cashDetails {
-        initialCashIndex
-        initialCashValue
-      }
+
+      initialCashIndex
+      initialCashValue
     }
   }
 `;
@@ -21,7 +20,7 @@ export const useGetCompanyCashDetails = () => {
   );
 
   return {
-    cashDetails: data?.company?.cashDetails,
+    cashDetails: data?.company,
     ...options,
   };
 };
